@@ -1,9 +1,13 @@
 .button {
   box-sizing: border-box;
   cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  gap: 8px;
   padding: 8px 16px;
   border-radius: 8px;
-  outline: none;
 
   &.normal {
     background-color: $color-white;
@@ -53,9 +57,5 @@
 
   &:disabled {
     background-color: $color-gray-300;
-  }
-
-  &.fullWidth {
-    width: 100%;
   }
 }

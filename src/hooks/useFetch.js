@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 // 기본 fetch에서 url, method, body을 받아 실행
 const baseURL = 'https://rolling-api.vercel.app';
 const useFetch = (url, method = 'GET', body) => {
-  const [isData, setIsData] = useState(null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {

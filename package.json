@@ -13,7 +13,7 @@
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
     "*.{js,jsx}": "eslint",
-    "*.{css,scss}": "stylelint"
+    "*.{css,scss}": "stylelint --fix"
   },
   "dependencies": {
     "react": "^18.2.0",

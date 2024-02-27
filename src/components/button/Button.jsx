@@ -19,6 +19,7 @@ function Button({
   onClick,
   className,
   disabled = false,
+  shadow,
   width,
   height,
   fontSize,
@@ -27,7 +28,7 @@ function Button({
 }) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
   const pStyleType = STYLE_TYPE[styleType] || STYLE_TYPE.normal;
-  const classNames = `${styles.button} ${styles[pStyleType]} ${className || ''}`;
+  const classNames = `${styles.button} ${styles[pStyleType]} ${shadow && styles.shadow} ${className || ''}`;
 
   const handleClick = onClick
     ? () => {

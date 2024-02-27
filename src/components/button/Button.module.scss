@@ -1,0 +1,61 @@
+.button {
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  outline: none;
+
+  &.normal {
+    background-color: $color-white;
+    border: 1px solid $color-gray-300;
+    color: $color-gray-900;
+    &:hover:enabled {
+      background-color: $color-gray-100;
+    }
+    &:focus:enabled {
+      border: 1px solid $color-gray-500;
+    }
+  }
+
+  &.primary {
+    background-color: $color-purple-600;
+    border: 1px solid $color-gray-600;
+    color: $color-white;
+    &:hover:enabled {
+      background-color: $color-purple-700;
+      border: 1px solid $color-gray-700;
+    }
+    &:active:enabled {
+      background-color: $color-purple-800;
+      border: 1px solid $color-gray-800;
+    }
+    &:focus:enabled {
+      background-color: $color-purple-800;
+      border: 1px solid $color-purple-900;
+    }
+  }
+
+  &.secondary {
+    background-color: $color-white;
+    border: 1px solid $color-purple-600;
+    color: $color-purple-700;
+    &:hover:enabled {
+      background-color: $color-purple-100;
+      border: 1px solid $color-purple-700;
+    }
+    &:active:enabled {
+      border: 1px solid $color-purple-800;
+    }
+    &:focus:enabled {
+      border: 1px solid $color-purple-800;
+    }
+  }
+
+  &:disabled {
+    background-color: $color-gray-300;
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+}

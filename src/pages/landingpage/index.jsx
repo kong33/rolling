@@ -1,9 +1,7 @@
-import Header from '../../components/Header/Header.jsx';
-
 function LandingPage() {
   return (
     <>
-      <Header />
+      <h1>Landing Page!</h1>
     </>
   );
 }

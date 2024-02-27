@@ -6,14 +6,14 @@ import { useState, useEffect } from 'react';
 // 4. url 가공 필요
 
 // 기본 fetch에서 url, method, body을 받아 실행
-const baseURL = 'https://rolling-api.vercel.app';
+const BASE_URL = 'https://rolling-api.vercel.app';
 const useFetch = (url, method = 'GET', body) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${baseURL}${url}`, {
+        const response = await fetch(`${BASE_URL}${url}`, {
           method: method,
           headers: {
             'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const useFetch = (url, method = 'GET', body) => {
           throw new Error('서버 응답 실패');
         }
         const result = response.json();
-        setIsData(result);
+        setData(result);
       } catch (error) {
         console.error(error);
         console.log(
@@ -37,7 +37,7 @@ const useFetch = (url, method = 'GET', body) => {
   }, [url, method, body]);
   // url, method, body가 변경될 때마다 호출
 
-  return isData;
+  return data;
 };
 
 export default useFetch;

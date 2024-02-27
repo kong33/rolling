@@ -1,12 +1,17 @@
-import styles from './App.module.scss';
-import LandingPage from './pages/LandingPage.jsx';
+import LandingPage from './pages/landingpage/index.jsx';
+import ListPage from './pages/listpage/index.jsx';
+import PostPage from './pages/postpage/index.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-      <LandingPage />
-      <h1 className={styles.hello}>2+2=22</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/list" element={<ListPage />} />
+        <Route path="/post" element={<PostPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

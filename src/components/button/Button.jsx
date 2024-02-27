@@ -21,6 +21,8 @@ function Button({
   disabled = false,
   width,
   height,
+  fontSize,
+  fontWeight,
   borderRadius,
 }) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
@@ -40,7 +42,7 @@ function Button({
       className={classNames}
       onClick={handleClick}
       disabled={disabled}
-      style={{ width, height, borderRadius }}
+      style={{ width, height, borderRadius, fontSize, fontWeight }}
     >
       {children}
     </button>

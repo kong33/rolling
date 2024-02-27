@@ -15,10 +15,6 @@
     border: 1px solid $color-gray-300;
     color: $color-gray-900;
 
-    svg g path {
-      fill: $color-gray-900;
-    }
-
     &:hover:enabled {
       background-color: $color-gray-100;
     }
@@ -32,10 +28,6 @@
     background-color: $color-purple-600;
     border: 1px solid $color-gray-600;
     color: $color-white;
-
-    svg g path {
-      fill: $color-white;
-    }
 
     &:hover:enabled {
       background-color: $color-purple-700;
@@ -58,10 +50,6 @@
     border: 1px solid $color-purple-600;
     color: $color-purple-700;
 
-    svg g path {
-      fill: $color-purple-700;
-    }
-
     &:hover:enabled {
       background-color: $color-purple-100;
       border: 1px solid $color-purple-700;
@@ -79,9 +67,5 @@
   &:disabled {
     background-color: $color-gray-300;
     color: $color-white;
-
-    svg g path {
-      fill: $color-white;
-    }
   }
 }

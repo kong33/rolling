@@ -24,6 +24,27 @@
     }
   }
 
+  &.normal-invert {
+    background-color: $color-gray-500;
+    border: 1px solid $color-gray-500;
+    color: $color-white;
+
+    &:hover:enabled {
+      background-color: $color-gray-600;
+      border: 1px solid $color-gray-600;
+    }
+
+    &:active:enabled {
+      background-color: $color-gray-700;
+      border: 1px solid $color-gray-700;
+    }
+
+    &:focus:enabled {
+      background-color: $color-gray-700;
+      border: 1px solid $color-gray-800;
+    }
+  }
+
   &.primary {
     background-color: $color-purple-600;
     border: 1px solid $color-gray-600;
@@ -45,7 +66,7 @@
     }
   }
 
-  &.secondary {
+  &.primary-invert {
     background-color: $color-white;
     border: 1px solid $color-purple-600;
     color: $color-purple-700;
@@ -66,7 +87,6 @@
 
   &.shadow {
     fill: rgba(255, 255, 255, 0.9);
-
     stroke-width: 1px;
     stroke: $color-gray-300;
     filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.08));

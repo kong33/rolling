@@ -8,8 +8,9 @@ const BUTTON_TYPE = {
 
 const STYLE_TYPE = {
   normal: 'normal',
+  'normal-invert': 'normal-invert',
   primary: 'primary',
-  secondary: 'secondary',
+  'primary-invert': 'primary-invert',
 };
 
 function Button({

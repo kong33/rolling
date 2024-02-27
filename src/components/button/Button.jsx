@@ -18,14 +18,14 @@ function Button({
   styleType,
   onClick,
   className,
+  disabled = false,
   width,
   height,
-  fullWidth,
-  disabled = false,
+  borderRadius,
 }) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
   const pStyleType = STYLE_TYPE[styleType] || STYLE_TYPE.normal;
-  const classNames = `${styles.button} ${styles[pStyleType]} ${styles[fullWidth] || ''} ${className || ''}`;
+  const classNames = `${styles.button} ${styles[pStyleType]} ${className || ''}`;
 
   const handleClick = onClick
     ? () => {
@@ -40,7 +40,7 @@ function Button({
       className={classNames}
       onClick={handleClick}
       disabled={disabled}
-      style={{ width, height }}
+      style={{ width, height, borderRadius }}
     >
       {children}
     </button>

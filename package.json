@@ -12,8 +12,7 @@
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
-    "*.{js,jsx}": "eslint",
-    "*.{css,scss}": "stylelint --fix"
+    "*.{js,jsx}": "eslint"
   },
   "dependencies": {
     "react": "^18.2.0",

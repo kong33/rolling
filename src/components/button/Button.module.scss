@@ -1,4 +1,5 @@
 .button {
+  @include font-16-Regular;
   box-sizing: border-box;
   cursor: pointer;
   display: inline-flex;

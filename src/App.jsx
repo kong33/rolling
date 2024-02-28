@@ -1,10 +1,9 @@
-import styles from './App.module.scss';
-//import Input from './components/input';
+import Input from './components/input';
 
 function App() {
   // const [editor] = useState(() => withReact(createEditor()));
   // return null;
-  // return <Input placeholder="플레이스호더"></Input>;
+  return <Input placeholder="플레이스호더" errorMassage="에러다"></Input>;
 }
 
 export default App;

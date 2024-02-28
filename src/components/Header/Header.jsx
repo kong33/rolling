@@ -1,4 +1,6 @@
 import logo from '../../assets/images/logo.svg';
+import arrowDown from '../../assets/images/arrow_down.svg';
+import share24 from '../../assets/images/share-24.svg';
 import styles from './Header.module.scss';
 
 const handleShareKakao = () => {
@@ -25,13 +27,20 @@ function Header() {
         </section>
         <section>
           <div className={styles.postNumbers}>23명이 작성했어요!</div>
-          <div className={styles.emoziBtns}>이모지s</div>
-          <div className={`${styles.addEmoziBtn} ${styles.btn}`}>:) 추가</div>
+          <div className={styles.emoziBtns}>
+            <div className={styles.emoziBtn}>👍24</div>
+            <div className={styles.emoziBtn}>😍16</div>
+            <div className={styles.emoziBtn}>🎉10</div>
+          </div>
+          <div className={`${styles.addEmoziBtn} ${styles.btn}`}>
+            <img src={arrowDown} alt="arrow-down" />
+            추가
+          </div>
           <div
             className={`${styles.shareBtn} ${styles.btn}`}
             onClick={handleShareKakao}
           >
-            Kakao 공유
+            <img src={share24} alt="share btn" />
           </div>
         </section>
       </nav-bottom>

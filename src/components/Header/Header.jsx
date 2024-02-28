@@ -10,7 +10,6 @@ const handleShareKakao = () => {
     },
   });
 };
-
 function Header() {
   return (
     <header>

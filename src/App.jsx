@@ -1,7 +1,10 @@
 import styles from './App.module.scss';
+//import Input from './components/input';
 
 function App() {
-  return <h1 className={styles.hello}>2+2=22</h1>;
+  // const [editor] = useState(() => withReact(createEditor()));
+  // return null;
+  // return <Input placeholder="플레이스호더"></Input>;
 }
 
 export default App;

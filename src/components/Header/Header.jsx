@@ -62,6 +62,7 @@ function Header() {
           <div className={styles.btn}>롤링 페이퍼 만들기</div>
         </Link>
       </nav-top>
+      <hr />
       <nav-bottom>
         <section>
           <div className={styles.toName}>To. Ashley Kim</div>

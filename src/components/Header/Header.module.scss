@@ -39,12 +39,17 @@ header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 8vw;
+      gap: 1vw;
     }
 
     .toName {
       font-weight: 900;
       font-size: 26px;
+      width: 200px;
+    }
+
+    .postNumbers {
+      width: 180px;
     }
 
     .emoziBtns {
@@ -62,6 +67,20 @@ header {
         background: rgba(0, 0, 0, 0.54);
         color: $color-white;
       }
+    }
+
+    .toggleBtn {
+      width: 24x;
+      height: 24px;
+    }
+
+    .addEmoziBtn {
+      display: flex;
+      padding: 6px 16px;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      width: 105px;
     }
   }
 }

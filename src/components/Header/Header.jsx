@@ -1,5 +1,6 @@
 import logo from '../../assets/images/logo.svg';
 import arrowDown from '../../assets/images/arrow_down.svg';
+import add24 from '../../assets/images/add-24.svg';
 import share24 from '../../assets/images/share-24.svg';
 import styles from './Header.module.scss';
 
@@ -32,8 +33,11 @@ function Header() {
             <div className={styles.emoziBtn}>😍16</div>
             <div className={styles.emoziBtn}>🎉10</div>
           </div>
-          <div className={`${styles.addEmoziBtn} ${styles.btn}`}>
+          <div className={styles.toggleBtn}>
             <img src={arrowDown} alt="arrow-down" />
+          </div>
+          <div className={`${styles.addEmoziBtn} ${styles.btn}`}>
+            <img src={add24} alt="add-24" />
             추가
           </div>
           <div

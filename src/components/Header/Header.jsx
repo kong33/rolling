@@ -15,6 +15,10 @@ const handleShareKakao = () => {
   });
 };
 
+const handleShareURL = () => {
+  navigator.clipboard.writeText(window.location.href);
+};
+
 function Header() {
   const showEmoziRef = useRef();
   const showShareRef = useRef();
@@ -100,7 +104,9 @@ function Header() {
             <div className={styles.shareKakao} onClick={handleShareKakao}>
               카카오톡 공유
             </div>
-            <div className={styles.shareURL}>URL 공유</div>
+            <div className={styles.shareURL} onClick={handleShareURL}>
+              URL 공유
+            </div>
           </div>
         </section>
       </nav-bottom>

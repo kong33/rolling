@@ -46,7 +46,7 @@ header {
     }
 
     .postNumbers {
-      width: 180px;
+      width: 150px;
     }
 
     .emoziBtns {
@@ -91,6 +91,12 @@ header {
         align-items: flex-start;
         gap: 8px;
       }
+    }
+
+    .line {
+      width: 5px;
+      height: 28px;
+      border-left: 2px solid rgba($color: #000000, $alpha: 0.1);
     }
 
     .addEmoziBtn {

@@ -46,6 +46,7 @@ function Header() {
         </section>
         <section>
           <div className={styles.postNumbers}>23명이 작성했어요!</div>
+          <div className={styles.line}></div>
           <div className={styles.emoziBtns}>
             <div className={styles.emoziBtn}>👍24</div>
             <div className={styles.emoziBtn}>😍16</div>
@@ -72,6 +73,7 @@ function Header() {
             <img src={add24} alt="add-24" />
             추가
           </div>
+          <div className={styles.line}></div>
           <div
             className={`${styles.shareBtn} ${styles.btn}`}
             onClick={handleShareKakao}

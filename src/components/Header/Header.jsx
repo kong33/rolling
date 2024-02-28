@@ -4,6 +4,7 @@ import add24 from '../../assets/images/add-24.svg';
 import share24 from '../../assets/images/share-24.svg';
 import styles from './Header.module.scss';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const handleShareKakao = () => {
   window.Kakao.Share.sendCustom({
@@ -53,9 +54,13 @@ function Header() {
     <header>
       <nav-top>
         <div>
-          <img src={logo} alt="logo"></img>
+          <Link to="/">
+            <img src={logo} alt="logo"></img>
+          </Link>
         </div>
-        <div className={styles.btn}>롤링 페이퍼 만들기</div>
+        <Link to="/post">
+          <div className={styles.btn}>롤링 페이퍼 만들기</div>
+        </Link>
       </nav-top>
       <nav-bottom>
         <section>

@@ -17,18 +17,31 @@ const handleShareKakao = () => {
 
 function Header() {
   const showEmoziRef = useRef();
+  const showShareRef = useRef();
 
   const handleToggleEmozi = (e) => {
     e.target.classList.toggle('isOpen');
 
-    const isOpen = e.target.classList.contains('isOpen');
+    console.log(e.target.classList.value);
 
-    console.log(isOpen);
+    const isOpen = e.target.classList.contains('isOpen');
 
     if (isOpen) {
       showEmoziRef.current.style.display = 'block';
     } else {
       showEmoziRef.current.style.display = 'none';
+    }
+  };
+
+  const handleToggleShare = (e) => {
+    e.target.classList.toggle('isOpen');
+
+    const isOpen = e.target.classList.contains('isOpen');
+
+    if (isOpen) {
+      showShareRef.current.style.display = 'block';
+    } else {
+      showShareRef.current.style.display = 'none';
     }
   };
 
@@ -55,7 +68,10 @@ function Header() {
           <div className={styles.toggleBtn}>
             <img onClick={handleToggleEmozi} src={arrowDown} alt="arrow-down" />
           </div>
-          <div className={styles.showEmozi} ref={showEmoziRef}>
+          <div
+            className={`${styles.showEmozi} ${styles.toggleBox}`}
+            ref={showEmoziRef}
+          >
             <div className={styles.row}>
               <div className={styles.emoziBtn}>👍24</div>
               <div className={styles.emoziBtn}>👍24</div>
@@ -74,11 +90,17 @@ function Header() {
             추가
           </div>
           <div className={styles.line}></div>
+          <div className={`${styles.shareBtn} ${styles.btn}`}>
+            <img onClick={handleToggleShare} src={share24} alt="share btn" />
+          </div>
           <div
-            className={`${styles.shareBtn} ${styles.btn}`}
-            onClick={handleShareKakao}
+            className={`${styles.showShare} ${styles.toggleBox}`}
+            ref={showShareRef}
           >
-            <img src={share24} alt="share btn" />
+            <div className={styles.shareKakao} onClick={handleShareKakao}>
+              카카오톡 공유
+            </div>
+            <div className={styles.shareURL}>URL 공유</div>
           </div>
         </section>
       </nav-bottom>

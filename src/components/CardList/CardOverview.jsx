@@ -33,7 +33,7 @@
 //     <article>
 //       <div>
 //         <h1>To. {data.name} 님</h1>
-//         {/* 이미지들 추가 예정 */}
+//         {/* 이미지들 추가 예정 - profile 3개만 보이고 나머지 count로 표시 */}
 //         <p>{data.messageCount}명이 작성했어요!</p>
 //       </div>
 //       <div>

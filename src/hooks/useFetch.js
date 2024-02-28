@@ -7,19 +7,26 @@ import { useState, useEffect } from 'react';
 
 // 기본 fetch에서 url, method, body을 받아 실행
 const BASE_URL = 'https://rolling-api.vercel.app';
-const useFetch = (url, method = 'GET', body) => {
+const useFetch = (url, method = 'GET', body = null) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}${url}`, {
+        // 통신 할 데이터 메소드와 헤더 지정
+        const requestOptions = {
           method: method,
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(body),
-        });
+        };
+        // body 유무 확인 조건부 추가
+        if (body) {
+          requestOptions.body = JSON.stringify(body);
+        }
+
+        // fetching 호출
+        const response = await fetch(`${BASE_URL}${url}`, requestOptions}
         if (!response.ok) {
           throw new Error('서버 응답 실패');
         }

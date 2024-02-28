@@ -3,6 +3,7 @@ import arrowDown from '../../assets/images/arrow_down.svg';
 import add24 from '../../assets/images/add-24.svg';
 import share24 from '../../assets/images/share-24.svg';
 import styles from './Header.module.scss';
+import { useRef } from 'react';
 
 const handleShareKakao = () => {
   window.Kakao.Share.sendCustom({
@@ -13,7 +14,24 @@ const handleShareKakao = () => {
     },
   });
 };
+
 function Header() {
+  const showEmoziRef = useRef();
+
+  const handleToggleEmozi = (e) => {
+    e.target.classList.toggle('isOpen');
+
+    const isOpen = e.target.classList.contains('isOpen');
+
+    console.log(isOpen);
+
+    if (isOpen) {
+      showEmoziRef.current.style.display = 'block';
+    } else {
+      showEmoziRef.current.style.display = 'none';
+    }
+  };
+
   return (
     <header>
       <nav-top>
@@ -34,7 +52,21 @@ function Header() {
             <div className={styles.emoziBtn}>🎉10</div>
           </div>
           <div className={styles.toggleBtn}>
-            <img src={arrowDown} alt="arrow-down" />
+            <img onClick={handleToggleEmozi} src={arrowDown} alt="arrow-down" />
+          </div>
+          <div className={styles.showEmozi} ref={showEmoziRef}>
+            <div className={styles.row}>
+              <div className={styles.emoziBtn}>👍24</div>
+              <div className={styles.emoziBtn}>👍24</div>
+              <div className={styles.emoziBtn}>👍24</div>
+              <div className={styles.emoziBtn}>👍24</div>
+            </div>
+            <div className={styles.row}>
+              <div className={styles.emoziBtn}>👍24</div>
+              <div className={styles.emoziBtn}>👍24</div>
+              <div className={styles.emoziBtn}>👍24</div>
+              <div className={styles.emoziBtn}>👍24</div>
+            </div>
           </div>
           <div className={`${styles.addEmoziBtn} ${styles.btn}`}>
             <img src={add24} alt="add-24" />

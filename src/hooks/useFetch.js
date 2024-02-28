@@ -26,7 +26,7 @@ const useFetch = (url, method = 'GET', body = null) => {
         }
 
         // fetching 호출
-        const response = await fetch(`${BASE_URL}${url}`, requestOptions}
+        const response = await fetch(`${BASE_URL}${url}`, requestOptions);
         if (!response.ok) {
           throw new Error('서버 응답 실패');
         }

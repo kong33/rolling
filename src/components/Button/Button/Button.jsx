@@ -15,7 +15,6 @@ function Button({
   onClick,
   className = '',
   disabled = false,
-  width = '',
 }) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
   const buttonSize = BUTTON_SIZE[size] || BUTTON_SIZE.sm;
@@ -35,7 +34,6 @@ function Button({
       className={classNames}
       onClick={handleClick}
       disabled={disabled}
-      style={{ width }}
     >
       {children}
     </button>

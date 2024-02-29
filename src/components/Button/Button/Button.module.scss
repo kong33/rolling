@@ -29,11 +29,11 @@
   }
 
   &:focus:enabled {
-    border: 1px solid $color-purple-800;
+    border: 1px solid $color-purple-900;
   }
 
   &:active:enabled {
-    background-color: $color-purple-100;
+    background-color: $color-purple-200;
     border: 1px solid $color-purple-800;
   }
 }
@@ -53,8 +53,8 @@
   }
 
   &:active:enabled {
-    background-color: $color-gray-100;
-    border: 1px solid $color-gray-100;
+    background-color: $color-gray-200;
+    border: 1px solid $color-gray-500;
   }
 }
 

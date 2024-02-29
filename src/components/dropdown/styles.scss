@@ -72,6 +72,12 @@
 
 .arrowWrapper {
   position: absolute;
-  top: 32px;
+  top: 60px;
   left: 288px;
+}
+
+.label {
+  display: inline-block;
+  @include font-24-Bold;
+  margin-bottom: 12px;
 }

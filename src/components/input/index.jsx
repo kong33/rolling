@@ -1,47 +1,19 @@
-import { useState } from 'react';
 import './styles.scss';
+import useManageInput from '../../hooks/useManageInput/useManageInput';
 
-function Input({ placeholder, errorMassage, id }) {
-  const [isFocused, setIsFocused] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isBeenFocused, setIsBeenFocused] = useState(false);
-  const handleFocus = () => {
-    setIsFocused(true);
-    setIsBeenFocused(true);
-  };
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+function Input({ placeholder, errorMassage }) {
+  const {
+    handleFocus,
+    handleBlur,
+    handleMouseEnter,
+    handleMouseLeave,
+    decideInputClass,
+    handleMouseActive,
+    decidePClass,
+  } = useManageInput();
 
-  const handleMouseActive = (e) => {
-    if (e.target.value) setIsActive(true);
-    else setIsActive(false);
-  };
-
-  const decideInputClass = () => {
-    if (isFocused) return 'input--focused';
-    else if (isActive) return 'input--active';
-    else if (isHovered) return 'input--hover';
-    else if (isBeenFocused && !isActive) return 'input--error';
-    else return 'input--inactive';
-  };
-
-  const decidePClass = () => {
-    if (!isFocused && isBeenFocused && !isActive) return 'p--error';
-    else return 'p--default';
-  };
   return (
-    <form
-      method="POST"
-      action={`https://rolling-api.vercel.app/2-7/messages/${id}/`}
-    >
+    <div>
       <input
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -52,7 +24,7 @@ function Input({ placeholder, errorMassage, id }) {
         onChange={handleMouseActive}
       />
       <p className={decidePClass()}>{errorMassage}</p>
-    </form>
+    </div>
   );
 }
 

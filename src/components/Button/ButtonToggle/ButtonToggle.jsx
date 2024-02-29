@@ -8,11 +8,11 @@ const ACTIVE_TYPE = {
 };
 
 function ButtonToggle({
-  type,
+  type = BUTTON_TYPE.button,
   onClick,
   textLeft = 'ON',
   textRight = 'OFF',
-  active,
+  active = ACTIVE_TYPE.left,
 }) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
   const defaultActive = ACTIVE_TYPE[active] || ACTIVE_TYPE.left;

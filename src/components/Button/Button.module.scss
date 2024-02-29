@@ -24,27 +24,6 @@
     }
   }
 
-  &.normal-invert {
-    background-color: $color-gray-500;
-    border: 1px solid $color-gray-500;
-    color: $color-white;
-
-    &:hover:enabled {
-      background-color: $color-gray-600;
-      border: 1px solid $color-gray-600;
-    }
-
-    &:active:enabled {
-      background-color: $color-gray-700;
-      border: 1px solid $color-gray-700;
-    }
-
-    &:focus:enabled {
-      background-color: $color-gray-700;
-      border: 1px solid $color-gray-800;
-    }
-  }
-
   &.primary {
     background-color: $color-purple-600;
     border: 1px solid $color-gray-600;
@@ -66,7 +45,7 @@
     }
   }
 
-  &.primary-invert {
+  &.secondary {
     background-color: $color-white;
     border: 1px solid $color-purple-600;
     color: $color-purple-700;

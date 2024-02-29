@@ -3,9 +3,8 @@ import styles from './Button.module.scss';
 
 const STYLE_TYPE = {
   normal: 'normal',
-  'normal-invert': 'normal-invert',
   primary: 'primary',
-  'primary-invert': 'primary-invert',
+  secondary: 'secondary',
 };
 
 function Button({

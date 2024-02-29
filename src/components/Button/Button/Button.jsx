@@ -11,13 +11,13 @@ function Button({
   children,
   type = BUTTON_TYPE.button,
   styleType = STYLE_TYPE.primary,
-  size = BUTTON_SIZE.sm,
+  size = BUTTON_SIZE.free,
   onClick,
   className = '',
   disabled = false,
 }) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
-  const buttonSize = BUTTON_SIZE[size] || BUTTON_SIZE.sm;
+  const buttonSize = BUTTON_SIZE[size] || BUTTON_SIZE.free;
   const pStyleType = STYLE_TYPE[styleType] || STYLE_TYPE.primary;
   const classNames = `${styles.button} ${styles[buttonSize]} ${styles[pStyleType]} ${className}`;
 

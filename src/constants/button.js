@@ -5,6 +5,7 @@ export const BUTTON_TYPE = {
 };
 
 export const BUTTON_SIZE = {
+  free: 'free',
   sm: 'sm',
   md: 'md',
   lg: 'lg',

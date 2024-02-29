@@ -52,7 +52,7 @@ function Header() {
 
   return (
     <header>
-      <nav-top>
+      <nav className={styles.topNav}>
         <div>
           <Link to="/">
             <img src={logo} alt="logo"></img>
@@ -61,9 +61,9 @@ function Header() {
         <Link to="/post">
           <div className={styles.btn}>롤링 페이퍼 만들기</div>
         </Link>
-      </nav-top>
+      </nav>
       <hr />
-      <nav-bottom>
+      <nav className={styles.bottomNav}>
         <section>
           <div className={styles.toName}>To. Ashley Kim</div>
         </section>
@@ -115,7 +115,7 @@ function Header() {
             </div>
           </div>
         </section>
-      </nav-bottom>
+      </nav>
     </header>
   );
 }

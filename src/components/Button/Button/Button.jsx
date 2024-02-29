@@ -1,4 +1,4 @@
-import { BUTTON_TYPE } from '../../constants/button';
+import { BUTTON_TYPE } from '../../../constants/button';
 import styles from './Button.module.scss';
 
 const STYLE_TYPE = {

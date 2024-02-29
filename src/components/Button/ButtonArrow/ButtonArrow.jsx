@@ -1,9 +1,14 @@
 import { BUTTON_TYPE } from '../../../constants/button';
 import styles from './ButtonArrow.module.scss';
 
-function ButtonArrow({ type, direction, className, onClick }) {
+function ButtonArrow({
+  type = BUTTON_TYPE.button,
+  direction = 'left',
+  className = '',
+  onClick,
+}) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
-  const classNames = `${styles.button} ${className || ''}`;
+  const classNames = `${styles.button} ${className}`;
   // content는 svg 작업이 끝나면 변경 필요합니다.
   const content = direction === 'left' ? '<' : '>';
 

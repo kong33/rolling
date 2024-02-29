@@ -3,7 +3,6 @@ import { useState } from 'react';
 const useManageInput = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [isActive, setIsActive] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const [isBeenFocused, setIsBeenFocused] = useState(false);
 
   const handleFocus = () => {
@@ -12,12 +11,6 @@ const useManageInput = () => {
   };
   const handleBlur = () => {
     setIsFocused(false);
-  };
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-  const handleMouseLeave = () => {
-    setIsHovered(false);
   };
 
   const handleMouseActive = (e) => {
@@ -28,7 +21,6 @@ const useManageInput = () => {
   const decideInputClass = () => {
     if (isFocused) return 'input--focused';
     else if (isActive) return 'input--active';
-    else if (isHovered) return 'input--hover';
     else if (isBeenFocused && !isActive) return 'input--error';
     else return 'input--inactive';
   };
@@ -40,8 +32,6 @@ const useManageInput = () => {
   return {
     handleFocus,
     handleBlur,
-    handleMouseEnter,
-    handleMouseLeave,
     decideInputClass,
     handleMouseActive,
     decidePClass,

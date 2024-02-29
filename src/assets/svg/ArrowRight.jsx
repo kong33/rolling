@@ -12,9 +12,9 @@ const ArrowRight = () => {
           id="Polygon 1"
           d="M5.53846 14L12 8L5.53846 2"
           stroke="#181818"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </svg>

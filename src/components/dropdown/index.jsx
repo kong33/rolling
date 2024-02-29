@@ -1,82 +1,57 @@
-import { useState } from 'react';
-//import ArrowDown from '../../assets/images/arrow_down.svg';
-//import ArrowUp from '../../assets/images/arrow_up.svg';
+import '../../styles/reset.scss';
 import './styles.scss';
 
-function DropDown({ label, name, placeholders, id }) {
-  const [isClicked, setIsClicked] = useState(false); //ul 클릭 -> 자동으로 blur됨.
+import ArrowDown from '../../assets/svg/ArrowDown';
+import ArrowUp from '../../assets/svg/ArrowUp';
+import useManageDropdown from '../../hooks/useManageDropdown/useManageDropdown';
 
-  const [isLiHovered, setIsLiHovered] = useState(false);
-  const [isLiClicked, setIsLiClicked] = useState(false);
-  //const [isActive, setIsActive] = useState(false); //li 클릭 하고 blur하면 active
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleClick = () => {
-    setIsClicked(true);
-  };
-  const handleLiClick = () => {
-    setIsLiClicked(true);
-  };
-  const handleLiMouseEnter = () => {
-    setIsLiHovered(true);
-  };
-  const handleLiMouseLeave = () => {
-    setIsLiHovered(false);
-  };
-
-  const handleMouseEnter = (e) => {
-    //색 진하게
-    e.target.style.backgroundColor = $color - gray - 100;
-  };
-
-  const handleMouseLeave = (e) => {
-    //색 안진하게
-    e.target.style.backgroundColor = $color - white;
-  };
-
-  const decideSelectClass = () => {
-    if (isClicked && !isLiClicked) return 'select--active';
-    else if (isLiClicked) return 'select--focused';
-    else if (isHovered) return 'select--hover';
-    else return 'select--inactive';
-  };
-  const decideOptionClass = () => {
-    if (isLiHovered) return 'option--hovered';
-    else return 'option--default';
-  };
-
+function DropDown({ label, name, placeholders }) {
+  const {
+    handleUlClicked,
+    handleLiClicked,
+    handleUlMouseEnter,
+    handleUlMouseLeave,
+    handleLiMouseEnter,
+    handleLiMouseLeave,
+    decideSelectClass,
+    isUlClicked,
+    dropDownRef,
+    clickedLi,
+  } = useManageDropdown(placeholders);
+  console.log(isUlClicked);
   return (
-    <form
-      method="POST"
-      action={`https://rolling-api.vercel.app/2-7/messages/${id}/`}
-    >
+    <div ref={dropDownRef}>
       <label>{label}</label>
-      {/* {isClicked ? <ArrowDown /> : <ArrowUp />} */}
-      <ul
-        name={name}
-        id={name}
-        onClick={handleClick}
-        className={`select--default ${decideSelectClass()}`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {isClicked && (
-          <>
-            {placeholders.map((placeholder) => (
-              <li
-                value={placeholder}
-                key={placeholder}
-                onMouseEnter={handleLiMouseEnter}
-                onMouseLeave={handleLiMouseLeave}
-                onClick={handleLiClick}
-              >
-                {placeholder}
-              </li>
-            ))}
-          </>
-        )}
-      </ul>
-    </form>
+      {isUlClicked ? <ArrowDown /> : <ArrowUp />}
+      <section className={'wrapper'}>
+        <ul
+          name={name}
+          onClick={handleUlClicked}
+          onMouseEnter={handleUlMouseEnter}
+          onMouseLeave={handleUlMouseLeave}
+        >
+          <li className={`select--default ${decideSelectClass()}`}>
+            {clickedLi}
+          </li>
+          {isUlClicked && (
+            <section className={'ul--box'}>
+              {placeholders.slice(1).map((placeholder, index) => (
+                <li
+                  value={placeholder}
+                  key={placeholder}
+                  onMouseEnter={handleLiMouseEnter}
+                  onMouseLeave={handleLiMouseLeave}
+                  onClick={handleLiClicked}
+                  className={`option--default`}
+                >
+                  {placeholder}
+                </li>
+              ))}
+            </section>
+          )}
+        </ul>
+      </section>
+    </div>
   );
 }
 

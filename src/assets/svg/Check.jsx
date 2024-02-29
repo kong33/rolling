@@ -12,8 +12,8 @@ const Check = () => {
           id="Vector 6"
           d="M3 12L9.83333 18.0833L20.6667 6"
           stroke="white"
-          stroke-width="3.33333"
-          stroke-linecap="round"
+          strokeWidth="3.33333"
+          strokeLinecap="round"
         />
       </g>
     </svg>

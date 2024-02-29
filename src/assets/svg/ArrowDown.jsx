@@ -12,9 +12,9 @@ const ArrowDown = () => {
           id="Polygon 1"
           d="M6 8.76942L12 15.231L18 8.76942"
           stroke="#101010"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </svg>

@@ -13,29 +13,56 @@
   color: $color-gray-900;
 }
 
-.select--hover {
+.select--default:hover {
   border: 1px solid $color-gray-500;
   color: $color-gray-500;
 }
 
 .select--default {
   border-radius: 8px;
+  display: flex;
 
   width: 320px;
   padding: 12px 16px;
   align-items: center;
   @include font-16-Regular;
+  cursor: pointer;
+  margin-bottom: 4px;
 }
 
-.option--hovered {
-  width: 316px;
-  padding: 12px 16px;
-  align-items: center;
+.option--default:hover {
   background-color: $color-gray-100;
 }
 
 .option--default {
+  display: flex;
   width: 316px;
+  display: block;
   padding: 12px 16px;
+  align-items: center;
+  cursor: pointer;
+  color: $color-gray-900;
+  height: 48px;
+  transition: background-color 0.3s ease;
+}
+
+.ul--box {
+  width: 320px;
+  display: inline-flex;
+  padding: 10px 1px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin: 0;
+  border-radius: 8px;
+  border: 1px solid $color-gray-300;
+  background: $color-white;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+}
+
+.wrapper {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }

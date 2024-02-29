@@ -1,45 +1,38 @@
 import { useEffect, useState } from 'react';
 import CardOverview from './CardOverview.jsx';
-// import useFetch from '../../hooks/useFetch.js';
+import styles from './CardList.module.scss';
+import useFetch from '../../hooks/useFetch.js';
+import arrowLeft from '../../assets/images/arrow_left.svg';
+import arrowRight from '../../assets/images/arrow_right.svg';
 
 const CardList = ({ CardListName }) => {
+  const data = useFetch('/2-7/recipients/').results;
   const [recipients, setRecipients] = useState([]);
+  const sortedRecipients = recipients.sort(
+    (a, b) => b.messageCount - a.messageCount,
+  );
+  const top4Recipients = sortedRecipients.filter((item, i) => i < 4 && item);
 
-  // useEffect(() => {
-  //   const getFetch = async () => {
-  //     try {
-  //       const data = await useFetch('/2-7/recipients/');
-  //       setRecipients(data);
-  //     } catch (error) {
-  //       console.error('fetch 확인', error);
-  //     }
-  //   };
-  //   getFetch();
-  // }, []);
+  // 4개만 렌더링하기
+  // 버튼 클릭하면 다음거 렌더링하기
+  // 조건은 생성일자와 messageCount
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://rolling-api.vercel.app/2-7/recipients/',
-        );
-        const result = await response.json();
-        setRecipients(result.results);
-      } catch (error) {
-        console.log('fetch확인');
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
+    if (data) {
+      setRecipients(data);
+      console.log(data);
+    }
+  }, [data]);
 
   return (
-    <section>
-      <h1>{CardListName}</h1>
-      <div>
-        {recipients.map((recipient) => (
+    <section className={styles.container}>
+      <h1 className={styles.title}>{CardListName}</h1>
+      <div className={styles.content}>
+        {top4Recipients.map((recipient) => (
           <CardOverview key={recipient.id} recipient={recipient} />
         ))}
+        <img className={styles.arrowLeft} src={arrowLeft} />
+        <img className={styles.arrowRight} src={arrowRight} />
       </div>
     </section>
   );

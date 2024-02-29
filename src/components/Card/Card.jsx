@@ -3,6 +3,7 @@ import Style from './Card.module.scss';
 function CardPost() {
   return (
     <article className={Style.cardBox}>
+      {/* 카드프로필 */}
       <div className={Style.cardProfileBox}>
         <div className={Style.cardProfile}>
           <p className={Style.cardImage}></p>
@@ -16,6 +17,8 @@ function CardPost() {
           </div>
         </div>
       </div>
+
+      {/* 카드내용 */}
       <div className={Style.cardContentBox}>
         <div className={Style.cardContent}>
           <p>

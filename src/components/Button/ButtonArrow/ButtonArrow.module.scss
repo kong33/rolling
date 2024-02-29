@@ -16,4 +16,8 @@
   backdrop-filter: blur(2px);
 
   flex-shrink: 0;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }

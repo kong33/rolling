@@ -6,6 +6,7 @@ function ButtonArrow({
   direction = 'left',
   className = '',
   onClick,
+  disabled = false,
 }) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
   const classNames = `${styles.button} ${className}`;
@@ -18,7 +19,12 @@ function ButtonArrow({
   };
 
   return (
-    <button type={buttonType} className={classNames} onClick={handleClick}>
+    <button
+      type={buttonType}
+      className={classNames}
+      onClick={handleClick}
+      disabled={disabled}
+    >
       {content}
     </button>
   );

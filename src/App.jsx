@@ -1,9 +1,10 @@
-import Input from './components/input';
-
 function App() {
-  // const [editor] = useState(() => withReact(createEditor()));
-  // return null;
-  return <Input placeholder="플레이스호더" errorMassage="에러다"></Input>;
+  return (
+    <>
+      {/* <Input placeholder="플레이스호더" errorMassage="에러다" id="1"></Input>
+      <DropDown label="친구" name="relationship" placeholders={a} id="1" /> */}
+    </>
+  );
 }
 
 export default App;

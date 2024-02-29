@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './styles.scss';
 
-function Input({ placeholder, errorMassage }) {
+function Input({ placeholder, errorMassage, id }) {
   const [isFocused, setIsFocused] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -38,7 +38,10 @@ function Input({ placeholder, errorMassage }) {
     else return 'p--default';
   };
   return (
-    <form method="post">
+    <form
+      method="POST"
+      action={`https://rolling-api.vercel.app/2-7/messages/${id}/`}
+    >
       <input
         onFocus={handleFocus}
         onBlur={handleBlur}

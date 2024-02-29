@@ -9,7 +9,7 @@
   background: $color-white;
 }
 
-header {
+.header {
   .topNav {
     display: flex;
     justify-content: space-between;
@@ -20,7 +20,7 @@ header {
     background-color: $color-white;
   }
 
-  hr {
+  .line {
     opacity: 0.3;
   }
 
@@ -32,7 +32,7 @@ header {
     width: 1200px;
     margin: 0 auto;
 
-    section {
+    .section {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -105,7 +105,7 @@ header {
       right: -105px;
       display: none;
 
-      div {
+      .shareBox {
         padding: 12px 16px;
 
         &:hover {
@@ -132,11 +132,15 @@ header {
 }
 
 @media (max-width: 1248px) {
-  header {
+  .header {
     width: 100%;
     padding: 11px 24px;
 
-    nav-top {
+    .topNav {
+      width: 100%;
+    }
+
+    .bottomNav {
       width: 100%;
     }
   }

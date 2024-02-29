@@ -54,7 +54,7 @@ function Header() {
   };
 
   return (
-    <header>
+    <header className={styles.header}>
       {/* 상단 Nav바 */}
       <nav className={styles.topNav}>
         <div>
@@ -66,14 +66,14 @@ function Header() {
           <div className={styles.btn}>롤링 페이퍼 만들기</div>
         </Link>
       </nav>
-      <hr />
+      <hr className={styles.line} />
       {/* 하단 Nav바 */}
       <nav className={styles.bottomNav}>
         {/* To. 000 */}
-        <section>
+        <section className={styles.section}>
           <div className={styles.toName}>To. Ashley Kim</div>
         </section>
-        <section>
+        <section className={styles.section}>
           {/* 00명이 작성했어요 */}
           <div className={styles.postNumbers}>23명이 작성했어요!</div>
           <div className={styles.line}></div>
@@ -120,10 +120,10 @@ function Header() {
             className={`${styles.showShare} ${styles.toggleBox}`}
             ref={showShareRef}
           >
-            <div className={styles.shareKakao} onClick={handleShareKakao}>
+            <div className={styles.shareBox} onClick={handleShareKakao}>
               카카오톡 공유
             </div>
-            <div className={styles.shareURL} onClick={handleShareURL}>
+            <div className={styles.shareBox} onClick={handleShareURL}>
               URL 공유
             </div>
           </div>

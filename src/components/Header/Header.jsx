@@ -6,6 +6,7 @@ import styles from './Header.module.scss';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
+// 카카오톡 공유 핸들러 함수
 const handleShareKakao = () => {
   window.Kakao.Share.sendCustom({
     templateId: 104815,
@@ -16,14 +17,17 @@ const handleShareKakao = () => {
   });
 };
 
+// URL 공유 핸들러 함수
 const handleShareURL = () => {
   navigator.clipboard.writeText(window.location.href);
 };
 
 function Header() {
+  // 토글 박스 DOM 참조용 Ref
   const showEmoziRef = useRef();
   const showShareRef = useRef();
 
+  // Emozi 토글 핸들러 함수
   const handleToggleEmozi = (e) => {
     e.target.classList.toggle('isOpen');
 
@@ -38,6 +42,7 @@ function Header() {
     }
   };
 
+  // 공유 버튼 토글 핸들러 함수
   const handleToggleShare = (e) => {
     e.target.classList.toggle('isOpen');
 
@@ -52,6 +57,7 @@ function Header() {
 
   return (
     <header>
+      {/* 상단 Nav바 */}
       <nav className={styles.topNav}>
         <div>
           <Link to="/">
@@ -63,21 +69,27 @@ function Header() {
         </Link>
       </nav>
       <hr />
+      {/* 하단 Nav바 */}
       <nav className={styles.bottomNav}>
+        {/* To. 000 */}
         <section>
           <div className={styles.toName}>To. Ashley Kim</div>
         </section>
         <section>
+          {/* 00명이 작성했어요 */}
           <div className={styles.postNumbers}>23명이 작성했어요!</div>
           <div className={styles.line}></div>
+          {/* 이모지 상위 3개 보여주기 */}
           <div className={styles.emoziBtns}>
             <div className={styles.emoziBtn}>👍24</div>
             <div className={styles.emoziBtn}>😍16</div>
             <div className={styles.emoziBtn}>🎉10</div>
           </div>
+          {/* 이모지 더 보기 버튼 */}
           <div className={styles.toggleBtn}>
             <img onClick={handleToggleEmozi} src={arrowDown} alt="arrow-down" />
           </div>
+          {/* 이모지 토글 박스 */}
           <div
             className={`${styles.showEmozi} ${styles.toggleBox}`}
             ref={showEmoziRef}
@@ -95,14 +107,17 @@ function Header() {
               <div className={styles.emoziBtn}>👍24</div>
             </div>
           </div>
+          {/* 이모지 추가 버튼 */}
           <div className={`${styles.addEmoziBtn} ${styles.btn}`}>
             <img src={add24} alt="add-24" />
             추가
           </div>
           <div className={styles.line}></div>
+          {/* 공유 토글 버튼 */}
           <div className={`${styles.shareBtn} ${styles.btn}`}>
             <img onClick={handleToggleShare} src={share24} alt="share btn" />
           </div>
+          {/* 공유 토글 박스 */}
           <div
             className={`${styles.showShare} ${styles.toggleBox}`}
             ref={showShareRef}

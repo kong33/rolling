@@ -1,3 +1,63 @@
+@mixin primary {
+  background-color: $color-purple-600;
+  border: 1px solid $color-gray-600;
+  color: $color-white;
+
+  &:hover:enabled {
+    background-color: $color-purple-700;
+    border: 1px solid $color-gray-700;
+  }
+
+  &:focus:enabled {
+    border: 1px solid $color-purple-900;
+  }
+
+  &:active:enabled {
+    background-color: $color-purple-800;
+    border: 1px solid $color-gray-800;
+  }
+}
+
+@mixin secondary {
+  background-color: $color-white;
+  border: 1px solid $color-purple-600;
+  color: $color-purple-700;
+
+  &:hover:enabled {
+    background-color: $color-purple-100;
+    border: 1px solid $color-purple-700;
+  }
+
+  &:focus:enabled {
+    border: 1px solid $color-purple-800;
+  }
+
+  &:active:enabled {
+    background-color: $color-purple-100;
+    border: 1px solid $color-purple-800;
+  }
+}
+
+@mixin outlined {
+  background-color: $color-white;
+  border: 1px solid $color-gray-300;
+  color: $color-gray-900;
+
+  &:hover:enabled {
+    background-color: $color-gray-100;
+    border: 1px solid $color-gray-100;
+  }
+
+  &:focus:enabled {
+    border: 1px solid $color-gray-500;
+  }
+
+  &:active:enabled {
+    background-color: $color-gray-100;
+    border: 1px solid $color-gray-100;
+  }
+}
+
 .button {
   @include font-16-Regular;
   box-sizing: border-box;
@@ -9,58 +69,51 @@
   gap: 8px;
   border-radius: 8px;
 
-  &.primary {
-    background-color: $color-purple-600;
-    border: 1px solid $color-gray-600;
-    color: $color-white;
+  &.primary56 {
+    @include primary;
+    @include font-18-Bold;
+    height: 56px;
+  }
 
-    &:hover:enabled {
-      background-color: $color-purple-700;
-      border: 1px solid $color-gray-700;
-    }
-
-    &:active:enabled {
-      background-color: $color-purple-800;
-      border: 1px solid $color-gray-800;
-    }
-
-    &:focus:enabled {
-      background-color: $color-purple-800;
-      border: 1px solid $color-purple-900;
-    }
+  &.primary40 {
+    @include primary;
+    @include font-16-Regular;
+    height: 40px;
   }
 
   &.secondary {
-    background-color: $color-white;
-    border: 1px solid $color-purple-600;
-    color: $color-purple-700;
-
-    &:hover:enabled {
-      background-color: $color-purple-100;
-      border: 1px solid $color-purple-700;
-    }
-
-    &:active:enabled {
-      border: 1px solid $color-purple-800;
-    }
-
-    &:focus:enabled {
-      border: 1px solid $color-purple-800;
-    }
+    @include secondary;
+    @include font-16-Regular;
+    height: 40px;
   }
 
-  &.outlined {
-    background-color: $color-white;
-    border: 1px solid $color-gray-300;
-    color: $color-gray-900;
+  &.outlined56 {
+    @include outlined;
+    @include font-18-Bold;
+    height: 56px;
+  }
 
-    &:hover:enabled {
-      background-color: $color-gray-100;
-    }
+  &.outlined40 {
+    @include outlined;
+    @include font-16-Regular;
+    height: 40px;
+  }
 
-    &:focus:enabled {
-      border: 1px solid $color-gray-500;
-    }
+  &.outlined36 {
+    @include outlined;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    height: 36px;
+  }
+
+  &.outlined28 {
+    @include outlined;
+    @include font-14-Regular;
+    height: 28px;
   }
 
   &:disabled {

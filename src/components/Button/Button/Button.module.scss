@@ -67,11 +67,12 @@
   align-items: center;
   outline: none;
   gap: 8px;
-  border-radius: 8px;
+  border-radius: 6px;
 
   &.primary56 {
     @include primary;
     @include font-18-Bold;
+    border-radius: 12px;
     height: 56px;
   }
 
@@ -90,6 +91,7 @@
   &.outlined56 {
     @include outlined;
     @include font-18-Bold;
+    border-radius: 12px;
     height: 56px;
   }
 

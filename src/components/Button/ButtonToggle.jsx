@@ -23,11 +23,11 @@ function ButtonToggle({ onClick, textLeft = 'ON', textRight = 'OFF', active }) {
   };
 
   return (
-    <button onClick={handleClick}>
+    <button className={styles.button} onClick={handleClick}>
       {switchList.map(({ type, text }) => {
         const className = activeSwitch === type ? 'active' : '';
         return (
-          <span key={type} className={styles[className]}>
+          <span key={type} className={`${styles.switch} ${styles[className]}`}>
             {text}
           </span>
         );

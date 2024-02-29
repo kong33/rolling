@@ -1,4 +1,4 @@
-import './styles.scss';
+import styles from './Input.module.scss';
 import useManageInput from '../../hooks/useManageInput/useManageInput';
 
 function Input({ placeholder, errorMassage }) {
@@ -19,7 +19,7 @@ function Input({ placeholder, errorMassage }) {
         onBlur={handleBlur}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={`input--defalut ${decideInputClass()}`}
+        className={`${styles.inputDefalut} ${decideInputClass()}`}
         placeholder={placeholder}
         onChange={handleMouseActive}
       />

@@ -1,6 +1,5 @@
 import '../../styles/reset.scss';
-import './styles.scss';
-
+import styles from './Dropdown.module.scss';
 import ArrowDown from '../../assets/svg/ArrowDown';
 import ArrowUp from '../../assets/svg/ArrowUp';
 import useManageDropdown from '../../hooks/useManageDropdown/useManageDropdown';
@@ -20,31 +19,31 @@ function DropDown({ label, name, placeholders }) {
   } = useManageDropdown(placeholders);
   console.log(isUlClicked);
   return (
-    <div className={'div'} ref={dropDownRef}>
-      <label className={'label'}>{label}</label>
-      <div className={'arrowWrapper'}>
+    <div className={styles.div} ref={dropDownRef}>
+      <label className={styles.label}>{label}</label>
+      <div className={styles.arrowWrapper}>
         {isUlClicked ? <ArrowDown /> : <ArrowUp />}
       </div>
-      <section className={'wrapper'}>
+      <section className={styles.wrapper}>
         <ul
           name={name}
           onClick={handleUlClicked}
           onMouseEnter={handleUlMouseEnter}
           onMouseLeave={handleUlMouseLeave}
         >
-          <li className={`select--default ${decideSelectClass()}`}>
+          <li className={`${styles.selectDefault} ${decideSelectClass()}`}>
             {clickedLi}
           </li>
           {isUlClicked && (
-            <section className={'ul--box'}>
-              {placeholders.slice(1).map((placeholder, index) => (
+            <section className={styles.ulBox}>
+              {placeholders.slice(1).map((placeholder) => (
                 <li
                   value={placeholder}
                   key={placeholder}
                   onMouseEnter={handleLiMouseEnter}
                   onMouseLeave={handleLiMouseLeave}
                   onClick={handleLiClicked}
-                  className={`option--default`}
+                  className={optionDefault}
                 >
                   {placeholder}
                 </li>

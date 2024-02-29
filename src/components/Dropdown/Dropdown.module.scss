@@ -1,24 +1,24 @@
-.select--inactive {
+.selectInactive {
   border: 1px solid $color-gray-300;
   color: $color-gray-500;
 }
 
-.select--focused {
+.selectFocused {
   border: 2px solid $color-gray-500;
   color: $color-gray-900;
 }
 
-.select--active {
+.selectActive {
   border: 2px solid $color-gray-500;
   color: $color-gray-900;
 }
 
-.select--default:hover {
+.selectDefault:hover {
   border: 1px solid $color-gray-500;
   color: $color-gray-500;
 }
 
-.select--default {
+.selectDefault {
   border-radius: 8px;
   display: flex;
 
@@ -30,11 +30,11 @@
   margin-bottom: 4px;
 }
 
-.option--default:hover {
+.optionDefault:hover {
   background-color: $color-gray-100;
 }
 
-.option--default {
+.optionDefault {
   display: flex;
   width: 316px;
   display: block;
@@ -46,7 +46,7 @@
   transition: background-color 0.3s ease;
 }
 
-.ul--box {
+.ulBox {
   width: 320px;
   display: inline-flex;
   padding: 10px 1px;

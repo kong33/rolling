@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from '../../components/Input/Input.module.scss';
 
 const useManageInput = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -19,15 +20,15 @@ const useManageInput = () => {
   };
 
   const decideInputClass = () => {
-    if (isFocused) return 'input--focused';
-    else if (isActive) return 'input--active';
-    else if (isBeenFocused && !isActive) return 'input--error';
-    else return 'input--inactive';
+    if (isFocused) return styles.inputFocused;
+    else if (isActive) return styles.inputActive;
+    else if (isBeenFocused && !isActive) return styles.inputError;
+    else return styles.inputInactive;
   };
 
   const decidePClass = () => {
-    if (!isFocused && isBeenFocused && !isActive) return 'p--error';
-    else return 'p--default';
+    if (!isFocused && isBeenFocused && !isActive) return styles.pError;
+    else return styles.pDefault;
   };
   return {
     handleFocus,

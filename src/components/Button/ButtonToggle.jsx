@@ -1,12 +1,25 @@
 import styles from './ButtonToggle.module.scss';
 import { useState } from 'react';
 
+const BUTTON_TYPE = {
+  button: 'button',
+  submit: 'submit',
+  reset: 'reset',
+};
+
 const ACTIVE_TYPE = {
   left: 'left',
   right: 'right',
 };
 
-function ButtonToggle({ onClick, textLeft = 'ON', textRight = 'OFF', active }) {
+function ButtonToggle({
+  type,
+  onClick,
+  textLeft = 'ON',
+  textRight = 'OFF',
+  active,
+}) {
+  const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
   const defaultActive = ACTIVE_TYPE[active] || ACTIVE_TYPE.left;
   const [activeSwitch, setActiveSwitch] = useState(defaultActive);
   const switchList = [
@@ -24,7 +37,7 @@ function ButtonToggle({ onClick, textLeft = 'ON', textRight = 'OFF', active }) {
   };
 
   return (
-    <button className={styles.button} onClick={handleClick}>
+    <button type={buttonType} className={styles.button} onClick={handleClick}>
       {switchList.map(({ type, text }) => {
         const className = activeSwitch === type ? 'active' : '';
         return (

@@ -30,7 +30,7 @@ const useFetch = (url, method = 'GET', body = null) => {
         if (!response.ok) {
           throw new Error('서버 응답 실패');
         }
-        const result = response.json();
+        const result = await response.json();
         setData(result);
       } catch (error) {
         console.error(error);

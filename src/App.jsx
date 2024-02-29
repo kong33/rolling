@@ -1,6 +1,6 @@
 import Layout from './pages/layout';
 import LandingPage from './pages/landingpage';
-import ListPage from './pages/listpage';
+import ListPage from './pages/ListPage.jsx';
 import PostPage from './pages/postpage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 

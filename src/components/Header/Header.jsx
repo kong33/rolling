@@ -31,8 +31,6 @@ function Header() {
   const handleToggleEmozi = (e) => {
     e.target.classList.toggle('isOpen');
 
-    console.log(e.target.classList.value);
-
     const isOpen = e.target.classList.contains('isOpen');
 
     if (isOpen) {

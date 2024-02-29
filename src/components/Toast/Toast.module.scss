@@ -1,0 +1,35 @@
+.toast {
+  display: flex;
+  width: 524px;
+  height: 64px;
+  padding: 19px 30px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.8);
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .completedBtn {
+      width: 24px;
+      height: 24px;
+    }
+
+    .text {
+      width: 180px;
+      color: $color-white;
+      @include font-16-Regular;
+    }
+  }
+
+  .right {
+    .quitBtn {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+  }
+}

@@ -1,10 +1,5 @@
+import { BUTTON_TYPE } from '../../constants/button';
 import styles from './Button.module.scss';
-
-const BUTTON_TYPE = {
-  button: 'button',
-  submit: 'submit',
-  reset: 'reset',
-};
 
 const STYLE_TYPE = {
   normal: 'normal',

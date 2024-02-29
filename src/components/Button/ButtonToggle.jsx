@@ -1,11 +1,6 @@
+import { BUTTON_TYPE } from '../../constants/button';
 import styles from './ButtonToggle.module.scss';
 import { useState } from 'react';
-
-const BUTTON_TYPE = {
-  button: 'button',
-  submit: 'submit',
-  reset: 'reset',
-};
 
 const ACTIVE_TYPE = {
   left: 'left',

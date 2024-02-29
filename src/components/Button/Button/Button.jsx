@@ -9,18 +9,18 @@ const STYLE_TYPE = {
 
 function Button({
   children,
-  type,
-  styleType,
+  type = BUTTON_TYPE.button,
+  styleType = STYLE_TYPE.normal,
   size = BUTTON_SIZE.sm,
   onClick,
-  className,
+  className = '',
   disabled = false,
-  width,
+  width = '',
 }) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
   const buttonSize = BUTTON_SIZE[size] || BUTTON_SIZE.sm;
   const pStyleType = STYLE_TYPE[styleType] || STYLE_TYPE.normal;
-  const classNames = `${styles.button} ${styles[buttonSize]} ${styles[pStyleType]} ${className || ''}`;
+  const classNames = `${styles.button} ${styles[buttonSize]} ${styles[pStyleType]} ${className}`;
 
   const handleClick = onClick
     ? () => {

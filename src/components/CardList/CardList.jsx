@@ -1,9 +1,21 @@
 import { useEffect, useState } from 'react';
 import CardOverview from './CardOverview.jsx';
+// import useFetch from '../../hooks/useFetch.js';
 
-// ListPage에서는 CardList component를 두번 렌더링 - 인기 롤링페이퍼, 최근에 만든 롤링 페이퍼
 const CardList = ({ CardListName }) => {
   const [recipients, setRecipients] = useState([]);
+
+  // useEffect(() => {
+  //   const getFetch = async () => {
+  //     try {
+  //       const data = await useFetch('/2-7/recipients/');
+  //       setRecipients(data);
+  //     } catch (error) {
+  //       console.error('fetch 확인', error);
+  //     }
+  //   };
+  //   getFetch();
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,7 +25,6 @@ const CardList = ({ CardListName }) => {
         );
         const result = await response.json();
         setRecipients(result.results);
-        console.log(result.results);
       } catch (error) {
         console.log('fetch확인');
         console.error(error);

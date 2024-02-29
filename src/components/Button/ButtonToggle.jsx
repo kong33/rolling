@@ -19,6 +19,7 @@ function ButtonToggle({ onClick, textLeft = 'ON', textRight = 'OFF', active }) {
       activeSwitch === ACTIVE_TYPE.left ? ACTIVE_TYPE.right : ACTIVE_TYPE.left;
     setActiveSwitch(next);
     if (typeof onClick !== 'function') return;
+    // 현재 활성화된 스위치(left, right)를 onClick의 인자로 넘겨준다.
     onClick(next);
   };
 

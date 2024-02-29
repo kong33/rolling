@@ -20,9 +20,11 @@ function DropDown({ label, name, placeholders }) {
   } = useManageDropdown(placeholders);
   console.log(isUlClicked);
   return (
-    <div ref={dropDownRef}>
-      <label>{label}</label>
-      {isUlClicked ? <ArrowDown /> : <ArrowUp />}
+    <div className={'div'} ref={dropDownRef}>
+      <label className={'label'}>{label}</label>
+      <div className={'arrowWrapper'}>
+        {isUlClicked ? <ArrowDown /> : <ArrowUp />}
+      </div>
       <section className={'wrapper'}>
         <ul
           name={name}

@@ -70,4 +70,20 @@
     color: $color-white;
     cursor: not-allowed;
   }
+
+  &.sm {
+    width: 92px;
+  }
+
+  &.md {
+    width: 280px;
+  }
+
+  &.lg {
+    width: 320px;
+  }
+
+  &.xl {
+    width: 720px;
+  }
 }

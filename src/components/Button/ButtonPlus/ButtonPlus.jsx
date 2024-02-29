@@ -1,9 +1,14 @@
 import { BUTTON_TYPE } from '../../../constants/button';
 import styles from './ButtonPlus.module.scss';
 
-function ButtonPlus({ type, className, onClick, disabled = false }) {
+function ButtonPlus({
+  type = BUTTON_TYPE.button,
+  className = '',
+  onClick,
+  disabled = false,
+}) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
-  const classNames = `${styles.button} ${className || ''}`;
+  const classNames = `${styles.button} ${className}`;
 
   const handleClick = () => {
     if (typeof onClick !== 'function') return;

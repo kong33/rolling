@@ -20,7 +20,6 @@ const CardList = ({ CardListName }) => {
   useEffect(() => {
     if (data) {
       setRecipients(data);
-      console.log(data);
     }
   }, [data]);
 

@@ -20,6 +20,18 @@
       color: $color-gray-900;
     }
 
+    & .profileImageContainer {
+      display: flex;
+
+      & .profileImage {
+        width: 32px;
+        height: 32px;
+        border-radius: 50px;
+        border: 1.5px solid $color-white;
+        background: $color-white;
+      }
+    }
+
     & .text {
       @include font-16-Regular;
       color: $color-gray-700;

@@ -1,5 +1,7 @@
 import { BUTTON_TYPE } from '../../../constants/button';
 import styles from './ButtonArrow.module.scss';
+import ArrowLeft from '../../../assets/svg/ArrowLeft';
+import ArrowRight from '../../../assets/svg/ArrowRight';
 
 function ButtonArrow({
   type = BUTTON_TYPE.button,
@@ -10,8 +12,6 @@ function ButtonArrow({
 }) {
   const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
   const classNames = `${styles.button} ${className}`;
-  // content는 svg 작업이 끝나면 변경 필요합니다.
-  const content = direction === 'left' ? '<' : '>';
 
   const handleClick = () => {
     if (typeof onClick !== 'function') return;
@@ -25,7 +25,7 @@ function ButtonArrow({
       onClick={handleClick}
       disabled={disabled}
     >
-      {content}
+      {direction === 'left' ? <ArrowLeft /> : <ArrowRight />}
     </button>
   );
 }

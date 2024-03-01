@@ -42,7 +42,6 @@ const useManageDropdown = (placeholders) => {
     decideSelectClass,
     isUlClicked,
     dropDownRef,
-    isLiClicked,
     clickedLi,
   };
 };

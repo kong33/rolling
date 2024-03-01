@@ -4,33 +4,26 @@ import ArrowDown from '../../assets/svg/ArrowDown';
 import ArrowUp from '../../assets/svg/ArrowUp';
 import useManageDropdown from '../../hooks/useManageDropdown/useManageDropdown';
 
-function DropDown({ label, name, placeholders }) {
+function Dropdown({ label, name, placeholders }) {
   const {
     handleUlClicked,
     handleLiClicked,
-    handleUlMouseEnter,
-    handleUlMouseLeave,
-    handleLiMouseEnter,
-    handleLiMouseLeave,
     decideSelectClass,
     isUlClicked,
     dropDownRef,
     clickedLi,
   } = useManageDropdown(placeholders);
-  console.log(isUlClicked);
+
   return (
     <div className={styles.div} ref={dropDownRef}>
       <label className={styles.label}>{label}</label>
+
       <div className={styles.arrowWrapper}>
         {isUlClicked ? <ArrowDown /> : <ArrowUp />}
       </div>
+
       <section className={styles.wrapper}>
-        <ul
-          name={name}
-          onClick={handleUlClicked}
-          onMouseEnter={handleUlMouseEnter}
-          onMouseLeave={handleUlMouseLeave}
-        >
+        <ul name={name} onClick={handleUlClicked}>
           <li className={`${styles.selectDefault} ${decideSelectClass()}`}>
             {clickedLi}
           </li>
@@ -40,10 +33,8 @@ function DropDown({ label, name, placeholders }) {
                 <li
                   value={placeholder}
                   key={placeholder}
-                  onMouseEnter={handleLiMouseEnter}
-                  onMouseLeave={handleLiMouseLeave}
                   onClick={handleLiClicked}
-                  className={optionDefault}
+                  className={styles.optionDefault}
                 >
                   {placeholder}
                 </li>
@@ -56,7 +47,7 @@ function DropDown({ label, name, placeholders }) {
   );
 }
 
-export default DropDown;
+export default Dropdown;
 
 //  데이터 전송 방식 {
 //   "team": "string",

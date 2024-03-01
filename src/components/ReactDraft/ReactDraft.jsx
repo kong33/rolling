@@ -4,7 +4,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './ReactDraft.module.scss';
 
-export default function Draft() {
+export default function ReactDraft() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [text, setText] = useState(null);
   const onEditorStateChange = function (editorState) {

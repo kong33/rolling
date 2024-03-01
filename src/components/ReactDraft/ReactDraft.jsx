@@ -2,7 +2,7 @@ import { EditorState } from 'draft-js';
 import { useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import './ReactDraft.module.scss';
+import styles from './ReactDraft.module.scss';
 
 export default function ReactDraft() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -17,12 +17,12 @@ export default function ReactDraft() {
     <>
       <Editor
         editorState={editorState}
-        toolbarClassName="toolbarClassName"
-        wrapperClassName="wrapperClassName"
-        editorClassName="editorClassName"
+        toolbarClassName={styles.editorClassName}
+        wrapperClassName={styles.wrapperClassName}
+        editorClassName={styles.editorClassName}
         onEditorStateChange={onEditorStateChange}
         toolbar={{
-          options: ['inline', 'list', 'textAlign', 'history'],
+          options: ['inline', 'list', 'textAlign'],
         }}
       />
     </>

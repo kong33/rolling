@@ -65,3 +65,15 @@ td,
 th {
   padding: 0;
 }
+.rdw-option-wrapper {
+  width: 24px !important;
+  background-color: $color-gray-100 !important;
+}
+
+.rdw-option-disabled {
+  display: none !important;
+}
+
+.rdw-editor-toolbar {
+  background-color: $color-gray-100 !important;
+}

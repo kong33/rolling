@@ -1,6 +1,26 @@
-.editorClassName,
+.wrapperClassName {
+  width: min(720px, 100% - 48px);
+  height: 260px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  border: 1px solid $color-gray-300;
+  border-radius: 8px;
+}
+
+.wrapperClassName::-webkit-scrollbar {
+  display: none;
+}
+
 .toolbarClassName {
   width: min(720px, 100% - 48px);
-  height: 80px;
-  overflow: auto;
+  height: 48px;
+}
+
+.editorClassName::-webkit-scrollbar {
+  width: 4px;
+}
+
+.editorClassName::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: $color-gray-300;
 }

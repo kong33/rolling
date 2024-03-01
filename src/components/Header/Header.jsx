@@ -5,6 +5,7 @@ import share24 from '../../assets/images/share-24.svg';
 import styles from './Header.module.scss';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
 
 // 카카오톡 공유 핸들러 함수
 const handleShareKakao = () => {
@@ -23,6 +24,13 @@ const handleShareURL = () => {
 };
 
 function Header() {
+  // Emozi 데이터 받아오기
+  const reactionData = useFetch(
+    '/2-7/recipients/2304/reactions/?limit=3',
+  ).results;
+
+  console.log(reactionData);
+
   // 토글 박스 DOM 참조용 Ref
   const showEmoziRef = useRef();
   const showShareRef = useRef();

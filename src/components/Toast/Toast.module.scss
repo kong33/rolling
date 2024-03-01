@@ -10,7 +10,9 @@
   z-index: 1000;
   position: fixed;
   bottom: 100px;
-  left: 30%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
 
   .left {
     display: flex;

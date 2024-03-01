@@ -1,0 +1,58 @@
+.toast {
+  display: flex;
+  width: 524px;
+  height: 64px;
+  padding: 19px 30px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  position: fixed;
+  bottom: 100px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  animation-name: fadeout;
+  animation-duration: 5s;
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .completedBtn {
+      width: 24px;
+      height: 24px;
+    }
+
+    .text {
+      width: 180px;
+      color: $color-white;
+      @include font-16-Regular;
+    }
+  }
+
+  .right {
+    .quitBtn {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+  }
+
+  @keyframes fadeout {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}

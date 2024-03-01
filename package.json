@@ -15,9 +15,15 @@
     "*.{js,jsx}": "eslint"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "^3.14.0",
+    "draft-js": "^0.11.7",
+    "draftjs-to-html": "^0.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.2"
+    "react-draft-wysiwyg": "^1.15.0",
+    "react-router-dom": "^6.22.1",
+    "react-scripts": "^5.0.1",
+    "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

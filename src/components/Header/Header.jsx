@@ -3,8 +3,9 @@ import arrowDown from '../../assets/images/arrow_down.svg';
 import add24 from '../../assets/images/add-24.svg';
 import share24 from '../../assets/images/share-24.svg';
 import styles from './Header.module.scss';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Toast from '../../components/Toast/Toast';
 
 // 카카오톡 공유 핸들러 함수
 const handleShareKakao = () => {
@@ -17,15 +18,21 @@ const handleShareKakao = () => {
   });
 };
 
-// URL 공유 핸들러 함수
-const handleShareURL = () => {
-  navigator.clipboard.writeText(window.location.href);
-};
-
 function Header() {
+  // Toast 팝업 상태 관리
+  const [toast, setToast] = useState(false);
+
   // 토글 박스 DOM 참조용 Ref
   const showEmoziRef = useRef();
   const showShareRef = useRef();
+
+  // URL 공유 핸들러 함수
+  const handleShareURL = () => {
+    // 클립보드에 URL 복사
+    navigator.clipboard.writeText(window.location.href);
+    // Toast 상태 변경
+    setToast(true);
+  };
 
   // Emozi 토글 핸들러 함수
   const handleToggleEmozi = (e) => {
@@ -127,6 +134,7 @@ function Header() {
               URL 공유
             </div>
           </div>
+          {toast && <Toast setToast={setToast} />}
         </section>
       </nav>
     </header>

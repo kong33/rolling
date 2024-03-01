@@ -1,6 +1,11 @@
-import { Input } from './components/Input/index';
-import { Dropdown } from './components/Dropdown/index';
-import { ReactDraft } from './components/ReactDraft/index';
+// import Layout from './pages/layout';
+// import LandingPage from './pages/landingpage';
+// import ListPage from './pages/listpage/ListPage';
+// import PostPage from './pages/postpage';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { Input } from './components/Input/index';
+// import { Dropdown } from './components/Dropdown/index';
+// import { ReactDraft } from './components/ReactDraft/index';
 
 function App() {
   //let a = [123, 123, 234, 345];

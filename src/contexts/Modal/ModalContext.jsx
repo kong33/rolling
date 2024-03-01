@@ -1,4 +1,5 @@
 import { createContext, useMemo, useState } from 'react';
+import Modal from '../../components/Modal/common/Modal';
 
 export const ModalStateContext = createContext([]);
 
@@ -27,6 +28,7 @@ export const ModalProvider = ({ children }) => {
   return (
     <ModalStateContext.Provider value={openedModals}>
       <ModalDispatchContext.Provider value={dispatch}>
+        <Modal />
         {children}
       </ModalDispatchContext.Provider>
     </ModalStateContext.Provider>

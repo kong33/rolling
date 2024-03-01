@@ -1,11 +1,12 @@
-import logo from '../../assets/images/logo.svg';
-import arrowDown from '../../assets/images/arrow_down.svg';
-import add24 from '../../assets/images/add-24.svg';
-import share24 from '../../assets/images/share-24.svg';
+import Logo from '../../assets/svg/Logo.jsx';
+import ArrowDown from '../../assets/svg/ArrowDown.jsx';
+import Add24 from '../../assets/svg/Add24.jsx';
+import Share24 from '../../assets/svg/Share24.jsx';
 import styles from './Header.module.scss';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
+import Toast from '../../components/Toast/Toast';
 
 // 카카오톡 공유 핸들러 함수
 const handleShareKakao = () => {
@@ -18,11 +19,6 @@ const handleShareKakao = () => {
   });
 };
 
-// URL 공유 핸들러 함수
-const handleShareURL = () => {
-  navigator.clipboard.writeText(window.location.href);
-};
-
 function Header() {
   // Emozi 데이터 받아오기
   const reactionData = useFetch(
@@ -30,10 +26,20 @@ function Header() {
   ).results;
 
   console.log(reactionData);
+  // Toast 팝업 상태 관리
+  const [toast, setToast] = useState(false);
 
   // 토글 박스 DOM 참조용 Ref
   const showEmoziRef = useRef();
   const showShareRef = useRef();
+
+  // URL 공유 핸들러 함수
+  const handleShareURL = () => {
+    // 클립보드에 URL 복사
+    navigator.clipboard.writeText(window.location.href);
+    // Toast 상태 변경
+    setToast(true);
+  };
 
   // Emozi 토글 핸들러 함수
   const handleToggleEmozi = (e) => {
@@ -67,7 +73,7 @@ function Header() {
       <nav className={styles.topNav}>
         <div>
           <Link to="/">
-            <img src={logo} alt="logo"></img>
+            <Logo />
           </Link>
         </div>
         <Link to="/post">
@@ -93,7 +99,7 @@ function Header() {
           </div>
           {/* 이모지 더 보기 버튼 */}
           <div className={styles.toggleBtn}>
-            <img onClick={handleToggleEmozi} src={arrowDown} alt="arrow-down" />
+            <ArrowDown onClick={handleToggleEmozi} />
           </div>
           {/* 이모지 토글 박스 */}
           <div
@@ -115,13 +121,13 @@ function Header() {
           </div>
           {/* 이모지 추가 버튼 */}
           <div className={`${styles.addEmoziBtn} ${styles.btn}`}>
-            <img src={add24} alt="add-24" />
+            <Add24 />
             추가
           </div>
           <div className={styles.line}></div>
           {/* 공유 토글 버튼 */}
           <div className={`${styles.shareBtn} ${styles.btn}`}>
-            <img onClick={handleToggleShare} src={share24} alt="share btn" />
+            <Share24 onClick={handleToggleShare} />
           </div>
           {/* 공유 토글 박스 */}
           <div
@@ -135,6 +141,7 @@ function Header() {
               URL 공유
             </div>
           </div>
+          {toast && <Toast setToast={setToast} />}
         </section>
       </nav>
     </header>

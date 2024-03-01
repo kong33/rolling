@@ -1,13 +1,13 @@
 import { createContext, useMemo, useState } from 'react';
 
-const ModalStateContext = createContext([]);
+export const ModalStateContext = createContext([]);
 
-const ModalDispatchContext = createContext({
+export const ModalDispatchContext = createContext({
   open: () => {},
   close: () => {},
 });
 
-function ModalProvider({ children }) {
+export const ModalProvider = ({ children }) => {
   const [openedModals, setOpenedModals] = useState([]);
 
   const open = (Component, props) => {
@@ -31,6 +31,4 @@ function ModalProvider({ children }) {
       </ModalDispatchContext.Provider>
     </ModalStateContext.Provider>
   );
-}
-
-export default ModalProvider;
+};

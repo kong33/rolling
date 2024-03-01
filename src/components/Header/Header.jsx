@@ -7,6 +7,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import Toast from '../../components/Toast/Toast';
+import Button from '../Button/Button/Button.jsx';
 
 // 카카오톡 공유 핸들러 함수
 const handleShareKakao = () => {
@@ -77,7 +78,9 @@ function Header() {
           </Link>
         </div>
         <Link to="/post">
-          <div className={styles.btn}>롤링 페이퍼 만들기</div>
+          <Button type="button" styleType="outlined40" className={styles.btn}>
+            롤링 페이퍼 만들기
+          </Button>
         </Link>
       </nav>
       <hr className={styles.line} />
@@ -98,8 +101,8 @@ function Header() {
             <div className={styles.emoziBtn}>🎉10</div>
           </div>
           {/* 이모지 더 보기 버튼 */}
-          <div className={styles.toggleBtn}>
-            <ArrowDown onClick={handleToggleEmozi} />
+          <div className={styles.toggleBtn} onClick={handleToggleEmozi}>
+            <ArrowDown />
           </div>
           {/* 이모지 토글 박스 */}
           <div
@@ -120,15 +123,26 @@ function Header() {
             </div>
           </div>
           {/* 이모지 추가 버튼 */}
-          <div className={`${styles.addEmoziBtn} ${styles.btn}`}>
+          <Button
+            type="button"
+            styleType="outlined36"
+            className={`${styles.addEmoziBtn} ${styles.btn}`}
+          >
             <Add24 />
             추가
-          </div>
+          </Button>
           <div className={styles.line}></div>
           {/* 공유 토글 버튼 */}
-          <div className={`${styles.shareBtn} ${styles.btn}`}>
-            <Share24 onClick={handleToggleShare} />
+          <div onClick={handleToggleShare}>
+            <Button
+              type="button"
+              styleType="outlined36"
+              className={`${styles.shareBtn} ${styles.btn}`}
+            >
+              <Share24 />
+            </Button>
           </div>
+
           {/* 공유 토글 박스 */}
           <div
             className={`${styles.showShare} ${styles.toggleBox}`}

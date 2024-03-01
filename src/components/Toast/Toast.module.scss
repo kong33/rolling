@@ -7,6 +7,10 @@
   align-items: center;
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  position: fixed;
+  bottom: 100px;
+  left: 30%;
 
   .left {
     display: flex;

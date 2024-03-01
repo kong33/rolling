@@ -5,6 +5,7 @@ import share24 from '../../assets/images/share-24.svg';
 import styles from './Header.module.scss';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Toast from '../../components/Toast/Toast';
 
 // 카카오톡 공유 핸들러 함수
 const handleShareKakao = () => {
@@ -127,6 +128,7 @@ function Header() {
               URL 공유
             </div>
           </div>
+          <Toast />
         </section>
       </nav>
     </header>

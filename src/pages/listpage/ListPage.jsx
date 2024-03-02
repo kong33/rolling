@@ -4,8 +4,9 @@ import useFetch from '../../hooks/useFetch';
 
 export default function ListPage() {
   const { data, isLoading } = useFetch(`/2-7/recipients/`);
+  console.log(data);
 
-  if (isLoading) {
+  if (isLoading || !data) {
     return (
       <div>
         <span>로딩중입니다.</span>

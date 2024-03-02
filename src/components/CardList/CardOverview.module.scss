@@ -22,13 +22,32 @@
 
     & .profileImageContainer {
       display: flex;
+      position: relative;
 
-      & .profileImage {
+      & .visitorImage-1,
+      .visitorImage-2,
+      .visitorImage-3 {
         width: 32px;
         height: 32px;
         border-radius: 50px;
         border: 1.5px solid $color-white;
         background: $color-white;
+      }
+
+      & .visitorImage-1 {
+        z-index: 1;
+      }
+
+      & .visitorImage-2 {
+        position: absolute;
+        left: 16px;
+        z-index: 2;
+      }
+
+      & .visitorImage-3 {
+        position: absolute;
+        left: 32px;
+        z-index: 3;
       }
     }
 

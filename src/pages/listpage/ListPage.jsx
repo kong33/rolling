@@ -2,26 +2,43 @@ import CardList from '../../components/CardList/CardList';
 import styles from './ListPage.module.scss';
 import useFetch from '../../hooks/useFetch';
 
-function ListPage() {
-  const data = useFetch(`/2-11/recipients/`);
-  const { results } = data;
+export default function ListPage() {
+  const { data, isLoading } = useFetch(`/2-7/recipients/`);
+
+  if (isLoading) {
+    return (
+      <div>
+        <span>로딩중입니다.</span>
+      </div>
+    );
+  }
+
+  const recipients = data ? data.results : null;
+  const hotRecipients = [...recipients].sort(
+    (a, b) => b.reactionCount - a.reactionCount,
+  );
+  const newRecipients = [...recipients].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+  );
+  console.log(newRecipients);
 
   return (
-    <>
-      <main className={styles.container}>
+    <main className={styles.container}>
+      <>
         <div>
-          <CardList CardListName={'인기 롤링 페이퍼 🔥'} data={results} />
+          <CardList
+            CardListName={'인기 롤링 페이퍼 🔥'}
+            recipients={hotRecipients}
+          />
         </div>
         <div>
           <CardList
             CardListName={'최근에 만든 롤링 페이퍼 💜'}
-            data={results}
+            recipients={newRecipients}
           />
         </div>
         <button>나도 만들어보기(수정필요)</button>
-      </main>
-    </>
+      </>
+    </main>
   );
 }
-
-export default ListPage;

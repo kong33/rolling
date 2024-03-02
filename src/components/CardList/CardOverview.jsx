@@ -3,8 +3,8 @@ import styles from './CardOverview.module.scss';
 
 const CardOverview = ({ recipient }) => {
   const {
-    // backgroundColor,
-    // backgroundImageURL,
+    backgroundColor,
+    backgroundImageURL,
     messageCount,
     name,
     topReactions,
@@ -13,8 +13,10 @@ const CardOverview = ({ recipient }) => {
 
   const visitorCount = visitors.length - 3 > 0 ? visitors.length - 3 : null;
 
+  const background = backgroundImageURL ? backgroundImageURL : backgroundColor;
+
   return (
-    <article className={styles.content}>
+    <article className={styles.content} style={{ backgroundColor: background }}>
       <div className={styles.profile}>
         <h1 className={styles.name}>To. {name}</h1>
         <div className={styles.profileImageContainer}>

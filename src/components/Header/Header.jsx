@@ -1,7 +1,7 @@
-import logo from '../../assets/images/logo.svg';
-import arrowDown from '../../assets/images/arrow_down.svg';
-import add24 from '../../assets/images/add-24.svg';
-import share24 from '../../assets/images/share-24.svg';
+import logo from '../../assets/svg/Logo.jsx';
+import arrowDown from '../../assets/svg/ArrowDown.jsx';
+import add24 from '../../assets/svg/Add24.jsx';
+import share24 from '../../assets/svg/Share24.jsx';
 import styles from './Header.module.scss';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';

@@ -1,0 +1,30 @@
+.box {
+  @include font-14-Regular;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 41px;
+  height: 20px;
+
+  border-radius: 4px;
+
+  &.orange {
+    background-color: $color-orange-100;
+    color: $color-orange-500;
+  }
+
+  &.purple {
+    background-color: $color-purple-100;
+    color: $color-purple-500;
+  }
+
+  &.green {
+    background-color: $color-green-100;
+    color: $color-green-500;
+  }
+
+  &.blue {
+    background-color: $color-blue-100;
+    color: $color-blue-500;
+  }
+}

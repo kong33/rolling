@@ -7,13 +7,9 @@ import useFetch from '../../../hooks/useFetch';
 import Toast from '../../../components/Toast/Toast';
 import Button from '../../Button/Button/Button.jsx';
 import handleShareKakao from '../../../utils/handleShareKakao';
+import Reactions from '../../CardList/Reactions.jsx';
 
 export default function SubHeader() {
-  // Emozi 데이터 받아오기
-  const emoziList = useFetch('/2-7/recipients/2304/reactions/?limit=3').results;
-
-  console.log(emoziList);
-
   // Toast 팝업 상태 관리
   const [toast, setToast] = useState(false);
 
@@ -26,6 +22,10 @@ export default function SubHeader() {
   // 토글 박스 DOM 참조용 Ref
   const showEmoziRef = useRef();
   const showShareRef = useRef();
+
+  // Recipient 데이터
+  const recipient = useFetch('/2-7/recipients/2304/');
+  const { name, messageCount, topReactions } = recipient;
 
   // URL 공유 핸들러 함수
   const handleShareURL = () => {
@@ -59,22 +59,19 @@ export default function SubHeader() {
 
   return (
     <header>
-      {/* 하단 Nav바 */}
       <nav className={styles.bottomNav}>
         {/* To. 000 */}
         <section className={styles.section}>
-          <div className={styles.toName}>To. Ashley Kim</div>
+          <div className={styles.toName}>To. {name}</div>
         </section>
         <section className={styles.section}>
           {/* 00명이 작성했어요 */}
-          <div className={styles.postNumbers}>23명이 작성했어요!</div>
+          <div className={styles.postNumbers}>
+            {messageCount}명이 작성했어요!
+          </div>
           <div className={styles.line}></div>
           {/* 이모지 상위 3개 보여주기 */}
-          <div className={styles.emoziBtns}>
-            <div className={styles.emoziBtn}>👍24</div>
-            <div className={styles.emoziBtn}>😍16</div>
-            <div className={styles.emoziBtn}>🎉10</div>
-          </div>
+          <Reactions reactions={topReactions} />
           {/* 이모지 더 보기 버튼 */}
           <div className={styles.toggleBtn} onClick={handleToggleEmozi}>
             <ArrowDown />

@@ -1,7 +1,7 @@
 import ArrowDown from '../../../assets/svg/ArrowDown.jsx';
 import Add24 from '../../../assets/svg/Add24.jsx';
 import Share24 from '../../../assets/svg/Share24.jsx';
-import styles from '../Header.module.scss';
+import styles from './SubHeader.module.scss';
 import { useRef, useState } from 'react';
 import useFetch from '../../../hooks/useFetch';
 import Toast from '../../../components/Toast/Toast';
@@ -13,8 +13,15 @@ export default function SubHeader() {
   const emoziList = useFetch('/2-7/recipients/2304/reactions/?limit=3').results;
 
   console.log(emoziList);
+
   // Toast 팝업 상태 관리
   const [toast, setToast] = useState(false);
+
+  // Emozi 토글 상태 관리
+  const [showEmozi, setShowEmozi] = useState(false);
+
+  // 공유 버튼 토글 상태 관리
+  const [showShare, setShowShare] = useState(false);
 
   // 토글 박스 DOM 참조용 Ref
   const showEmoziRef = useRef();
@@ -29,28 +36,24 @@ export default function SubHeader() {
   };
 
   // Emozi 토글 핸들러 함수
-  const handleToggleEmozi = (e) => {
-    e.target.classList.toggle('isOpen');
-
-    const isOpen = e.target.classList.contains('isOpen');
-
-    if (isOpen) {
+  const handleToggleEmozi = () => {
+    if (!showEmozi) {
       showEmoziRef.current.style.display = 'block';
+      setShowEmozi(true);
     } else {
       showEmoziRef.current.style.display = 'none';
+      setShowEmozi(false);
     }
   };
 
   // 공유 버튼 토글 핸들러 함수
-  const handleToggleShare = (e) => {
-    e.target.classList.toggle('isOpen');
-
-    const isOpen = e.target.classList.contains('isOpen');
-
-    if (isOpen) {
+  const handleToggleShare = () => {
+    if (!showShare) {
       showShareRef.current.style.display = 'block';
+      setShowShare(true);
     } else {
       showShareRef.current.style.display = 'none';
+      setShowShare(false);
     }
   };
 
@@ -106,11 +109,7 @@ export default function SubHeader() {
           <div className={styles.line}></div>
           {/* 공유 토글 버튼 */}
           <div onClick={handleToggleShare}>
-            <Button
-              type="button"
-              styleType="outlined36"
-              className={`${styles.shareBtn} ${styles.btn}`}
-            >
+            <Button type="button" styleType="outlined36">
               <Share24 />
             </Button>
           </div>

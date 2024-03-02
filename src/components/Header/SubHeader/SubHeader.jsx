@@ -6,17 +6,7 @@ import { useRef, useState } from 'react';
 import useFetch from '../../../hooks/useFetch';
 import Toast from '../../../components/Toast/Toast';
 import Button from '../../Button/Button/Button.jsx';
-
-// 카카오톡 공유 핸들러 함수
-const handleShareKakao = () => {
-  window.Kakao.Share.sendCustom({
-    templateId: 104815,
-    templateArgs: {
-      title: 'Rolling Paper로 마음을 전해봐요',
-      description: '평상시 고마웠던 지인에게 마음을 표현해봐요',
-    },
-  });
-};
+import handleShareKakao from '../../../utils/handleShareKakao';
 
 export default function SubHeader() {
   // Emozi 데이터 받아오기

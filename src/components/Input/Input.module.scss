@@ -1,4 +1,4 @@
-.input {
+@mixin inputDefault() {
   display: flex;
   width: min(720px, 100% - 48px);
   padding: 12px 16px;
@@ -6,8 +6,11 @@
   outline: none;
   background: $color-white;
   border-radius: 8px;
-  border: 1px solid $color-gray-300;
+}
 
+.input {
+  @include inputDefault();
+  border: 1px solid $color-gray-300;
   &:hover {
     border: 1px solid $color-gray-500;
   }
@@ -18,24 +21,12 @@
 }
 
 .error {
-  display: flex;
-  width: min(720px, 100% - 48px);
-  padding: 12px 16px;
-  align-items: center;
-  outline: none;
-  background: $color-white;
-  border-radius: 8px;
+  @include inputDefault();
   border: 1px solid $color-error;
 }
 
 .active {
-  display: flex;
-  width: min(720px, 100% - 48px);
-  padding: 12px 16px;
-  align-items: center;
-  outline: none;
-  background: $color-white;
-  border-radius: 8px;
+  @include inputDefault();
   border: 2px solid $color-gray-700;
 }
 .errormessage {

@@ -4,10 +4,11 @@ import useClickOutside from '../useClickOutside';
 const useManageInput = () => {
   const [isValueExist, setIsValueExist] = useState();
   const [isError, setIsError] = useState(false);
+  const [isBeenClicked, setIsBeenClicked] = useState(false);
   const inputRef = useRef(null);
 
   const handleOutsideClick = () => {
-    if (!isValueExist) setIsError(true);
+    if (!isValueExist && isBeenClicked) setIsError(true);
   };
   const handleChange = (e) => {
     if (e.target.value) {
@@ -17,6 +18,7 @@ const useManageInput = () => {
   };
   const handleClick = () => {
     setIsError(false);
+    setIsBeenClicked(true);
   };
 
   useClickOutside(inputRef, handleOutsideClick);

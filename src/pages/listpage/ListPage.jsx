@@ -4,7 +4,6 @@ import useFetch from '../../hooks/useFetch';
 
 export default function ListPage() {
   const { data, isLoading } = useFetch(`/2-7/recipients/`);
-  console.log(data);
 
   if (isLoading || !data) {
     return (
@@ -21,7 +20,7 @@ export default function ListPage() {
   const newRecipients = [...recipients].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
   );
-  console.log(newRecipients);
+  console.log(data);
 
   return (
     <main className={styles.container}>

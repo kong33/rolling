@@ -1,30 +1,12 @@
-import { BUTTON_TYPE } from '../../../constants/button';
 import styles from './ButtonArrow.module.scss';
 import ArrowLeft from '../../../assets/svg/ArrowLeft';
 import ArrowRight from '../../../assets/svg/ArrowRight';
 
-function ButtonArrow({
-  type = BUTTON_TYPE.button,
-  direction = 'left',
-  className = '',
-  onClick,
-  disabled = false,
-}) {
-  const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
+function ButtonArrow({ direction = 'left', className = '', ...rest }) {
   const classNames = `${styles.button} ${className}`;
 
-  const handleClick = () => {
-    if (typeof onClick !== 'function') return;
-    onClick();
-  };
-
   return (
-    <button
-      type={buttonType}
-      className={classNames}
-      onClick={handleClick}
-      disabled={disabled}
-    >
+    <button className={classNames} {...rest}>
       {direction === 'left' ? <ArrowLeft /> : <ArrowRight />}
     </button>
   );

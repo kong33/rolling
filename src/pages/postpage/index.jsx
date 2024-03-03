@@ -1,14 +1,14 @@
-import Dropdown from '../../components/Dropdown/Dropdown';
 import Input from '../../components/Input/Input';
-import ReactDraft from '../../components/ReactDraft/ReactDraft';
+import Option from '../../components/Option/Option';
+//import Layout from '../layout';
 function PostPage() {
-  let placeholder = [1, 2, 3];
   return (
+    // <Layout>
     <>
-      <Dropdown label="친구" name="ahdi" options={placeholder} />
       <Input placeholder="적어라" errorMassage="에러" />
-      <ReactDraft />
+      <Option type="color" />
     </>
+    //Layout>
   );
 }
 

@@ -14,7 +14,7 @@ function Dropdown({ label, name, options }) {
       <label className={styles.label}>{label}</label>
 
       <div className={styles.arrowWrapper}>
-        {isOpen ? <ArrowDown /> : <ArrowUp />}
+        {isOpen ? <ArrowUp /> : <ArrowDown />}
       </div>
 
       <section className={styles.wrapper}>

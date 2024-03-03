@@ -1,41 +1,31 @@
-import { useState } from 'react';
-import styles from '../../components/Input/Input.module.scss';
+import { useState, useRef } from 'react';
+import useClickOutside from '../useClickOutside';
 
 const useManageInput = () => {
-  const [isFocused, setIsFocused] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-  const [isBeenFocused, setIsBeenFocused] = useState(false);
+  const [isValueExist, setIsValueExist] = useState();
+  const [isError, setIsError] = useState(false);
+  const inputRef = useRef(null);
 
-  const handleFocus = () => {
-    setIsFocused(true);
-    setIsBeenFocused(true);
+  const handleOutsideClick = () => {
+    if (!isValueExist) setIsError(true);
   };
-  const handleBlur = () => {
-    setIsFocused(false);
+  const handleChange = (e) => {
+    if (e.target.value) {
+      setIsValueExist(true);
+      setIsError(false);
+    } else setIsValueExist(false);
   };
-
-  const handleMouseActive = (e) => {
-    if (e.target.value) setIsActive(true);
-    else setIsActive(false);
-  };
-
-  const decideInputClass = () => {
-    if (isFocused) return styles.inputFocused;
-    else if (isActive) return styles.inputActive;
-    else if (isBeenFocused && !isActive) return styles.inputError;
-    else return styles.inputInactive;
+  const handleClick = () => {
+    setIsError(false);
   };
 
-  const decidePClass = () => {
-    if (!isFocused && isBeenFocused && !isActive) return styles.pError;
-    else return styles.pDefault;
-  };
+  useClickOutside(inputRef, handleOutsideClick);
   return {
-    handleFocus,
-    handleBlur,
-    decideInputClass,
-    handleMouseActive,
-    decidePClass,
+    isError,
+    isValueExist,
+    handleClick,
+    handleChange,
+    inputRef,
   };
 };
 

@@ -6,12 +6,9 @@
   width: 41px;
   height: 20px;
 
+  background-color: $color-orange-100;
+  color: $color-orange-500;
   border-radius: 4px;
-
-  &.orange {
-    background-color: $color-orange-100;
-    color: $color-orange-500;
-  }
 
   &.purple {
     background-color: $color-purple-100;

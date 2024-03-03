@@ -1,16 +1,16 @@
 import styles from './BadgeRelation.module.scss';
 
 const COLORS = {
-  orange: 'orange',
-  purple: 'purple',
-  green: 'green',
-  blue: 'blue',
+  지인: 'orange',
+  동료: 'purple',
+  가족: 'green',
+  친구: 'blue',
 };
 
-function Relationship({ text = '지인', color = COLORS.orange, className }) {
-  const classNames = `${styles.box} ${styles[color]} ${className || ''}`;
+function Relationship({ relationship = '지인', className }) {
+  const classNames = `${styles.box} ${styles[COLORS[relationship]]} ${className || ''}`;
 
-  return <div className={classNames}>{text}</div>;
+  return <div className={classNames}>{relationship}</div>;
 }
 
 export default Relationship;

@@ -1,13 +1,14 @@
 import CardOverview from './CardOverview';
 import styles from './CardList.module.scss';
 import ButtonArrow from '../Button/ButtonArrow/ButtonArrow';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function CardList({ CardListName, recipients }) {
   const LIMIT = 4;
   const [offset, setOffset] = useState(0);
   const [isNext, setIsNext] = useState(true);
   const [isPrev, setIsPrev] = useState(false);
+  const ref = useRef(null);
   const items = recipients.filter(
     (item, i) => `${offset}` <= i && i < `${offset + LIMIT}`,
   );
@@ -27,11 +28,12 @@ export default function CardList({ CardListName, recipients }) {
   return (
     <section className={styles.container}>
       <h1 className={styles.title}>{CardListName}</h1>
-      <div className={styles.content}>
+      <div className={styles.content} ref={ref}>
         {recipients &&
           items.map((recipient) => (
             <CardOverview key={recipient.id} recipient={recipient} />
           ))}
+
         {isPrev && (
           <ButtonArrow
             className={styles.leftBtn}

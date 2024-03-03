@@ -7,18 +7,16 @@
     padding: 8px 12px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
     border-radius: 32px;
     background: rgba(0, 0, 0, 0.54);
+    @include font-16-Regular;
+    color: $color-white;
 
     & .emoji {
       width: 16px;
-    }
-
-    & .count {
-      @include font-16-Regular;
-      color: $color-white;
+      height: 20px;
     }
   }
 }

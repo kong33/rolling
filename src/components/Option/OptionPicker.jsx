@@ -1,5 +1,5 @@
 import styles from './Option.module.scss';
-import Check from '../../assets/svg/Check';
+import Check from '../../assets/svg/OptionCheck';
 import { useState } from 'react';
 
 function OptionPicker({

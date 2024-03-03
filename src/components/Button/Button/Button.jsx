@@ -16,6 +16,7 @@ const BUTTON_SIZE = {
   md: 'md', // width 280px
   lg: 'lg', // width 320px
   xl: 'xl', // width 720px
+  full: 'full', // width 100%
 };
 
 function Button({

@@ -125,6 +125,10 @@
     cursor: not-allowed;
   }
 
+  &.free {
+    width: auto;
+  }
+
   &.sm {
     width: 92px;
   }
@@ -139,5 +143,9 @@
 
   &.xl {
     width: 720px;
+  }
+
+  &.full {
+    width: 100%;
   }
 }

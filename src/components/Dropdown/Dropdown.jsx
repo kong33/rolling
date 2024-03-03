@@ -4,39 +4,32 @@ import ArrowDown from '../../assets/svg/ArrowDown';
 import ArrowUp from '../../assets/svg/ArrowUp';
 import useManageDropdown from '../../hooks/useManageDropdown/useManageDropdown';
 
-function Dropdown({ label, name, placeholders }) {
-  const {
-    handleUlClicked,
-    handleLiClicked,
-    decideSelectClass,
-    isUlClicked,
-    dropDownRef,
-    clickedLi,
-  } = useManageDropdown(placeholders);
+function Dropdown({ label, name, options }) {
+  const { dropDownRef, handleClick, isOpen, clickedLi } =
+    useManageDropdown(options);
 
   return (
-    <div className={styles.div} ref={dropDownRef}>
+    //ref를 걸어주기 위해 div 로 감쌈
+    <div className={styles.dropdownWrapper} ref={dropDownRef}>
       <label className={styles.label}>{label}</label>
 
       <div className={styles.arrowWrapper}>
-        {isUlClicked ? <ArrowDown /> : <ArrowUp />}
+        {isOpen ? <ArrowDown /> : <ArrowUp />}
       </div>
 
       <section className={styles.wrapper}>
-        <ul name={name} onClick={handleUlClicked}>
-          <li className={`${styles.selectDefault} ${decideSelectClass()}`}>
-            {clickedLi}
-          </li>
-          {isUlClicked && (
-            <section className={styles.ulBox}>
-              {placeholders.slice(1).map((placeholder) => (
+        <ul name={name} onClick={handleClick}>
+          <li className={styles.select}>{clickedLi}</li>
+          {isOpen && (
+            <section className={styles.options}>
+              {options.map((option) => (
                 <li
-                  value={placeholder}
-                  key={placeholder}
-                  onClick={handleLiClicked}
-                  className={styles.optionDefault}
+                  value={option}
+                  key={option}
+                  onClick={handleClick}
+                  className={styles.option}
                 >
-                  {placeholder}
+                  {option}
                 </li>
               ))}
             </section>
@@ -48,14 +41,3 @@ function Dropdown({ label, name, placeholders }) {
 }
 
 export default Dropdown;
-
-//  데이터 전송 방식 {
-//   "team": "string",
-//   "recipientId": 0,
-//   "sender": "string",
-//   "profileImageURL": "string",
-//   "relationship": "친구", // name
-//   "content": "string",
-//   "font": "Noto Sans" //name
-// }
-//map의 맨 첫번쨰 요소가 default로 감.

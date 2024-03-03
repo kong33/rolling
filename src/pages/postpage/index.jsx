@@ -1,7 +1,9 @@
+import Dropdown from '../../components/Dropdown/Dropdown';
 function PostPage() {
+  let placeholder = [1, 2, 3];
   return (
     <>
-      <h1>Post Page!</h1>
+      <Dropdown label="친구" name="ahdi" options={placeholder} />
     </>
   );
 }

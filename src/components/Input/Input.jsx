@@ -19,9 +19,9 @@ function Input({ placeholder, errorMassage }) {
         onBlur={handleBlur}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onChange={handleMouseActive}
         className={`${styles.inputDefalut} ${decideInputClass()}`}
         placeholder={placeholder}
-        onChange={handleMouseActive}
       />
       <p className={decidePClass()}>{errorMassage}</p>
     </div>

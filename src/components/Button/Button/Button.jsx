@@ -1,4 +1,3 @@
-import { BUTTON_SIZE, BUTTON_TYPE } from '../../../constants/button';
 import styles from './Button.module.scss';
 
 const STYLE_TYPE = {
@@ -11,34 +10,25 @@ const STYLE_TYPE = {
   outlined28: 'outlined28',
 };
 
+const BUTTON_SIZE = {
+  free: 'free', // width auto
+  sm: 'sm', // width 92px
+  md: 'md', // width 280px
+  lg: 'lg', // width 320px
+  xl: 'xl', // width 720px
+};
+
 function Button({
   children,
-  type = BUTTON_TYPE.button,
   styleType = STYLE_TYPE.primary56,
   size = BUTTON_SIZE.free,
-  onClick,
   className = '',
-  disabled = false,
+  ...rest
 }) {
-  const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
-  const buttonSize = BUTTON_SIZE[size] || BUTTON_SIZE.free;
-  const pStyleType = STYLE_TYPE[styleType] || STYLE_TYPE.primary56;
-  const classNames = `${styles.button} ${styles[buttonSize]} ${styles[pStyleType]} ${className}`;
-
-  const handleClick = onClick
-    ? () => {
-        if (typeof onClick !== 'function') return;
-        onClick();
-      }
-    : null;
+  const classNames = `${styles.button} ${styles[size]} ${styles[styleType]} ${className}`;
 
   return (
-    <button
-      type={buttonType}
-      className={classNames}
-      onClick={handleClick}
-      disabled={disabled}
-    >
+    <button className={classNames} {...rest}>
       {children}
     </button>
   );

@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
 
 function ModalPortal({ children }) {
-  return createPortal(children, document.body);
+  return createPortal(children, document.getElementById('modal'));
 }
 
 function Modal({ close, children }) {

@@ -1,7 +1,9 @@
 /* 카드프로필 */
 
 .cardPost {
-  width: 34rem;
+  // cardBox에서 cardPost로 이름 바꾸기
+  position: relative;
+  width: 38.4rem;
   height: 28rem;
   display: flex;
   flex-direction: column;
@@ -18,7 +20,7 @@
 
   .cardProfile {
     display: flex;
-    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
     gap: 1.4rem;
   }
 
@@ -27,8 +29,8 @@
     height: 5.6rem;
     border-radius: 10rem;
     background-color: aqua;
-    border: 0.1rem solid $color-purple-700;
-    // background: $color-white;
+    // border: 0.1rem solid $color-purple-700;
+    background: $color-white;
   }
 
   .cardInfo {
@@ -45,30 +47,40 @@
     gap: 0.6rem;
     @include font-20-Regular;
     color: $color-black;
+
+    span {
+      padding-left: 0.6rem;
+      @include font-20-Bold;
+    }
   }
 
-  // .cardBadge{}
+  .cardBadge {
+    border-radius: 4px;
+    padding: 0 0.8rem;
+    background: $color-purple-100;
+    @include font-14-Regular;
+    color: $color-purple-600;
+  }
+
   /* 카드내용 */
 
   .cardContentBox {
+    padding-top: 1.6rem;
     display: flex;
     flex-direction: column;
     align-items: start;
-    padding-top: 1.6rem;
     gap: 1.4rem;
-    border-top: 0.1rem solid $color-gray-700;
+    border-top: 0.1rem solid $color-gray-200;
 
     .cardContent {
       width: 33.6rem;
       height: 10.6rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      flex-shrink: 0;
+      color: $color-gray-600;
+      @include font-18-Regular;
       line-height: 2.8rem;
       letter-spacing: -0.18px;
       text-align: start;
-      @include font-18-Regular;
-      color: $color-gray-600;
     }
 
     .cardDate {
@@ -77,5 +89,19 @@
       @include font-12-Regular;
       color: $color-gray-400;
     }
+  }
+
+  /* CardEdit 휴지통 이미지 */
+
+  .deleteIcon {
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.08rem;
+    border-radius: 6px;
+    border: 1px solid $color-gray-300;
+    background: $color-white;
   }
 }

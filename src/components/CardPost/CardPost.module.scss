@@ -1,6 +1,6 @@
 /* 카드프로필 */
 
-.cardBox {
+.cardPost {
   width: 34rem;
   height: 28rem;
   display: flex;
@@ -48,35 +48,34 @@
   }
 
   // .cardBadge{}
-}
+  /* 카드내용 */
 
-/* 카드내용 */
+  .cardContentBox {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-top: 1.6rem;
+    gap: 1.4rem;
+    border-top: 0.1rem solid $color-gray-700;
 
-.cardContentBox {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  padding-top: 1.6rem;
-  gap: 1.4rem;
-  border-top: 0.1rem solid $color-gray-700;
+    .cardContent {
+      width: 33.6rem;
+      height: 10.6rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 2.8rem;
+      letter-spacing: -0.18px;
+      text-align: start;
+      @include font-18-Regular;
+      color: $color-gray-600;
+    }
 
-  .cardContent {
-    width: 33.6rem;
-    height: 10.6rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 2.8rem;
-    letter-spacing: -0.18px;
-    text-align: start;
-    @include font-18-Regular;
-    color: $color-gray-600;
-  }
-
-  .cardDate {
-    line-height: 1.8rem;
-    letter-spacing: -0.06px;
-    @include font-12-Regular;
-    color: $color-gray-400;
+    .cardDate {
+      line-height: 1.8rem;
+      letter-spacing: -0.06px;
+      @include font-12-Regular;
+      color: $color-gray-400;
+    }
   }
 }

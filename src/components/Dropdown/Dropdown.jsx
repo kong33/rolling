@@ -7,7 +7,7 @@ import useManageDropdown from '../../hooks/useManageDropdown/useManageDropdown';
 function Dropdown({ label, name, options }) {
   const { dropDownRef, handleClick, isOpen, clickedLi } =
     useManageDropdown(options);
-
+  console.log(clickedLi);
   return (
     //ref를 걸어주기 위해 div 로 감쌈
     <div className={styles.dropdownWrapper} ref={dropDownRef}>
@@ -36,6 +36,9 @@ function Dropdown({ label, name, options }) {
           )}
         </ul>
       </section>
+
+      {/* 보내는 input 내용이 clickedLi (선택된 요소)이므로 이 value를 post/put 시 name프로퍼티의 value로 지정하시면 됩니다. */}
+      <input type="hidden" value={clickedLi} />
     </div>
   );
 }

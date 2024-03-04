@@ -10,6 +10,7 @@ import LoadingPage from '../LoadingPage/LoadingPage';
 // background color 미구현
 // CardList 애니매이션 미구현 behavior: 'smooth',
 // 버튼 미구현
+// 반응형 미구현
 // 무한스크롤? 가능함?
 // ArrowBtn svg 작업?
 

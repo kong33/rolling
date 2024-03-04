@@ -6,7 +6,6 @@ import LoadingPage from '../LoadingPage/LoadingPage';
 
 // 안된것들
 // 로딩페이지 미구현 - 채민님
-// background color 미구현
 // CardList 애니매이션 미구현 behavior: 'smooth',
 // 애니매이션은 애플공홈 참고
 // 버튼 미구현

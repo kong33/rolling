@@ -38,7 +38,9 @@ export default function CardOverview({ recipient }) {
               />
             ))
           ) : (
-            <div>저는 친구가 없답니다!</div>
+            <div className={styles.visitorEmptyCase}>
+              첫 메세지의 주인공이 되어보세요!
+            </div>
           )}
           {visitors.length - 3 > 0 && (
             <p className={styles.visitorCount}>+{visitorCount}</p>

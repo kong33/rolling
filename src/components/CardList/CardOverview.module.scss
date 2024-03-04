@@ -65,6 +65,12 @@
       }
     }
 
+    & .visitorEmptyCase {
+      height: 32px;
+      display: flex;
+      align-items: center;
+    }
+
     & .text {
       @include font-16-Regular;
 

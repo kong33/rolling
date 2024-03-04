@@ -6,7 +6,7 @@ function PostPage() {
   return (
     <>
       <Dropdown label="친구" name="ahdi" options={placeholder} />
-      <Input placeholder="적어라" errorMassage="에러" />
+      <Input placeholder="적어라" errorMassage="에러" label="친구" />
       <ReactDraft />
     </>
   );

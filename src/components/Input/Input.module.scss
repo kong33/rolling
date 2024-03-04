@@ -34,3 +34,9 @@
   @include font-12-Regular;
   display: inline-block;
 }
+
+.label {
+  color: $color-gray-900;
+  @include font-24-Bold;
+  margin-bottom: 12px;
+}

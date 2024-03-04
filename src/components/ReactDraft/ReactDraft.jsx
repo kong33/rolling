@@ -6,11 +6,9 @@ import styles from './ReactDraft.module.scss';
 
 export default function ReactDraft() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  // const [text, setText] = useState(null);
+
   const onEditorStateChange = function (editorState) {
     setEditorState(editorState);
-    // const newText = editorState.getCurrentContent().getPlainText('\u0001');
-    // setText(newText);
   };
 
   return (

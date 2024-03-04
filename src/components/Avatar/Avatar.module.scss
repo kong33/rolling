@@ -1,0 +1,13 @@
+@mixin size($size) {
+  width: $size;
+  height: $size;
+}
+
+.avatar {
+  @include size(56px);
+  border-radius: 100%;
+
+  &.md {
+    @include size(80px);
+  }
+}

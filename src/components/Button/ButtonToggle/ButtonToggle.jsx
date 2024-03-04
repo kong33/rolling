@@ -1,4 +1,4 @@
-import { BUTTON_TYPE } from '../../../constants/button';
+// import { BUTTON_TYPE } from '../../../constants/button';
 import styles from './ButtonToggle.module.scss';
 import { useState } from 'react';
 
@@ -8,15 +8,13 @@ const ACTIVE_TYPE = {
 };
 
 function ButtonToggle({
-  type = BUTTON_TYPE.button,
-  onClick,
   textLeft = 'ON',
   textRight = 'OFF',
   active = ACTIVE_TYPE.left,
+  onClick,
+  ...rest
 }) {
-  const buttonType = BUTTON_TYPE[type] || BUTTON_TYPE.button;
-  const defaultActive = ACTIVE_TYPE[active] || ACTIVE_TYPE.left;
-  const [activeSwitch, setActiveSwitch] = useState(defaultActive);
+  const [activeSwitch, setActiveSwitch] = useState(active);
   const switchList = [
     { type: ACTIVE_TYPE.left, text: textLeft },
     { type: ACTIVE_TYPE.right, text: textRight },
@@ -27,12 +25,12 @@ function ButtonToggle({
       activeSwitch === ACTIVE_TYPE.left ? ACTIVE_TYPE.right : ACTIVE_TYPE.left;
     setActiveSwitch(next);
     if (typeof onClick !== 'function') return;
-    // 현재 활성화된 스위치(left, right)를 onClick의 인자로 넘겨준다.
     onClick(next);
+    // 현재 활성화된 스위치(left, right)를 onClick의 인자로 넘겨준다.
   };
 
   return (
-    <button type={buttonType} className={styles.button} onClick={handleClick}>
+    <button className={styles.button} onClick={handleClick} {...rest}>
       {switchList.map(({ type, text }) => {
         const className = activeSwitch === type ? 'active' : '';
         return (

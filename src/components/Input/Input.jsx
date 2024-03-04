@@ -1,29 +1,22 @@
 import styles from './Input.module.scss';
 import useManageInput from '../../hooks/useManageInput/useManageInput';
 
-function Input({ placeholder, errorMassage }) {
-  const {
-    handleFocus,
-    handleBlur,
-    handleMouseEnter,
-    handleMouseLeave,
-    decideInputClass,
-    handleMouseActive,
-    decidePClass,
-  } = useManageInput();
+function Input({ placeholder, errorMassage, label }) {
+  const { handleClick, isValueExist, handleChange, inputRef, isError } =
+    useManageInput();
 
   return (
-    <div>
+    <div ref={inputRef}>
+      <h1 className={styles.label}>{label}</h1>
       <input
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className={`${styles.inputDefalut} ${decideInputClass()}`}
         placeholder={placeholder}
-        onChange={handleMouseActive}
+        onClick={handleClick}
+        onChange={handleChange}
+        className={
+          isError ? styles.error : isValueExist ? styles.active : styles.input
+        }
       />
-      <p className={decidePClass()}>{errorMassage}</p>
+      {isError && <p className={styles.errormessage}>{errorMassage}</p>}
     </div>
   );
 }

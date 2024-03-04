@@ -8,7 +8,7 @@ export default function CardList({ CardListName, recipients }) {
   const [offset, setOffset] = useState(0);
   const [isNext, setIsNext] = useState(true);
   const [isPrev, setIsPrev] = useState(false);
-  const ref = useRef(null);
+  const myRef = useRef(null);
   const items = recipients.filter(
     (item, i) => `${offset}` <= i && i < `${offset + LIMIT}`,
   );
@@ -28,7 +28,7 @@ export default function CardList({ CardListName, recipients }) {
   return (
     <section className={styles.container}>
       <h1 className={styles.title}>{CardListName}</h1>
-      <div className={styles.content} ref={ref}>
+      <div className={styles.content} ref={myRef}>
         {recipients &&
           items.map((recipient) => (
             <CardOverview key={recipient.id} recipient={recipient} />

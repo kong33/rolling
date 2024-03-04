@@ -12,16 +12,20 @@ export default function CardOverview({ recipient }) {
   } = recipient;
 
   const bgStyle = {
-    background: backgroundImageURL
-      ? `linear-gradient(180deg, rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.54) 100%), url(${backgroundImageURL})`
-      : backgroundColor,
-    color: backgroundImageURL ? '#FFF' : 'inherit',
+    background:
+      backgroundImageURL &&
+      `linear-gradient(180deg, rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.54) 100%), url(${backgroundImageURL})`,
+    color: backgroundImageURL && '#FFF',
   };
+  console.log(backgroundColor);
 
   const visitorCount = visitors.length - 3 > 0 ? visitors.length - 3 : null;
 
   return (
-    <article className={styles.content} style={bgStyle}>
+    <article
+      className={`${styles.content} ${styles[backgroundColor || 'null']}`}
+      style={bgStyle}
+    >
       <div className={styles.profile}>
         <h1 className={styles.name}>To. {name}</h1>
         <div className={styles.profileImageContainer}>

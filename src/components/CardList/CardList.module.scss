@@ -1,8 +1,9 @@
 .container {
-  width: 1192px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: hidden;
+  padding: 24px;
 
   & .title {
     color: $color-black;

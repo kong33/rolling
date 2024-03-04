@@ -5,10 +5,10 @@ import Button from '../../components/Button/Button/Button';
 import LoadingPage from '../LoadingPage/LoadingPage';
 
 // 안된것들
-// 로딩페이지 미구현
-// message count 미구현
+// 로딩페이지 미구현 - 채민님
 // background color 미구현
 // CardList 애니매이션 미구현 behavior: 'smooth',
+// 애니매이션은 애플공홈 참고
 // 버튼 미구현
 // 반응형 미구현
 // 무한스크롤? 가능함?

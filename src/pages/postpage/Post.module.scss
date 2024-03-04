@@ -1,7 +1,22 @@
-.div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 120px;
+.label {
+  color: $color-gray-900;
+  @include font-24-Bold;
+  margin-bottom: 4px;
+}
+
+.description {
+  color: $color-gray-500;
+  @include font-16-Regular;
+}
+
+.h1 {
+  color: $color-gray-900;
+  @include font-24-Bold;
+  margin-bottom: 4px;
+}
+
+.p {
+  color: $color-gray-500;
+  @include font-16-Regular;
+  margin-bottom: 4px;
 }

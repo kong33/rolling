@@ -7,10 +7,11 @@ import SubHeader from './SubHeader/SubHeader';
 export default function Header() {
   const { pathname } = useLocation();
 
-  const showSubHeader =
+  const showSubHeader = !(
     pathname === '/' ||
     pathname === '/list' ||
-    pathname.match(/^\/post\/\d+\/message$/);
+    pathname.match(/^\/post\/\d+\/message$/)
+  );
 
   return (
     <header className={styles.header}>

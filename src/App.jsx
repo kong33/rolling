@@ -1,7 +1,9 @@
-import Layout from './pages/layout';
-import LandingPage from './pages/landingpage';
-import ListPage from './pages/listpage/ListPage';
-import PostPage from './pages/postpage';
+import { Layout } from './pages/Layout';
+import { LandingPage } from './pages/LandingPage';
+import { ListPage } from './pages/ListPage';
+import { PostPage } from './pages/PostPage';
+import { PostMessagePage } from './pages/PostMessagePage';
+import { CardPostListPage } from './pages/CardPostListPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -12,6 +14,11 @@ function App() {
           <Route index element={<LandingPage />} />
           <Route path="list" element={<ListPage />} />
           <Route path="post" element={<PostPage />} />
+          <Route
+            path="post/:recipientId/message"
+            element={<PostMessagePage />}
+          />
+          <Route path="post/:recipientId" element={<CardPostListPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

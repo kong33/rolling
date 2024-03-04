@@ -1,6 +1,8 @@
 import style from './CardPost.module.scss';
+import Deleted from '../../assets/svg/Deleted';
+import { formatDate } from '../../utils/dateFormatter';
 
-function Card({ item }) {
+function Card({ item, onDelete }) {
   return (
     <article className={style.cardPost}>
       {/* 카드프로필 */}
@@ -18,6 +20,12 @@ function Card({ item }) {
             </div>
           </div>
         </div>
+
+        {onDelete && (
+          <button className={style.deleteIcon} onClick={onDelete}>
+            <Deleted />
+          </button>
+        )}
       </div>
 
       {/* 카드내용 */}
@@ -25,7 +33,7 @@ function Card({ item }) {
         <div className={style.cardContent}>
           <p>{item.content}</p>
         </div>
-        <p className={style.cardDate}>{item.createdAt}</p>
+        <p className={style.cardDate}>{formatDate(item.createdAt)}</p>
       </div>
     </article>
   );

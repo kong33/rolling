@@ -1,44 +1,46 @@
-// // import { BUTTON_TYPE } from '../../../constants/button';
-// import styles from './ButtonToggle.module.scss';
-// import { useState } from 'react';
+// import { BUTTON_TYPE } from '../../../constants/button';
+import styles from './ButtonToggle.module.scss';
+import { useState } from 'react';
 
-// const ACTIVE_TYPE = {
-//   left: 'left',
-//   right: 'right',
-// };
+const ACTIVE_TYPE = {
+  left: 'left',
+  right: 'right',
+};
 
-// function ButtonToggle({
-//   textLeft = 'ON',
-//   textRight = 'OFF',
-//   active = ACTIVE_TYPE.left,
-// }) {
-//   const defaultActive = ACTIVE_TYPE[active] || ACTIVE_TYPE.left;
-//   const [activeSwitch, setActiveSwitch] = useState(defaultActive);
-//   const switchList = [
-//     { type: ACTIVE_TYPE.left, text: textLeft },
-//     { type: ACTIVE_TYPE.right, text: textRight },
-//   ];
+function ButtonToggle({
+  textLeft = 'ON',
+  textRight = 'OFF',
+  active = ACTIVE_TYPE.left,
+  onClick,
+  ...rest
+}) {
+  const [activeSwitch, setActiveSwitch] = useState(active);
+  const switchList = [
+    { type: ACTIVE_TYPE.left, text: textLeft },
+    { type: ACTIVE_TYPE.right, text: textRight },
+  ];
 
-//   const handleClick = () => {
-//     const next =
-//       activeSwitch === ACTIVE_TYPE.left ? ACTIVE_TYPE.right : ACTIVE_TYPE.left;
-//     setActiveSwitch(next);
-//     if (typeof onClick !== 'function') return;
-//     // 현재 활성화된 스위치(left, right)를 onClick의 인자로 넘겨준다.
-//   };
+  const handleClick = () => {
+    const next =
+      activeSwitch === ACTIVE_TYPE.left ? ACTIVE_TYPE.right : ACTIVE_TYPE.left;
+    setActiveSwitch(next);
+    if (typeof onClick !== 'function') return;
+    onClick(next);
+    // 현재 활성화된 스위치(left, right)를 onClick의 인자로 넘겨준다.
+  };
 
-//   return (
-//     <button type={buttonType} className={styles.button} onClick={handleClick}>
-//       {switchList.map(({ type, text }) => {
-//         const className = activeSwitch === type ? 'active' : '';
-//         return (
-//           <span key={type} className={`${styles.switch} ${styles[className]}`}>
-//             {text}
-//           </span>
-//         );
-//       })}
-//     </button>
-//   );
-// }
+  return (
+    <button className={styles.button} onClick={handleClick} {...rest}>
+      {switchList.map(({ type, text }) => {
+        const className = activeSwitch === type ? 'active' : '';
+        return (
+          <span key={type} className={`${styles.switch} ${styles[className]}`}>
+            {text}
+          </span>
+        );
+      })}
+    </button>
+  );
+}
 
-// export default ButtonToggle;
+export default ButtonToggle;

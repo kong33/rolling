@@ -31,6 +31,12 @@ function CardPostListPage() {
   return (
     <>
       <h1 className={styles.container}>CardPostListPage</h1>
+      {/* TODO: CardPostList 만들기 */}
+      {/* <CardPostList items={recipientInfo.recentMessages} />
+
+      {recipientInfo.recentMessages.map((message) => {
+        return <div key={message.id}>{message.sender}</div>;
+      })} */}
     </>
   );
 }

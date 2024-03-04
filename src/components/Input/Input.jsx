@@ -8,7 +8,6 @@ function Input({ placeholder, errorMassage, label }) {
   return (
     <div ref={inputRef}>
       <h1 className={styles.label}>{label}</h1>
-
       <input
         placeholder={placeholder}
         onClick={handleClick}

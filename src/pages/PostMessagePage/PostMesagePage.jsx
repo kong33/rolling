@@ -17,6 +17,10 @@ import { Dropdown } from '../../components/Dropdown';
 
 // App.jsx에 추가할 것
 // <Route path="post/:recipientId/message" element={<PostMessagePage />} />
+
+const RELATIONSHIPS = ['지인', '친구', '동료', '가족'];
+const FONTS = ['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편체'];
+
 function PostMessagePage() {
   const { recipientId } = useParams();
   const navigate = useNavigate();
@@ -39,6 +43,7 @@ function PostMessagePage() {
             id="sender"
             placeholder="이름을 입력해 주세요."
             errorMassage="이름을 입력해 주세요."
+            name="sender"
           />
         </div>
         <div className={styles.box}>
@@ -54,7 +59,7 @@ function PostMessagePage() {
           <Dropdown
             label="상대와의 관계"
             name="relationship"
-            placeholders={['지인', '친구', '동료', '가족']}
+            placeholders={RELATIONSHIPS}
           />
         </div>
         <div className={styles.box}>
@@ -64,11 +69,7 @@ function PostMessagePage() {
           <ReactDraft />
         </div>
         <div className={styles.box}>
-          <Dropdown
-            label="폰트 선택"
-            name="font"
-            placeholders={['지인', '친구', '동료', '가족']}
-          />
+          <Dropdown label="폰트 선택" name="font" placeholders={FONTS} />
         </div>
         <div className={styles.box}>
           <Button size="xl">생성하기</Button>

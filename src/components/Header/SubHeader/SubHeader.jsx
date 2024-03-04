@@ -8,6 +8,7 @@ import Toast from '../../../components/Toast/Toast';
 import Button from '../../Button/Button/Button.jsx';
 import handleShareKakao from '../../../utils/handleShareKakao';
 import Reactions from '../../CardList/Reactions.jsx';
+import LoadingPage from '../../../pages/LoadingPage/LoadingPage.jsx';
 
 export default function SubHeader() {
   // Toast 팝업 상태 관리
@@ -24,8 +25,14 @@ export default function SubHeader() {
   const showShareRef = useRef();
 
   // Recipient 데이터
-  const recipient = useFetch('/2-7/recipients/2304/');
-  const { name, messageCount, topReactions } = recipient;
+  const { data, isLoading } = useFetch('/2-7/recipients/2304/');
+
+  if (isLoading || !data) {
+    return <LoadingPage />;
+  }
+
+  console.log(data.topReactions);
+  const { name, messageCount, topReactions } = data;
 
   // URL 공유 핸들러 함수
   const handleShareURL = () => {

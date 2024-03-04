@@ -26,7 +26,8 @@
 
       & .visitorImage-1,
       .visitorImage-2,
-      .visitorImage-3 {
+      .visitorImage-3,
+      .visitorCount {
         width: 32px;
         height: 32px;
         border-radius: 50px;
@@ -54,6 +55,13 @@
         position: absolute;
         left: 48px;
         z-index: 4;
+        width: 32px;
+        border-radius: 30px;
+        color: $color-gray-500;
+        @include font-12-Regular;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 

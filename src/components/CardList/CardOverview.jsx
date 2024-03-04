@@ -36,9 +36,8 @@ export default function CardOverview({ recipient }) {
           ) : (
             <div>저는 친구가 없답니다!</div>
           )}
-          {/* 누구 여기 아래 수정 가능하신분? */}
           {visitors.length - 3 > 0 && (
-            <p className={styles.visitorCount}>{visitorCount}</p>
+            <p className={styles.visitorCount}>+{visitorCount}</p>
           )}
         </div>
         <p className={styles.text}>

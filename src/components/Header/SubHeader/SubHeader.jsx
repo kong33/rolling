@@ -8,6 +8,7 @@ import Toast from '../../../components/Toast/Toast';
 import Button from '../../Button/Button/Button.jsx';
 import handleShareKakao from '../../../utils/handleShareKakao';
 import Reactions from '../../CardList/Reactions.jsx';
+import { LoadingPage } from '../../../pages/LoadingPage';
 
 export default function SubHeader() {
   // Toast 팝업 상태 관리
@@ -24,8 +25,18 @@ export default function SubHeader() {
   const showShareRef = useRef();
 
   // Recipient 데이터
-  const recipient = useFetch('/2-7/recipients/2304/');
-  const { name, messageCount, topReactions } = recipient;
+  const { data, isLoading } = useFetch('/2-7/recipients/2304/');
+
+  // 데이터 로드 이후에 렌더링
+  if (isLoading || !data) {
+    return (
+      <div>
+        <LoadingPage />
+      </div>
+    );
+  }
+
+  const { name, messageCount, topReactions, recentMessages } = data;
 
   // URL 공유 핸들러 함수
   const handleShareURL = () => {
@@ -65,9 +76,21 @@ export default function SubHeader() {
           <div className={styles.toName}>To. {name}</div>
         </section>
         <section className={styles.section}>
+          {/* 작성자 프로필 사진 */}
+          <div className={styles.profileImageContainer}>
+            {recentMessages.map((sender, i) => (
+              <img
+                className={`${styles[`visitorImage-${i + 1}`]}`}
+                key={sender.id}
+                src={sender.profileImageURL}
+              />
+            ))}
+            <div className={styles.visitorCount}>+{messageCount - 3}</div>
+          </div>
           {/* 00명이 작성했어요 */}
           <div className={styles.postNumbers}>
-            {messageCount}명이 작성했어요!
+            <span className={styles.countBold}>{messageCount}</span>
+            명이 작성했어요!
           </div>
           <div className={styles.line}></div>
           {/* 이모지 상위 3개 보여주기 */}

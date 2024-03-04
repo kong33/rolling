@@ -19,7 +19,6 @@ export default function PostPage() {
   //const A = useFetch(URL, 'POST', postBody);
 
   return (
-    // <Layout>
     <form action="">
       <div className={styles.div}>
         <Input
@@ -38,6 +37,5 @@ export default function PostPage() {
         />
       </div>
     </form>
-    //</Layout>
   );
 }

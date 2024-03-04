@@ -20,8 +20,56 @@
     width: 200px;
   }
 
+  .profileImageContainer {
+    display: flex;
+    position: relative;
+    width: 80px;
+
+    & .visitorImage-1,
+    .visitorImage-2,
+    .visitorImage-3,
+    .visitorCount {
+      width: 32px;
+      height: 32px;
+      border-radius: 50px;
+      border: 1.5px solid $color-white;
+      background: $color-white;
+    }
+
+    & .visitorImage-1 {
+      z-index: 1;
+    }
+
+    & .visitorImage-2 {
+      position: absolute;
+      left: 16px;
+      z-index: 2;
+    }
+
+    & .visitorImage-3 {
+      position: absolute;
+      left: 32px;
+      z-index: 3;
+    }
+
+    & .visitorCount {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 48px;
+      z-index: 4;
+      border: 1.5px solid $color-gray-300;
+      @include font-14-Regular;
+    }
+  }
+
   .postNumbers {
     width: 150px;
+
+    .countBold {
+      font-weight: bold;
+    }
   }
 
   .emoziBtns {

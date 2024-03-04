@@ -12,8 +12,9 @@
 
 .modal {
   height: fit-content;
-  border-radius: 15px;
+  border-radius: 16px;
   background-color: $color-white;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
   position: absolute;
   top: 50%;
   left: 50%;

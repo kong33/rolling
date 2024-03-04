@@ -1,5 +1,6 @@
 import { BUTTON_TYPE } from '../../../constants/button';
 import styles from './ButtonPlus.module.scss';
+import Plus from '../../../assets/svg/Plus';
 
 function ButtonPlus({
   type = BUTTON_TYPE.button,
@@ -15,7 +16,6 @@ function ButtonPlus({
     onClick();
   };
 
-  // button의 내용은 svg 작업이 끝나면 변경 필요합니다.
   return (
     <button
       type={buttonType}
@@ -23,7 +23,7 @@ function ButtonPlus({
       onClick={handleClick}
       disabled={disabled}
     >
-      +
+      <Plus />
     </button>
   );
 }

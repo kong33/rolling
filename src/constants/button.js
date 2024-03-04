@@ -5,9 +5,9 @@ export const BUTTON_TYPE = {
 };
 
 export const BUTTON_SIZE = {
-  free: 'free',
-  sm: 'sm',
-  md: 'md',
-  lg: 'lg',
-  xl: 'xl',
+  free: 'free', // width auto
+  sm: 'sm', // width 92px
+  md: 'md', // width 280px
+  lg: 'lg', // width 320px
+  xl: 'xl', // width 720px
 };

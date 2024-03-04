@@ -1,68 +1,56 @@
-// import { useEffect, useState } from 'react';
-// import CardOverview from './CardOverview.jsx';
-// import styles from './CardList.module.scss';
-// import useFetch from '../../hooks/useFetch.js';
-// import arrowLeft from '../../assets/images/arrow_left.svg';
-// import arrowRight from '../../assets/images/arrow_right.svg';
+import CardOverview from './CardOverview';
+import styles from './CardList.module.scss';
+import ButtonArrow from '../Button/ButtonArrow/ButtonArrow';
+import { useRef, useState } from 'react';
 
-// const LIMIT = 4;
+export default function CardList({ CardListName, recipients }) {
+  const LIMIT = 4;
+  const [offset, setOffset] = useState(0);
+  const [isNext, setIsNext] = useState(true);
+  const [isPrev, setIsPrev] = useState(false);
+  const ref = useRef(null);
+  const items = recipients.filter(
+    (item, i) => `${offset}` <= i && i < `${offset + LIMIT}`,
+  );
 
-// const CardList = ({ CardListName }) => {
-//   const [recipients, setRecipients] = useState([]);
-//   const [offset, setOffset] = useState(0);
-//   const [hasNext, setHasNext] = useState(false);
-//   // sort=like가 어떤식으로 동작하는지 모르겠습니다. messageCount 기준으로 정렬할수는 없을까요?
-//   const query = `?sort=like&offset=${offset}&limit=${LIMIT}`;
-//   const data = useFetch(`/2-7/recipients/${query}`).results;
+  const handleNextLoad = () => {
+    setOffset((prevOffset) => prevOffset + 1);
+    offset + LIMIT >= recipients.length - 1 && setIsNext(false);
+    offset >= 0 && setIsPrev(true);
+  };
 
-//   // 오프셋 or 커서 기반 페이지네이션?
+  const handlePrevLoad = () => {
+    setOffset((prevOffset) => prevOffset - 1);
+    offset <= 1 && setIsPrev(false);
+    offset < recipients.length + 1 - LIMIT && setIsNext(true);
+  };
 
-//   // data 로딩 완료시 작업 수행
-//   useEffect(() => {
-//     if (data) {
-//       // const sortedRecipients = data.sort(
-//       //   (a, b) => b.messageCount - a.messageCount,
-//       // );
-//       setRecipients(data);
-//       setHasNext(data.next !== null);
-//     }
-//   }, [data, query]);
+  return (
+    <section className={styles.container}>
+      <h1 className={styles.title}>{CardListName}</h1>
+      <div className={styles.content} ref={ref}>
+        {recipients &&
+          items.map((recipient) => (
+            <CardOverview key={recipient.id} recipient={recipient} />
+          ))}
 
-//   const handleNextPage = () => {
-//     setOffset((prevOffset) => prevOffset + LIMIT);
-//   };
+        {isPrev && (
+          <ButtonArrow
+            className={styles.leftBtn}
+            direction={'left'}
+            onClick={handlePrevLoad}
+          />
+        )}
+        {isNext && (
+          <ButtonArrow
+            className={styles.rightBtn}
+            direction={'right'}
+            onClick={handleNextLoad}
+          />
+        )}
+      </div>
+    </section>
+  );
+}
 
-//   const handlePrevPage = () => {
-//     if (offset >= LIMIT) {
-//       setOffset((prevOffset) => prevOffset - LIMIT);
-//     }
-//   };
-
-//   return (
-//     <section className={styles.container}>
-//       <h1 className={styles.title}>{CardListName}</h1>
-//       <div className={styles.content}>
-//         {recipients.map((recipient) => (
-//           <CardOverview key={recipient.id} recipient={recipient} />
-//         ))}
-//         {offset > 0 && (
-//           <img
-//             className={styles.arrowLeft}
-//             onClick={handlePrevPage}
-//             src={arrowLeft}
-//           />
-//         )}
-//         {/* data.next값이 null이어도 버튼이 사라지지 않음 */}
-//         {hasNext && (
-//           <img
-//             className={styles.arrowRight}
-//             onClick={handleNextPage}
-//             src={arrowRight}
-//           />
-//         )}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default CardList;
+CardList;

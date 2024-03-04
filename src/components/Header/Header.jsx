@@ -29,9 +29,7 @@ function Header() {
         </Link>
       </nav>
       <hr className={styles.line} />
-      {showSubHeader && <SubHeader />}
+//       {showSubHeader && <SubHeader />}
     </header>
   );
 }
-
-export default Header;

@@ -1,8 +1,8 @@
 import Input from '../../components/Input/Input';
 import Option from '../../components/Option/Option';
 import styles from './Post.module.scss';
-import { Button, ButtonToggle } from '../../components/Button';
-import { BUTTON_SIZE, BUTTON_TYPE } from '../../constants/button';
+import { Button } from '../../components/Button';
+// import { BUTTON_SIZE, BUTTON_TYPE } from '../../constants/button';
 //import useFetch from '../../hooks/useFetch';
 //import Layout from '../layout'
 
@@ -29,12 +29,12 @@ export default function PostPage() {
         />
         <h1 className={styles.h1}>{LABEL}</h1>
         <p className={styles.p}>{DESCRIPTION}</p>
-        <ButtonToggle textLeft="컬러" textRight="이미지" />
+        {/* <ButtonToggle textLeft="컬러" textRight="이미지" /> */}
         <Option type="color" />
         <Button
-          type={BUTTON_TYPE.submit}
-          size={BUTTON_SIZE.xl}
-          // children={'생성하기'}
+        // type={BUTTON_TYPE.submit}
+        // size={BUTTON_SIZE.xl}
+        // children={'생성하기'}
         />
       </div>
     </form>

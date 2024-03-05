@@ -9,6 +9,7 @@ import Button from '../../Button/Button/Button.jsx';
 import handleShareKakao from '../../../utils/handleShareKakao';
 import Reactions from '../../CardList/Reactions.jsx';
 import { LoadingPage } from '../../../pages/LoadingPage';
+import EmoziToggleBox from './EmoziToggleBox.jsx';
 
 export default function SubHeader() {
   // Toast 팝업 상태 관리
@@ -25,7 +26,7 @@ export default function SubHeader() {
   const showShareRef = useRef();
 
   // Recipient 데이터
-  const { data, isLoading } = useFetch('/2-7/recipients/2304/');
+  const { data, isLoading } = useFetch('/2-7/recipients/2325/');
 
   // 데이터 로드 이후에 렌더링
   if (isLoading || !data) {
@@ -100,22 +101,8 @@ export default function SubHeader() {
             <ArrowDown />
           </div>
           {/* 이모지 토글 박스 */}
-          <div
-            className={`${styles.showEmozi} ${styles.toggleBox}`}
-            ref={showEmoziRef}
-          >
-            <div className={styles.row}>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-            </div>
-            <div className={styles.row}>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-            </div>
+          <div className={styles.emoziToggleBox} ref={showEmoziRef}>
+            <EmoziToggleBox />
           </div>
           {/* 이모지 추가 버튼 */}
           <Button
@@ -133,7 +120,6 @@ export default function SubHeader() {
               <Share24 />
             </Button>
           </div>
-
           {/* 공유 토글 박스 */}
           <div
             className={`${styles.showShare} ${styles.toggleBox}`}

@@ -1,5 +1,5 @@
 //optionPicker css
-.orange {
+.beige {
   background-color: $color-orange-200;
 }
 .purple {
@@ -11,9 +11,7 @@
 .green {
   background-color: $color-green-200;
 }
-.white {
-  background-color: $color-white;
-}
+
 .optionPicker {
   position: relative;
 }
@@ -49,4 +47,6 @@
   width: 100vw;
   height: 168px;
   gap: 16px;
+  margin-top: 80px;
+  margin-bottom: 100px;
 }

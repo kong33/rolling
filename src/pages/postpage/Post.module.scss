@@ -13,10 +13,34 @@
   color: $color-gray-900;
   @include font-24-Bold;
   margin-bottom: 4px;
+  display: block;
 }
 
 .p {
   color: $color-gray-500;
   @include font-16-Regular;
-  margin-bottom: 4px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 56px;
+  width: 720px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }

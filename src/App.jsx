@@ -1,6 +1,6 @@
 import { Layout } from './pages/Layout';
 import { LandingPage } from './pages/LandingPage';
-import { ListPage } from './pages/ListPage';
+import { ListPage } from './pages/Listpage';
 import { PostPage } from './pages/PostPage';
 import { PostMessagePage } from './pages/PostMessagePage';
 import { CardPostListPage } from './pages/CardPostListPage';
@@ -15,7 +15,7 @@ function App() {
           <Route path="list" element={<ListPage />} />
           <Route path="post" element={<PostPage />} />
           <Route
-            path="post/:recipientId/message"
+            path="post/:recipientId/messages"
             element={<PostMessagePage />}
           />
           <Route path="post/:recipientId" element={<CardPostListPage />} />

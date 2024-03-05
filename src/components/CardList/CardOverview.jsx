@@ -17,7 +17,6 @@ export default function CardOverview({ recipient }) {
       `linear-gradient(180deg, rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.54) 100%), url(${backgroundImageURL})`,
     color: backgroundImageURL && '#FFF',
   };
-  console.log(backgroundColor);
 
   const visitorCount = visitors.length - 3 > 0 ? visitors.length - 3 : null;
 

@@ -5,13 +5,11 @@
   justify-content: center;
   align-items: center;
   gap: 48px;
-  padding: 32px;
+  padding: 48px 32px;
 
   // margin: 0 auto;
 
   .myButton {
-    position: fixed;
-    bottom: 20%;
-    left: 42%;
+    margin: 0 auto;
   }
 }

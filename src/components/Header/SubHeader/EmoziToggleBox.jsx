@@ -5,7 +5,7 @@ import styles from './EmoziToggleBox.module.scss';
 export default function EmoziToggleBox() {
   // Reactions 데이터
   const { data, isLoading } = useFetch(
-    '/2-7/recipients/2325/reactions/?limit=0&offset=0',
+    '/2-7/recipients/2304/reactions/?limit=0&offset=0',
   );
 
   // 데이터 로드 이후에 렌더링
@@ -18,8 +18,6 @@ export default function EmoziToggleBox() {
   }
 
   const { results: reactionList } = data;
-
-  console.log(reactionList);
 
   return (
     <div className={`${styles.showEmozi} ${styles.toggleBox}`}>

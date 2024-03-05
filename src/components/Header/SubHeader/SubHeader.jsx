@@ -26,7 +26,7 @@ export default function SubHeader() {
   const showShareRef = useRef();
 
   // Recipient 데이터
-  const { data, isLoading } = useFetch('/2-7/recipients/2325/');
+  const { data, isLoading } = useFetch('/2-7/recipients/2304/');
 
   // 데이터 로드 이후에 렌더링
   if (isLoading || !data) {

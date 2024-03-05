@@ -1,5 +1,4 @@
 import ArrowDown from '../../../assets/svg/ArrowDown.jsx';
-import Add24 from '../../../assets/svg/Add24.jsx';
 import Share24 from '../../../assets/svg/Share24.jsx';
 import styles from './SubHeader.module.scss';
 import { useRef, useState } from 'react';
@@ -10,6 +9,7 @@ import handleShareKakao from '../../../utils/handleShareKakao';
 import Reactions from '../../CardList/Reactions.jsx';
 import { LoadingPage } from '../../../pages/LoadingPage';
 import EmoziToggleBox from './EmoziToggleBox.jsx';
+import AddEmoziBtn from './AddEmoziBtn.jsx';
 
 export default function SubHeader() {
   // Toast 팝업 상태 관리
@@ -113,14 +113,7 @@ export default function SubHeader() {
             <EmoziToggleBox />
           </div>
           {/* 이모지 추가 버튼 */}
-          <Button
-            type="button"
-            styleType="outlined36"
-            className={`${styles.addEmoziBtn} ${styles.btn}`}
-          >
-            <Add24 />
-            추가
-          </Button>
+          <AddEmoziBtn />
           <div className={styles.line}></div>
           {/* 공유 토글 버튼 */}
           <div onClick={handleToggleShare}>

@@ -4,7 +4,7 @@ import Share24 from '../../../assets/svg/Share24.jsx';
 import styles from './SubHeader.module.scss';
 import { useRef, useState } from 'react';
 import useFetch from '../../../hooks/useFetch';
-import Toast from '../../../components/Toast/Toast';
+import { Toast } from '../../../components/Toast';
 import Button from '../../Button/Button/Button.jsx';
 import handleShareKakao from '../../../utils/handleShareKakao';
 import Reactions from '../../CardList/Reactions.jsx';
@@ -86,7 +86,11 @@ export default function SubHeader() {
                 src={sender.profileImageURL}
               />
             ))}
-            <div className={styles.visitorCount}>+{messageCount - 3}</div>
+            {messageCount - 3 > 0 ? (
+              <div className={styles.visitorCount}>+{messageCount - 3}</div>
+            ) : (
+              <div></div>
+            )}
           </div>
           {/* 00명이 작성했어요 */}
           <div className={styles.postNumbers}>
@@ -97,9 +101,13 @@ export default function SubHeader() {
           {/* 이모지 상위 3개 보여주기 */}
           <Reactions reactions={topReactions} />
           {/* 이모지 더 보기 버튼 */}
-          <div className={styles.toggleBtn} onClick={handleToggleEmozi}>
-            <ArrowDown />
-          </div>
+          {topReactions.length ? (
+            <div className={styles.toggleBtn} onClick={handleToggleEmozi}>
+              <ArrowDown />
+            </div>
+          ) : (
+            <div></div>
+          )}
           {/* 이모지 토글 박스 */}
           <div className={styles.emoziToggleBox} ref={showEmoziRef}>
             <EmoziToggleBox />

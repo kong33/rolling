@@ -15,13 +15,13 @@
   }
 
   .toName {
+    display: inline-block;
     font-weight: 900;
     font-size: 26px;
-    width: 200px;
   }
 
   .profileImageContainer {
-    display: flex;
+    display: inline-block;
     position: relative;
     width: 80px;
 
@@ -58,6 +58,7 @@
       align-items: center;
       position: absolute;
       left: 48px;
+      bottom: 3px;
       z-index: 4;
       border: 1.5px solid $color-gray-300;
       @include font-14-Regular;

@@ -3,20 +3,22 @@ import Deleted from '../../assets/svg/Deleted';
 import { formatDate } from '../../utils/dateFormatter';
 
 function CardPost({ item, onDelete }) {
+  const { profileImageURL, sender, relationship, content, createdAt } = item;
+
   return (
     <article className={style.cardPost}>
       {/* 카드프로필 */}
       <div className={style.cardProfileBox}>
         <div className={style.cardProfile}>
-          <img className={style.cardImage} src={item?.profileImageURL} />
+          <img className={style.cardImage} src={profileImageURL} />
           <div className={style.cardInfo}>
             <div className={style.cardName}>
               <p>
-                From.<span>{item?.sender}</span>
+                From.<span>{sender}</span>
               </p>
             </div>
             <div className={style.cardBadge}>
-              <p>{item?.relationship}</p>
+              <p>{relationship}</p>
             </div>
           </div>
         </div>
@@ -31,9 +33,9 @@ function CardPost({ item, onDelete }) {
       {/* 카드내용 */}
       <div className={style.cardContentBox}>
         <div className={style.cardContent}>
-          <p>{item?.content}</p>
+          <p>{content}</p>
         </div>
-        <p className={style.cardDate}>{formatDate(item?.createdAt)}</p>
+        <p className={style.cardDate}>{formatDate(createdAt)}</p>
       </div>
     </article>
   );

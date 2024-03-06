@@ -20,7 +20,6 @@ export default function PostPage() {
   const URL = 'https://rolling-api.vercel.app/4-22/recipients/';
   const navigate = useNavigate();
   const [type, setType] = useState('color');
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 

@@ -4,7 +4,7 @@ import ArrowDown from '../../assets/svg/ArrowDown';
 import ArrowUp from '../../assets/svg/ArrowUp';
 import useManageDropdown from '../../hooks/useManageDropdown/useManageDropdown';
 
-function Dropdown({ label, name, options, inputName }) {
+function Dropdown({ label, options, inputName }) {
   const { dropDownRef, handleClick, isOpen, clickedLi } =
     useManageDropdown(options);
 
@@ -18,7 +18,7 @@ function Dropdown({ label, name, options, inputName }) {
       </div>
 
       <section className={styles.wrapper}>
-        <ul name={name} onClick={handleClick}>
+        <ul onClick={handleClick}>
           <li className={styles.select}>{clickedLi}</li>
           {isOpen && (
             <section className={styles.options}>

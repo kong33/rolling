@@ -88,7 +88,7 @@ function PostMessagePage() {
         </div>
         <div className={styles.box}>
           <input type="hidden" name="team" value="4-22" />
-          <input type="hidden" name="content" value="tkfkdgo" />
+
           <Button size="xl" type="submit">
             생성하기
           </Button>

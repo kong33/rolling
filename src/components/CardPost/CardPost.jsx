@@ -3,7 +3,8 @@ import Deleted from '../../assets/svg/Deleted';
 import { formatDate } from '../../utils/dateFormatter';
 
 function CardPost({ item, onDelete }) {
-  const { profileImageURL, sender, relationship, content, createdAt } = item;
+  const { id, profileImageURL, sender, relationship, content, createdAt } =
+    item;
 
   return (
     <article className={style.cardPost}>
@@ -23,8 +24,8 @@ function CardPost({ item, onDelete }) {
           </div>
         </div>
 
-        {onDelete && (
-          <button className={style.deleteIcon} onClick={onDelete}>
+        {typeof onDelete === 'function' && (
+          <button className={style.deleteIcon} onClick={() => onDelete(id)}>
             <Deleted />
           </button>
         )}

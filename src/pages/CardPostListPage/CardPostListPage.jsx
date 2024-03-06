@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import styles from './CardPostListPage.module.scss';
 import { useEffect, useState } from 'react';
+import CardPostList from '../../components/CardPost/CardPostList';
 
 /* 
 작업 1
@@ -32,11 +33,7 @@ function CardPostListPage() {
     <>
       <h1 className={styles.container}>CardPostListPage</h1>
       {/* TODO: CardPostList 만들기 */}
-      {/* <CardPostList items={recipientInfo.recentMessages} />
-
-      {recipientInfo.recentMessages.map((message) => {
-        return <div key={message.id}>{message.sender}</div>;
-      })} */}
+      <CardPostList items={recipientInfo?.recentMessages} />
     </>
   );
 }

@@ -25,6 +25,7 @@ function CardPost({ item, onDelete }) {
         </div>
 
         {typeof onDelete === 'function' && (
+          // 실제로 삭제 버튼을 누른 CardPost를 알 수 있게 onDelete에 id를 넘겨줌
           <button className={style.deleteIcon} onClick={() => onDelete(id)}>
             <Deleted />
           </button>

@@ -4,7 +4,6 @@ import styles from './Post.module.scss';
 import { Button } from '../../components/Button';
 // import { BUTTON_SIZE, BUTTON_TYPE } from '../../constants/button';
 //import useFetch from '../../hooks/useFetch';
-//import Layout from '../layout'
 
 export default function PostPage() {
   const LABEL = '배경화면을 선택해 주세요';
@@ -19,7 +18,6 @@ export default function PostPage() {
   //const A = useFetch(URL, 'POST', postBody);
 
   return (
-    // <Layout>
     <form action="">
       <div className={styles.div}>
         <Input
@@ -38,6 +36,5 @@ export default function PostPage() {
         />
       </div>
     </form>
-    //</Layout>
   );
 }

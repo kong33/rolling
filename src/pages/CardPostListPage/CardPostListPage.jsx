@@ -9,6 +9,13 @@ import CardPostList from '../../components/CardPost/CardPostList';
 2) 가져온 아이디를 fetch로 요청보냄
 3) fetch에서 가져온 데이터를 recipientInfo에 넣음
 */
+
+/* 
+작업 2
+1) fetch로 메세지 리스트를 받아옴
+2) 받아온 메세지 리스트를 messages에 넣음
+3) CardPostList items에 messages를 넣음
+*/
 function CardPostListPage() {
   // 존재하지 않는 recipientId로 들어왔을 때 내보내기 위함.
   // https://rolling-api.vercel.app/2-7/recipients/2298/
@@ -16,6 +23,7 @@ function CardPostListPage() {
   // recipientId가 존재하지 않을 때는 { "detail": "Not found." } 넘어온다.
   const { recipientId } = useParams();
   const [recipientInfo, setRecipientInfo] = useState(null);
+  const [messages, setMessages] = useState(null);
 
   useEffect(() => {
     const getInfo = async () => {
@@ -23,17 +31,28 @@ function CardPostListPage() {
         `https://rolling-api.vercel.app/2-7/recipients/${recipientId}/`,
       );
       const json = await response.json();
-      setRecipientInfo(json);
       console.log(recipientInfo);
+      setRecipientInfo(json);
     };
     getInfo();
+  }, []);
+
+  useEffect(() => {
+    const getMessages = async () => {
+      const response = await fetch(
+        `https://rolling-api.vercel.app/2-7/recipients/${recipientId}/messages/`,
+      );
+      const json = await response.json();
+      setMessages(json.results);
+    };
+    getMessages();
   }, []);
 
   return (
     <>
       <h1 className={styles.container}>CardPostListPage</h1>
       {/* TODO: CardPostList 만들기 */}
-      <CardPostList items={recipientInfo?.recentMessages} />
+      <CardPostList items={messages} />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import Input from '../../components/Input/Input';
 import Option from '../../components/Option/Option';
-import styles from './Post.module.scss';
+import styles from './PostCardPage.module.scss';
 import { Button, ButtonToggle } from '../../components/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ const BUTTON_SIZE = {
   full: 'full', // width 100%
 };
 
-export default function PostPage() {
+export default function PostCardPage() {
   const LABEL = '배경화면을 선택해 주세요';
   const DESCRIPTION = '컬러를 선택하거나, 이미지를 선택할 수 있습니다.';
   const URL = 'https://rolling-api.vercel.app/4-22/recipients/';

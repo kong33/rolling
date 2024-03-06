@@ -29,6 +29,12 @@ function CardPostListPage() {
   const isEdit = pathname.split('/')[3] === 'edit' ? true : false;
   console.log('isEdit', isEdit);
 
+  const handleDelete = isEdit
+    ? (id) => {
+        console.log(id);
+      }
+    : null;
+
   useEffect(() => {
     const getInfo = async () => {
       const response = await fetch(
@@ -56,7 +62,7 @@ function CardPostListPage() {
     <>
       <h1 className={styles.container}>CardPostListPage</h1>
       {/* TODO: CardPostList 만들기 */}
-      <CardPostList items={messages} />
+      <CardPostList items={messages} onDelete={handleDelete} />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import styles from './CardPostListPage.module.scss';
 import { useEffect, useState } from 'react';
 import CardPostList from '../../components/CardPost/CardPostList';
@@ -22,8 +22,12 @@ function CardPostListPage() {
   // TODO: recipientId가 존재할 때는 { id: 2298, ... } 넘어온다.
   // recipientId가 존재하지 않을 때는 { "detail": "Not found." } 넘어온다.
   const { recipientId } = useParams();
+  const { pathname } = useLocation();
   const [recipientInfo, setRecipientInfo] = useState(null);
   const [messages, setMessages] = useState(null);
+
+  const isEdit = pathname.split('/')[3] === 'edit' ? true : false;
+  console.log('isEdit', isEdit);
 
   useEffect(() => {
     const getInfo = async () => {
@@ -35,7 +39,7 @@ function CardPostListPage() {
       setRecipientInfo(json);
     };
     getInfo();
-  }, []);
+  }, [recipientId]);
 
   useEffect(() => {
     const getMessages = async () => {
@@ -46,7 +50,7 @@ function CardPostListPage() {
       setMessages(json.results);
     };
     getMessages();
-  }, []);
+  }, [recipientId]);
 
   return (
     <>

@@ -20,16 +20,13 @@ function Avatar({
   };
 
   return (
-    <>
-      <img
-        src={src}
-        alt={alt}
-        className={classNames}
-        onError={handleImgError}
-        onClick={onClick}
-      />
-      <input type="hidden" name="profileImageURL" value={src} />
-    </>
+    <img
+      src={src}
+      alt={alt}
+      className={classNames}
+      onError={handleImgError}
+      onClick={onClick}
+    />
   );
 }
 

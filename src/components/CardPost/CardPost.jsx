@@ -1,27 +1,41 @@
-import { useState, useEffect } from 'react';
-import Card from './Card';
+import style from './CardPostList.module.scss';
+import Deleted from '../../assets/svg/Deleted';
+import { formatDate } from '../../utils/dateFormatter';
 
-function CardPost() {
-  const [posts, setPosts] = useState();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch(
-        'https://rolling-api.vercel.app/2-7/recipients/2304/',
-      );
-      const json = await data.json();
-      setPosts(json);
-    };
-    fetchData(posts);
-  }, []);
-
+function CardPost({ item, onDelete }) {
   return (
-    <div>
-      {posts?.recentMessages.map((item) => (
-        <Card key={item.id} item={item} /> //빨간색 에러 해결
-      ))}
-      ;
-    </div>
+    <article className={style.cardPost}>
+      {/* 카드프로필 */}
+      <div className={style.cardProfileBox}>
+        <div className={style.cardProfile}>
+          <img className={style.cardImage} src={item?.profileImageURL} />
+          <div className={style.cardInfo}>
+            <div className={style.cardName}>
+              <p>
+                From.<span>{item?.sender}</span>
+              </p>
+            </div>
+            <div className={style.cardBadge}>
+              <p>{item?.relationship}</p>
+            </div>
+          </div>
+        </div>
+
+        {onDelete && (
+          <button className={style.deleteIcon} onClick={onDelete}>
+            <Deleted />
+          </button>
+        )}
+      </div>
+
+      {/* 카드내용 */}
+      <div className={style.cardContentBox}>
+        <div className={style.cardContent}>
+          <p>{item?.content}</p>
+        </div>
+        <p className={style.cardDate}>{formatDate(item?.createdAt)}</p>
+      </div>
+    </article>
   );
 }
 

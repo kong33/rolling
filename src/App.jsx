@@ -1,7 +1,7 @@
 import { Layout } from './pages/Layout';
 import { LandingPage } from './pages/LandingPage';
-import { ListPage } from './pages/ListPage';
-import { PostPage } from './pages/PostPage';
+import { ListPage } from './pages/Listpage';
+import { PostPage } from './pages/PostCardPage';
 import { PostMessagePage } from './pages/PostMessagePage';
 import { CardPostListPage } from './pages/CardPostListPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -15,7 +15,7 @@ function App() {
           <Route path="list" element={<ListPage />} />
           <Route path="post" element={<PostPage />} />
           <Route
-            path="post/:recipientId/message"
+            path="post/:recipientId/messages"
             element={<PostMessagePage />}
           />
           <Route path="post/:recipientId" element={<CardPostListPage />} />

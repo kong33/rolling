@@ -11,6 +11,7 @@ function Avatar({
   alt = '기본 프로필',
   size = SIZE.sm,
   className,
+  onClick,
 }) {
   const classNames = `${styles.avatar} ${styles[size]} ${className || ''}`;
 
@@ -19,7 +20,16 @@ function Avatar({
   };
 
   return (
-    <img src={src} alt={alt} className={classNames} onError={handleImgError} />
+    <>
+      <img
+        src={src}
+        alt={alt}
+        className={classNames}
+        onError={handleImgError}
+        onClick={onClick}
+      />
+      <input type="hidden" name="profileImageURL" value={src} />
+    </>
   );
 }
 

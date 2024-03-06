@@ -1,17 +1,23 @@
 import OptionPicker from './OptionPicker';
 import styles from './Option.module.scss';
 import useFetch from '../../hooks/useFetch';
+import { LoadingPage } from '../../pages/LoadingPage';
 import { useState } from 'react';
 
 function Option({ type }) {
   //type은 image, color중 하나
-  const colorChart = ['orange', 'purple', 'blue', 'green'];
-  const backgroundImgChart = useFetch(`/background-images/`).imageUrls;
-  const [selectedOption, setSelectedOption] = useState(null);
+  const colorChart = ['beige', 'purple', 'blue', 'green'];
+  const { data, isLoading } = useFetch(`/background-images/`);
+  const [selectedOption, setSelectedOption] = useState('');
+
+  if (isLoading || !data) return <LoadingPage />;
+
+  let Imgdata = data.imageUrls;
 
   const handleOptionClicked = (option) => {
     setSelectedOption(option);
   };
+
   return (
     <div className={styles.options}>
       {type === 'color' &&
@@ -24,7 +30,7 @@ function Option({ type }) {
           />
         ))}
       {type === 'image' &&
-        backgroundImgChart?.map((img) => (
+        Imgdata?.map((img) => (
           <OptionPicker
             backgroundImg={img}
             key={img}
@@ -32,6 +38,17 @@ function Option({ type }) {
             onOptionClick={() => handleOptionClicked(img)}
           />
         ))}
+
+      <input
+        type="hidden"
+        name="backgroundColor"
+        value={type === 'color' ? selectedOption : 'beige'}
+      />
+      <input
+        type="hidden"
+        name="backgroundImageURL"
+        value={type === 'image' ? selectedOption : ''}
+      />
     </div>
   );
 }

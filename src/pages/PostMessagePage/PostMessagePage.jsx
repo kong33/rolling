@@ -1,40 +1,58 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './PostMessagePage.module.scss';
-import useFetch from '../../hooks/useFetch';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { ReactDraft } from '../../components/ReactDraft';
-import { Avatar } from '../../components/Avatar';
 import { Dropdown } from '../../components/Dropdown';
+import ProfileImage from '../../components/ProfileImage/ProfileImage';
+import {
+  RELATIONSHIPS,
+  FONTS,
+  TEAM,
+  DEFAULT_PROFILE_URL,
+} from '../../constants';
 
-// TO-DO
-
-// 1
-// "https://rolling-api.vercel.app/2-7/recipients/2298/"에서 데이터가 조회되지 않으면 useNavigate를 통해서 루트 페이지로 이동.
-// 존재하는 id로 요청 보내면 { "id": 2298, ... } 데이터가 도착한다.
-// 존재하지 않는 id로 요청 보내면 { "detail": "Not found." } 데이터가 도착한다.
-// id로 요청을 보내서 response에 id가 존재하지 않으면 페이지 이동.
-
-// App.jsx에 추가할 것
-// <Route path="post/:recipientId/message" element={<PostMessagePage />} />
-
-const RELATIONSHIPS = ['지인', '친구', '동료', '가족'];
-const FONTS = ['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편체'];
-
-function PostMessagePage() {
+export default function PostMessagePage() {
   const { recipientId } = useParams();
   const navigate = useNavigate();
-  const [data, isLoading] = useFetch(`/2-7/recipients/${recipientId}/`);
+  const URL = `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/messages/`;
 
-  // You should call navigate() in a React.useEffect(), not when your component is first rendered.
-  // useFetch에서 navigate를 담을 수 있게 변경 필요.
-  if (!isLoading && !data) {
-    navigate('/');
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = {
+      sender: e.target.sender.value || null,
+      team: TEAM,
+      recipientId: recipientId,
+      profileImageURL: e.target.profileImageURL.value || DEFAULT_PROFILE_URL,
+      relationship: e.target.relationship.value || null,
+      content: e.target.content.value || null,
+      font: e.target.font.value || null,
+    };
+
+    console.log(formData);
+
+    try {
+      const response = await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('실패');
+      }
+      navigate(`/post/${recipientId}`, { replace: true });
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   return (
     <>
-      <form className={styles.container}>
+      <form className={styles.container} onSubmit={handleSubmit}>
         <div className={styles.box}>
           <label htmlFor="sender" className={styles.label}>
             From.
@@ -42,7 +60,7 @@ function PostMessagePage() {
           <Input
             id="sender"
             placeholder="이름을 입력해 주세요."
-            errorMassage="이름을 입력해 주세요."
+            errorMassage="필수 항목입니다."
             name="sender"
           />
         </div>
@@ -50,16 +68,13 @@ function PostMessagePage() {
           <label htmlFor="sender" className={styles.label}>
             프로필 이미지
           </label>
-          <div>
-            <Avatar size="md" />
-          </div>
-          <div>{/* TODO: 프로필 이미지를 선택해주세요! */}</div>
+          <ProfileImage />
         </div>
         <div className={styles.box}>
           <Dropdown
             label="상대와의 관계"
-            name="relationship"
-            placeholders={RELATIONSHIPS}
+            inputName="relationship"
+            options={RELATIONSHIPS}
           />
         </div>
         <div className={styles.box}>
@@ -69,14 +84,16 @@ function PostMessagePage() {
           <ReactDraft />
         </div>
         <div className={styles.box}>
-          <Dropdown label="폰트 선택" name="font" placeholders={FONTS} />
+          <Dropdown label="폰트 선택" inputName="font" options={FONTS} />
         </div>
         <div className={styles.box}>
-          <Button size="xl">생성하기</Button>
+          <input type="hidden" name="team" value="4-22" />
+
+          <Button size="xl" type="submit">
+            생성하기
+          </Button>
         </div>
       </form>
     </>
   );
 }
-
-export default PostMessagePage;

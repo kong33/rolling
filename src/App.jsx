@@ -19,6 +19,7 @@ function App() {
             element={<PostMessagePage />}
           />
           <Route path="post/:recipientId" element={<CardPostListPage />} />
+          <Route path="post/:recipientId/edit" element={<CardPostListPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

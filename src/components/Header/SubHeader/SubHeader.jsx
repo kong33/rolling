@@ -29,6 +29,7 @@ export default function SubHeader() {
   const { data, isLoading } = useFetch('/2-7/recipients/2304/');
 
   // 데이터 로드 이후에 렌더링
+  
   if (isLoading || !data) {
     return (
       <div>
@@ -36,7 +37,7 @@ export default function SubHeader() {
       </div>
     );
   }
-
+  
   const { name, messageCount, topReactions, recentMessages } = data;
 
   // URL 공유 핸들러 함수

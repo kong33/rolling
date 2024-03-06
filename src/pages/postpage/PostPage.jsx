@@ -4,7 +4,6 @@ import styles from './Post.module.scss';
 import { Button } from '../../components/Button';
 // import { BUTTON_SIZE, BUTTON_TYPE } from '../../constants/button';
 //import useFetch from '../../hooks/useFetch';
-//import Layout from '../layout'
 
 export default function PostPage() {
   const LABEL = '배경화면을 선택해 주세요';

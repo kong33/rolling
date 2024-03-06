@@ -1,0 +1,59 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1140px;
+  margin: 0 auto;
+  margin-top: 60px;
+  gap: 30px;
+
+  .pointBox {
+    display: flex;
+    width: 1140px;
+    justify-content: space-around;
+    background: $color-surface;
+    border-radius: 16px;
+
+    &:nth-child(1) {
+      display: flex;
+      padding: 60px 0px 60px 60px;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    &:nth-child(2) {
+      padding: 60px 192px 60px 0px;
+    }
+
+    .textBox {
+      width: 320px;
+
+      .pointBtn {
+        display: flex;
+        width: 90px;
+        height: 32px;
+        padding: 6px 12px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+        background: $color-purple-600;
+        color: $color-white;
+        @include font-14-Bold;
+      }
+
+      .boldText {
+        color: $color-gray-900;
+        @include font-24-Bold;
+      }
+    }
+
+    .imgBox {
+      width: 720px;
+    }
+  }
+
+  .btn {
+    outline: none;
+  }
+}

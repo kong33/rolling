@@ -1,13 +1,15 @@
 import ArrowDown from '../../../assets/svg/ArrowDown.jsx';
-import Add24 from '../../../assets/svg/Add24.jsx';
 import Share24 from '../../../assets/svg/Share24.jsx';
 import styles from './SubHeader.module.scss';
 import { useRef, useState } from 'react';
 import useFetch from '../../../hooks/useFetch';
-import Toast from '../../../components/Toast/Toast';
+import { Toast } from '../../../components/Toast';
 import Button from '../../Button/Button/Button.jsx';
 import handleShareKakao from '../../../utils/handleShareKakao';
 import Reactions from '../../CardList/Reactions.jsx';
+import { LoadingPage } from '../../../pages/LoadingPage';
+import EmoziToggleBox from './EmoziToggleBox.jsx';
+import AddEmoziBtn from './AddEmoziBtn.jsx';
 
 export default function SubHeader() {
   // Toast 팝업 상태 관리
@@ -24,8 +26,19 @@ export default function SubHeader() {
   const showShareRef = useRef();
 
   // Recipient 데이터
-  const recipient = useFetch('/2-7/recipients/2304/');
-  const { name, messageCount, topReactions } = recipient;
+  const { data, isLoading } = useFetch('/2-7/recipients/2304/');
+
+  // 데이터 로드 이후에 렌더링
+
+  if (isLoading || !data) {
+    return (
+      <div>
+        <LoadingPage />
+      </div>
+    );
+  }
+
+  const { name, messageCount, topReactions, recentMessages } = data;
 
   // URL 공유 핸들러 함수
   const handleShareURL = () => {
@@ -65,44 +78,43 @@ export default function SubHeader() {
           <div className={styles.toName}>To. {name}</div>
         </section>
         <section className={styles.section}>
+          {/* 작성자 프로필 사진 */}
+          <div className={styles.profileImageContainer}>
+            {recentMessages.map((sender, i) => (
+              <img
+                className={`${styles[`visitorImage-${i + 1}`]}`}
+                key={sender.id}
+                src={sender.profileImageURL}
+              />
+            ))}
+            {messageCount - 3 > 0 ? (
+              <div className={styles.visitorCount}>+{messageCount - 3}</div>
+            ) : (
+              <div></div>
+            )}
+          </div>
           {/* 00명이 작성했어요 */}
           <div className={styles.postNumbers}>
-            {messageCount}명이 작성했어요!
+            <span className={styles.countBold}>{messageCount}</span>
+            명이 작성했어요!
           </div>
           <div className={styles.line}></div>
           {/* 이모지 상위 3개 보여주기 */}
           <Reactions reactions={topReactions} />
           {/* 이모지 더 보기 버튼 */}
-          <div className={styles.toggleBtn} onClick={handleToggleEmozi}>
-            <ArrowDown />
-          </div>
+          {topReactions.length ? (
+            <div className={styles.toggleBtn} onClick={handleToggleEmozi}>
+              <ArrowDown />
+            </div>
+          ) : (
+            <div></div>
+          )}
           {/* 이모지 토글 박스 */}
-          <div
-            className={`${styles.showEmozi} ${styles.toggleBox}`}
-            ref={showEmoziRef}
-          >
-            <div className={styles.row}>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-            </div>
-            <div className={styles.row}>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-              <div className={styles.emoziBtn}>👍24</div>
-            </div>
+          <div className={styles.emoziToggleBox} ref={showEmoziRef}>
+            <EmoziToggleBox />
           </div>
           {/* 이모지 추가 버튼 */}
-          <Button
-            type="button"
-            styleType="outlined36"
-            className={`${styles.addEmoziBtn} ${styles.btn}`}
-          >
-            <Add24 />
-            추가
-          </Button>
+          <AddEmoziBtn />
           <div className={styles.line}></div>
           {/* 공유 토글 버튼 */}
           <div onClick={handleToggleShare}>
@@ -110,7 +122,6 @@ export default function SubHeader() {
               <Share24 />
             </Button>
           </div>
-
           {/* 공유 토글 박스 */}
           <div
             className={`${styles.showShare} ${styles.toggleBox}`}

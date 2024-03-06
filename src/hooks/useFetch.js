@@ -14,7 +14,6 @@ export default function useFetch(url, method = 'GET', body = null) {
 
       try {
         // 통신 할 데이터 메소드와 헤더 지정
-        console.log('tre');
         const requestOptions = {
           method: method,
           headers: {

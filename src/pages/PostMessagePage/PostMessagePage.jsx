@@ -3,34 +3,34 @@ import styles from './PostMessagePage.module.scss';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { ReactDraft } from '../../components/ReactDraft';
-// import { Avatar } from '../../components/Avatar';
 import { Dropdown } from '../../components/Dropdown';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
-
-const RELATIONSHIPS = ['지인', '친구', '동료', '가족'];
-const FONTS = ['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편체'];
+import {
+  RELATIONSHIPS,
+  FONTS,
+  TEAM,
+  DEFAULT_PROFILE_URL,
+} from '../../constants';
 
 function PostMessagePage() {
   const { recipientId } = useParams();
   const navigate = useNavigate();
   const URL = `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/messages/`;
-  console.log(recipientId);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = {
       sender: e.target.sender.value || null,
-      team: '4-22',
+      team: TEAM,
       recipientId: recipientId,
-      profileImageURL:
-        e.target.profileImageURL.value ||
-        'https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_1280.jpg',
+      profileImageURL: e.target.profileImageURL.value || DEFAULT_PROFILE_URL,
       relationship: e.target.relationship.value || null,
       content: e.target.content.value || null,
       font: e.target.font.value || null,
     };
 
-    // console.log(formData);
+    console.log(formData);
 
     try {
       const response = await fetch(URL, {
@@ -44,15 +44,12 @@ function PostMessagePage() {
       if (!response.ok) {
         throw new Error('실패');
       }
-      const dataJson = await response.json();
-      navigate(`post/${dataJson.id}`);
+      navigate(`/post/${recipientId}`, { replace: true });
     } catch (error) {
       alert(error);
     }
   };
-  // const handleImageSelect = (imageUrl) => {
-  //   choosedImg1(imageUrl);
-  // };
+
   return (
     <>
       <form className={styles.container} onSubmit={handleSubmit}>

@@ -1,8 +1,8 @@
 import { Layout } from './pages/Layout';
 import { LandingPage } from './pages/LandingPage';
 import { ListPage } from './pages/Listpage';
-import { PostPage } from './pages/paosl';
-import { PostMessagePage } from './pages/pospa';
+import { PostPage } from './pages/PostPage';
+import { PostMessagePage } from './pages/PostMessagePage';
 import { CardPostListPage } from './pages/CardPostListPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 

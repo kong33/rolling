@@ -12,7 +12,7 @@ import {
   DEFAULT_PROFILE_URL,
 } from '../../constants';
 
-function PostMessagePage() {
+export default function PostMessagePage() {
   const { recipientId } = useParams();
   const navigate = useNavigate();
   const URL = `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/messages/`;
@@ -97,5 +97,3 @@ function PostMessagePage() {
     </>
   );
 }
-
-export default PostMessagePage;

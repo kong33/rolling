@@ -1,5 +1,6 @@
 import styles from './CardPostList.module.scss';
 import Deleted from '../../assets/svg/Deleted';
+import { BadgeRelation } from '../Badge';
 import { formatDate } from '../../utils/dateFormatter';
 
 function CardPost({ item, onDelete }) {
@@ -18,8 +19,8 @@ function CardPost({ item, onDelete }) {
                 From.<span>{sender}</span>
               </p>
             </div>
-            <div className={styles.cardBadge}>
-              <p>{relationship}</p>
+            <div className={styles.box}>
+              <BadgeRelation relationship={relationship} />
             </div>
           </div>
         </div>

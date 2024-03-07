@@ -24,6 +24,13 @@ import CardPostList from '../../components/CardPost/CardPostList';
 3) isEdit 여부에 따라서 CardPost의 삭제버튼 조건부 렌더링 작업
 */
 
+/*
+작업 4
+1) handleDelete에 받아온 id로 fetch로 delete 구현 
+2) fetch에 try~catch문으로 error 처리
+(fetch문이 우선순위 그다음이 try~catch문)
+*/
+
 function CardPostListPage() {
   // 존재하지 않는 recipientId로 들어왔을 때 내보내기 위함.
   // https://rolling-api.vercel.app/2-7/recipients/2298/
@@ -61,23 +68,37 @@ function CardPostListPage() {
 
   useEffect(() => {
     const getInfo = async () => {
-      const response = await fetch(
-        `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/`,
-      );
-      const json = await response.json();
-      console.log(recipientInfo);
-      setRecipientInfo(json);
+      try {
+        const response = await fetch(
+          `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/`,
+        );
+        if (!response.ok) {
+          throw new Error('RecipientInfo를 받아오는데 실패했습니다.');
+        }
+        const json = await response.json();
+        console.log(recipientInfo);
+        setRecipientInfo(json);
+      } catch (error) {
+        console.error(error);
+      }
     };
     getInfo();
   }, [recipientId]);
 
   useEffect(() => {
     const getMessages = async () => {
-      const response = await fetch(
-        `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/messages/`,
-      );
-      const json = await response.json();
-      setMessages(json.results);
+      try {
+        const response = await fetch(
+          `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/messages/`,
+        );
+        if (!response.ok) {
+          throw new Error('메세지 리스트를 받아오지 못했습니다.');
+        }
+        const json = await response.json();
+        setMessages(json.results);
+      } catch (error) {
+        console.error(error);
+      }
     };
     getMessages();
   }, [recipientId]);

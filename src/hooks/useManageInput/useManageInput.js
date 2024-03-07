@@ -5,6 +5,8 @@ const useManageInput = () => {
   const [isValueExist, setIsValueExist] = useState();
   const [isError, setIsError] = useState(false);
   const [isBeenClicked, setIsBeenClicked] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+
   const inputRef = useRef(null);
 
   const handleOutsideClick = () => {
@@ -14,6 +16,7 @@ const useManageInput = () => {
     if (e.target.value) {
       setIsValueExist(true);
       setIsError(false);
+      setInputValue(e.target.value);
     } else setIsValueExist(false);
   };
   const handleClick = () => {
@@ -28,6 +31,7 @@ const useManageInput = () => {
     handleClick,
     handleChange,
     inputRef,
+    inputValue,
   };
 };
 

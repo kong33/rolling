@@ -4,7 +4,6 @@ import useClickOutside from '../useClickOutside';
 const useManageDropdown = (options) => {
   const [isOpen, setIsOpen] = useState(false);
   const [clickedLi, setClickedLi] = useState(options[0]);
-
   const dropDownRef = useRef(null);
 
   const handleOutsideClick = () => {

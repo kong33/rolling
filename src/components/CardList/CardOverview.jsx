@@ -10,7 +10,7 @@ export default function CardOverview({ recipient }) {
     topReactions,
     recentMessages: visitors,
   } = recipient;
-
+  console.log(visitors);
   const bgStyle = {
     background:
       backgroundImageURL &&

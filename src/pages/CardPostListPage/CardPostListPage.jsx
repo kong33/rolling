@@ -80,6 +80,14 @@ function CardPostListPage() {
       }
     : null;
 
+  const handleEditButtonClick = () => {
+    console.log('편집하기');
+  };
+
+  const handleRemoveButtonClick = () => {
+    console.log('삭제하기');
+  };
+
   const handleAdd = () => {
     navigate(`/post/${recipientId}/messages`);
   };
@@ -127,7 +135,11 @@ function CardPostListPage() {
     <>
       <div className={styles.background}></div>
       <div>
-        <Button>삭제하기</Button>
+        {isEdit ? (
+          <Button onClick={handleRemoveButtonClick}>삭제하기</Button>
+        ) : (
+          <Button onClick={handleEditButtonClick}>편집하기</Button>
+        )}
         <CardPostList
           items={messages}
           onDelete={handleDelete}

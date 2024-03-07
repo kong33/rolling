@@ -85,7 +85,9 @@ export default function SubHeader() {
         </section>
         <section className={styles.section}>
           {/* 작성자 프로필 사진 */}
-          <div className={styles.profileImageContainer}>
+          <div
+            className={`${styles.profileImageContainer} ${styles[`imageCount${recentMessages.length}`]}`}
+          >
             {recentMessages.map((sender, i) => (
               <img
                 className={`${styles[`visitorImage-${i + 1}`]}`}

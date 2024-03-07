@@ -1,7 +1,6 @@
 /* 카드프로필 */
 
 .cardPost {
-  // cardBox에서 cardPost로 이름 바꾸기
   position: relative;
   width: 24rem;
   height: 17.5rem;
@@ -16,18 +15,19 @@
     width: 21rem;
     height: 4.5rem;
     display: flex;
-    margin: 1.75rem 1.5rem;
+    margin: 1.75rem 1.5rem 0;
     justify-content: space-between;
   }
 
   .cardProfile {
     display: flex;
+    align-items: flex-start;
     gap: 0.86rem;
   }
 
   .cardImage {
-    width: 5.6rem;
-    height: 5.6rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 10rem;
     background-color: aqua;
     background: $color-white;
@@ -55,7 +55,6 @@
 
   .cardBadge {
     border-radius: 4px;
-    // padding: 0 0.8rem;
     background: $color-purple-100;
     @include font-14-Regular;
     color: $color-purple-600;
@@ -68,12 +67,11 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    // gap: 1.4rem;
+    margin: 1rem 1.5rem 0;
     border-top: 0.1rem solid $color-gray-200;
 
     .cardContent {
-      // width: 33.6rem;
-      // height: 10.6rem;
+      height: 6.6rem;
       flex-shrink: 0;
       color: $color-gray-600;
       @include font-18-Regular;
@@ -83,6 +81,7 @@
     }
 
     .cardDate {
+      margin-top: 1rem;
       line-height: 1.8rem;
       letter-spacing: -0.06px;
       @include font-12-Regular;
@@ -118,7 +117,7 @@
     align-items: center;
     border-radius: 100px;
     border-style: none;
-    background-color: $color-black;
+    background-color: $color-gray-500;
     cursor: pointer;
   }
 }
@@ -138,8 +137,5 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.25rem;
-
-    // grid-auto-flow: column;
-    // grid-auto-rows: 28rem;
   }
 }

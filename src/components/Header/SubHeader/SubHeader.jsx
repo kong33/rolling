@@ -2,6 +2,7 @@ import ArrowDown from '../../../assets/svg/ArrowDown.jsx';
 import Share24 from '../../../assets/svg/Share24.jsx';
 import styles from './SubHeader.module.scss';
 import { useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import useFetch from '../../../hooks/useFetch';
 import { Toast } from '../../../components/Toast';
 import Button from '../../Button/Button/Button.jsx';
@@ -25,12 +26,16 @@ export default function SubHeader() {
   const showEmoziRef = useRef();
   const showShareRef = useRef();
 
+  const { recipientId } = useParams();
+
   // Recipient 데이터
-  const { data, isLoading } = useFetch('/2-7/recipients/2304/');
+  const { data: recipientData, isLoading } = useFetch(
+    `/2-7/recipients/${recipientId}/`,
+  );
 
   // 데이터 로드 이후에 렌더링
 
-  if (isLoading || !data) {
+  if (isLoading || !recipientData) {
     return (
       <div>
         <LoadingPage />
@@ -38,7 +43,7 @@ export default function SubHeader() {
     );
   }
 
-  const { name, messageCount, topReactions, recentMessages } = data;
+  const { name, messageCount, topReactions, recentMessages } = recipientData;
 
   // URL 공유 핸들러 함수
   const handleShareURL = () => {
@@ -111,7 +116,7 @@ export default function SubHeader() {
           )}
           {/* 이모지 토글 박스 */}
           <div className={styles.emoziToggleBox} ref={showEmoziRef}>
-            <EmoziToggleBox />
+            <EmoziToggleBox recipientId={recipientId} />
           </div>
           {/* 이모지 추가 버튼 */}
           <AddEmoziBtn />

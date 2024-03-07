@@ -1,10 +1,10 @@
-import style from './CardPostList.module.scss';
+import styles from './CardPostList.module.scss';
 import CardPost from './CardPost';
 
 function CardPostList({ items, onDelete }) {
   return (
-    <div className={style.cardContainer}>
-      <div className={style.cardList}>
+    <div className={styles.cardContainer}>
+      <div className={styles.cardList}>
         {items?.map((item) => (
           <CardPost key={item.id} item={item} onDelete={onDelete} /> //빨간색 에러 해결
         ))}

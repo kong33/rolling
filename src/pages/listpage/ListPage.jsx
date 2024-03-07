@@ -27,38 +27,17 @@ export default function ListPage() {
 
   const hotItems = dataSortedLike ? dataSortedLike.results : null;
   const newItems = data ? data.results : null;
-  // const handleClick = () => {
-  //   setOffset((prevOffset) => prevOffset + 1);
-  // };
   const EmblaCarouselOptions = {
     loop: true,
   };
 
   return (
     <main className={styles.container}>
-      <>
-        <EmblaCarousel slides={hotItems} options={EmblaCarouselOptions} />
-        <EmblaCarousel slides={newItems} options={EmblaCarouselOptions} />
-
-        {/* <div>
-          <Carousel
-            CardListName={'인기 롤링 페이퍼 🔥'}
-            recipients={hotItems}
-          />
-        </div> */}
-        {/* <div>
-          <Carousel
-            CardListName={'최근에 만든 롤링 페이퍼 💜'}
-            recipients={recipients}
-          />
-        </div> */}
-        {/* <div>
-          <CardList CardListName={`전체 롤링페이퍼`} recipients={recipients} />
-        </div> */}
-        <Button className={styles.myButton} size={'md'}>
-          나도 만들어보기
-        </Button>
-      </>
+      <EmblaCarousel slides={hotItems} options={EmblaCarouselOptions} />
+      <EmblaCarousel slides={newItems} options={EmblaCarouselOptions} />
+      <Button className={styles.myButton} size={'md'}>
+        나도 만들어보기
+      </Button>
     </main>
   );
 }

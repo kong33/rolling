@@ -82,6 +82,10 @@ function CardPostListPage() {
       }
     : null;
 
+  const handleAdd = () => {
+    navigate(`/post/${recipientId}/messages`);
+  };
+
   useEffect(() => {
     const getInfo = async () => {
       try {
@@ -126,7 +130,11 @@ function CardPostListPage() {
       <div className={styles.background}></div>
       <div>
         <Button>삭제하기</Button>
-        <CardPostList items={messages} onDelete={handleDelete} />
+        <CardPostList
+          items={messages}
+          onDelete={handleDelete}
+          onAdd={handleAdd}
+        />
       </div>
     </>
   );

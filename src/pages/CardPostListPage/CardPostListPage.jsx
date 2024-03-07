@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './CardPostListPage.module.scss';
 import { useEffect, useState } from 'react';
 import CardPostList from '../../components/CardPost/CardPostList';
@@ -38,6 +38,7 @@ function CardPostListPage() {
   // TODO: recipientId가 존재할 때는 { id: 2298, ... } 넘어온다.
   // recipientId가 존재하지 않을 때는 { "detail": "Not found." } 넘어온다.
   const { recipientId } = useParams();
+  const navigate = useNavigate();
 
   // edit 페이지의 컴포넌트를 따로 만들지 않고 CardPostListPage를 재사용 하기 위해서
   // 주소에서 edit을 가져오려고 한다.
@@ -81,6 +82,7 @@ function CardPostListPage() {
         setRecipientInfo(json);
       } catch (error) {
         console.error(error);
+        navigate('/list');
       }
     };
     getInfo();
@@ -99,6 +101,7 @@ function CardPostListPage() {
         setMessages(json.results);
       } catch (error) {
         console.error(error);
+        navigate('/list');
       }
     };
     getMessages();

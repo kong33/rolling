@@ -11,6 +11,7 @@ import Reactions from '../../CardList/Reactions.jsx';
 import { LoadingPage } from '../../../pages/LoadingPage';
 import EmoziToggleBox from './EmoziToggleBox.jsx';
 import AddEmoziBtn from './AddEmoziBtn.jsx';
+import { TEAM } from '../../../constants';
 
 export default function SubHeader() {
   // Toast 팝업 상태 관리
@@ -30,7 +31,7 @@ export default function SubHeader() {
 
   // Recipient 데이터
   const { data: recipientData, isLoading } = useFetch(
-    `/2-7/recipients/${recipientId}/`,
+    `/${TEAM}/recipients/${recipientId}/`,
   );
 
   // 데이터 로드 이후에 렌더링
@@ -116,7 +117,7 @@ export default function SubHeader() {
           )}
           {/* 이모지 토글 박스 */}
           <div className={styles.emoziToggleBox} ref={showEmoziRef}>
-            <EmoziToggleBox recipientId={recipientId} />
+            <EmoziToggleBox team={TEAM} recipientId={recipientId} />
           </div>
           {/* 이모지 추가 버튼 */}
           <AddEmoziBtn />

@@ -2,10 +2,10 @@ import useFetch from '../../../hooks/useFetch';
 import { LoadingPage } from '../../../pages/LoadingPage';
 import styles from './EmoziToggleBox.module.scss';
 
-export default function EmoziToggleBox({ recipientId }) {
+export default function EmoziToggleBox({ team, recipientId }) {
   // Reactions 데이터
   const { data: reactionData, isLoading } = useFetch(
-    `/2-7/recipients/${recipientId}/reactions/?limit=0&offset=0`,
+    `/${team}/recipients/${recipientId}/reactions/?limit=0&offset=0`,
   );
 
   // 데이터 로드 이후에 렌더링

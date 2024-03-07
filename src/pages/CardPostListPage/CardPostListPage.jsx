@@ -43,8 +43,19 @@ function CardPostListPage() {
   // isEdit(true or false) 여부에 따라서 handleDelete에 function 또는 null을 부여
   // CardPost에서 "typeof onDelete === function"으로 휴지통 버튼을 조건부 렌더링
   const handleDelete = isEdit
-    ? (id) => {
-        console.log(id);
+    ? async (id) => {
+        try {
+          const response = await fetch(
+            `https://rolling-api.vercel.app/4-22/messages/${id}/`,
+            { method: 'DELETE' },
+          );
+
+          if (!response.ok) {
+            throw new Error('삭제에 실패하였습니다.');
+          }
+        } catch (error) {
+          console.error(error);
+        }
       }
     : null;
 

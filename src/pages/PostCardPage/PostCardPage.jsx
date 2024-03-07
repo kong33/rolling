@@ -4,26 +4,19 @@ import styles from './PostCardPage.module.scss';
 import { Button, ButtonToggle } from '../../components/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-const BUTTON_SIZE = {
-  free: 'free', // width auto
-  sm: 'sm', // width 92px
-  md: 'md', // width 280px
-  lg: 'lg', // width 320px
-  xl: 'xl', // width 720px
-  full: 'full', // width 100%
-};
+import { BUTTON_SIZE, LABEL, DESCRIPTION } from '../../constants';
+import useMutate from '../../hooks/useMutate';
+import ErrorPage from '../ErrorPage/ErrorPage';
 
 export default function PostCardPage() {
-  const LABEL = '배경화면을 선택해 주세요';
-  const DESCRIPTION = '컬러를 선택하거나, 이미지를 선택할 수 있습니다.';
-  const URL = 'https://rolling-api.vercel.app/4-22/recipients/';
+  const URL = '/4-22/recipients/';
   const navigate = useNavigate();
   const [type, setType] = useState('color');
+  const { mutate } = useMutate(URL);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log('handlesubmit');
     const formData = {
       name: e.target.name.value || null,
       team: '4-22',
@@ -31,23 +24,14 @@ export default function PostCardPage() {
       backgroundImageURL: e.target.backgroundImageURL.value || null,
     };
 
-    try {
-      const response = await fetch(URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('응답실패');
-      }
-      const dataJson = await response.json();
-      navigate(`/post/${dataJson.id}`);
-    } catch (error) {
-      alert(error);
-    }
+    mutate(formData, {
+      onSuccess: (data) => {
+        navigate(`/post/${data.id}`);
+      },
+      onError: () => {
+        return <ErrorPage />;
+      },
+    });
   };
 
   const handleClick = (e) => {

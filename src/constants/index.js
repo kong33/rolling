@@ -34,3 +34,6 @@ export const BUTTON_SIZE = {
   xl: 'xl', // width 720px
   full: 'full', // width 100%
 };
+
+export const LABEL = '배경화면을 선택해 주세요';
+export const DESCRIPTION = '컬러를 선택하거나, 이미지를 선택할 수 있습니다.';

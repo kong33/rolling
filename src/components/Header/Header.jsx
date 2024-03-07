@@ -10,7 +10,8 @@ export default function Header() {
   const showSubHeader = !(
     pathname === '/' ||
     pathname === '/list' ||
-    pathname.match(/^\/post\/\d+\/message$/)
+    pathname === '/post' ||
+    pathname.match('/messages')
   );
 
   return (

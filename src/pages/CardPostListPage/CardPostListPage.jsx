@@ -36,8 +36,7 @@ import { Button } from '../../components/Button';
 /*
 작업 5
 1) 삭제할때 넘어오는 id로 messages를 filter해서 setMessages로 리렌더링
-2)
-(fetch문이 우선순위 그다음이 try~catch문)
+2) 1)작업을 isDelete 상태로 의존성배열에 첨부해서 계속 messages를 fetch 받아오게 수정
 */
 
 function CardPostListPage() {
@@ -56,6 +55,7 @@ function CardPostListPage() {
 
   const [recipientInfo, setRecipientInfo] = useState(null);
   const [messages, setMessages] = useState(null);
+  const [isDelete, setIsDelete] = useState(false);
 
   // isEdit(true or false) 여부에 따라서 handleDelete에 function 또는 null을 부여
   // CardPost에서 "typeof onDelete === function"으로 휴지통 버튼을 조건부 렌더링
@@ -73,9 +73,7 @@ function CardPostListPage() {
 
           console.log(`${id}가 삭제되었습니다.`);
 
-          setMessages((preMessages) => {
-            return preMessages.filter((message) => message.id !== id);
-          });
+          setIsDelete(!isDelete);
         } catch (error) {
           console.error(error);
         }
@@ -123,7 +121,7 @@ function CardPostListPage() {
       }
     };
     getMessages();
-  }, [recipientId]);
+  }, [recipientId, isDelete]);
 
   return (
     <>

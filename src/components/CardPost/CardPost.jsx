@@ -2,6 +2,7 @@ import styles from './CardPostList.module.scss';
 import Deleted from '../../assets/svg/Deleted';
 import { BadgeRelation } from '../Badge';
 import { formatDate } from '../../utils/dateFormatter';
+import { Button } from '../Button';
 
 function CardPost({ item, onDelete }) {
   const { id, profileImageURL, sender, relationship, content, createdAt } =
@@ -27,9 +28,13 @@ function CardPost({ item, onDelete }) {
 
         {typeof onDelete === 'function' && (
           // 실제로 삭제 버튼을 누른 CardPost를 알 수 있게 onDelete에 id를 넘겨줌
-          <button className={styles.deleteIcon} onClick={() => onDelete(id)}>
+          <Button
+            className={styles.deleteIcon}
+            onClick={() => onDelete(id)}
+            styleType="outlined40"
+          >
             <Deleted />
-          </button>
+          </Button>
         )}
       </div>
 

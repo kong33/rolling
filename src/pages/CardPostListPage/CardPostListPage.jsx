@@ -2,6 +2,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import styles from './CardPostListPage.module.scss';
 import { useEffect, useState } from 'react';
 import CardPostList from '../../components/CardPost/CardPostList';
+import { Button } from '../../components/Button';
 
 /* 
 작업 1
@@ -105,9 +106,11 @@ function CardPostListPage() {
 
   return (
     <>
-      <h1 className={styles.container}>CardPostListPage</h1>
-      {/* TODO: CardPostList 만들기 */}
-      <CardPostList items={messages} onDelete={handleDelete} />
+      <div className={styles.background}></div>
+      <div>
+        <Button>삭제하기</Button>
+        <CardPostList items={messages} onDelete={handleDelete} />
+      </div>
     </>
   );
 }

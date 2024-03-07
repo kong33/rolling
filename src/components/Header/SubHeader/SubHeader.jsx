@@ -1,4 +1,5 @@
 import ArrowDown from '../../../assets/svg/ArrowDown.jsx';
+import ArrowUp from '../../../assets/svg/ArrowUp.jsx';
 import Share24 from '../../../assets/svg/Share24.jsx';
 import styles from './SubHeader.module.scss';
 import { useRef, useState } from 'react';
@@ -55,14 +56,14 @@ export default function SubHeader() {
   };
 
   // Emozi 토글 핸들러 함수
-  const handleToggleEmozi = () => {
-    if (!showEmozi) {
-      showEmoziRef.current.style.display = 'block';
-      setShowEmozi(true);
-    } else {
-      showEmoziRef.current.style.display = 'none';
-      setShowEmozi(false);
-    }
+  const openEmoziToggle = () => {
+    showEmoziRef.current.style.display = 'block';
+    setShowEmozi(true);
+  };
+
+  const closeEmoziToggle = () => {
+    showEmoziRef.current.style.display = 'none';
+    setShowEmozi(false);
   };
 
   // 공유 버튼 토글 핸들러 함수
@@ -111,15 +112,25 @@ export default function SubHeader() {
           <Reactions reactions={topReactions} />
           {/* 이모지 더 보기 버튼 */}
           {topReactions.length ? (
-            <div className={styles.toggleBtn} onClick={handleToggleEmozi}>
-              <ArrowDown />
-            </div>
+            showEmozi ? (
+              <div onClick={closeEmoziToggle}>
+                <ArrowUp />
+              </div>
+            ) : (
+              <div className={styles.toggleBtn} onClick={openEmoziToggle}>
+                <ArrowDown />
+              </div>
+            )
           ) : (
             <div></div>
           )}
           {/* 이모지 토글 박스 */}
           <div className={styles.emoziToggleBox} ref={showEmoziRef}>
-            <EmoziToggleBox team={TEAM} recipientId={recipientId} />
+            <EmoziToggleBox
+              team={TEAM}
+              recipientId={recipientId}
+              close={closeEmoziToggle}
+            />
           </div>
           {/* 이모지 추가 버튼 */}
           <AddEmoziBtn />

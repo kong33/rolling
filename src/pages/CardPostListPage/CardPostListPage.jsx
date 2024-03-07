@@ -30,6 +30,14 @@ import { Button } from '../../components/Button';
 1) handleDelete에 받아온 id로 fetch로 delete 구현 
 2) fetch에 try~catch문으로 error 처리
 (fetch문이 우선순위 그다음이 try~catch문)
+3) 존재하지 않은 recipientId로 넘어오면 list로 내보냄 (useNavigate 추가)
+*/
+
+/*
+작업 5
+1) 삭제할때 넘어오는 id로 messages를 filter해서 setMessages로 리렌더링
+2)
+(fetch문이 우선순위 그다음이 try~catch문)
 */
 
 function CardPostListPage() {
@@ -62,6 +70,12 @@ function CardPostListPage() {
           if (!response.ok) {
             throw new Error('삭제에 실패하였습니다.');
           }
+
+          console.log(`${id}가 삭제되었습니다.`);
+
+          setMessages((preMessages) => {
+            return preMessages.filter((message) => message.id !== id);
+          });
         } catch (error) {
           console.error(error);
         }

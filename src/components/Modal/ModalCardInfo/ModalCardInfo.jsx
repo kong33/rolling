@@ -14,7 +14,9 @@ const ModalCardInfo = forwardRef((_, ref) => {
     setIsOpen(true);
   };
 
-  const close = () => setIsOpen(false);
+  const close = () => {
+    setIsOpen(false);
+  };
 
   const setInfo = ({
     profileImageURL,

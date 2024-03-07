@@ -6,11 +6,25 @@ import { Avatar } from '../../Avatar';
 import { BadgeRelation } from '../../Badge';
 import { formatDate } from '../../../utils/dateFormatter';
 
-const ModalCardInfo = forwardRef(({ card }, ref) => {
+const ModalCardInfo = forwardRef((_, ref) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalInfo, setModalInfo] = useState(null);
 
-  const open = () => setIsOpen(true);
+  const open = () => {
+    setIsOpen(true);
+  };
+
   const close = () => setIsOpen(false);
+
+  const setInfo = ({
+    profileImageURL,
+    sender,
+    relationship,
+    createdAt,
+    content,
+  }) => {
+    setModalInfo({ profileImageURL, sender, relationship, createdAt, content });
+  };
 
   useImperativeHandle(
     ref,
@@ -18,6 +32,7 @@ const ModalCardInfo = forwardRef(({ card }, ref) => {
       return {
         open,
         close,
+        setInfo,
       };
     },
     [],
@@ -33,20 +48,23 @@ const ModalCardInfo = forwardRef(({ card }, ref) => {
         <header className={styles.header}>
           <div className={styles.info}>
             <div className={styles.profile}>
-              <Avatar src={card?.profileImageURL} alt={card?.sender} />
+              <Avatar
+                src={modalInfo?.profileImageURL}
+                alt={modalInfo?.sender}
+              />
             </div>
             <div className={styles.infoText}>
               <div className={styles.sender}>
-                From. <span>{card?.sender}</span>
+                From. <span>{modalInfo?.sender}</span>
               </div>
               <div className={styles.relationship}>
-                <BadgeRelation relationship={card?.relationship} />
+                <BadgeRelation relationship={modalInfo?.relationship} />
               </div>
             </div>
           </div>
-          <div className={styles.time}>{formatDate(card?.createdAt)}</div>
+          <div className={styles.time}>{formatDate(modalInfo?.createdAt)}</div>
         </header>
-        <div className={styles.body}>{card?.content}</div>
+        <div className={styles.body}>{modalInfo?.content}</div>
         <footer className={styles.footer}>
           <Button styleType="primary40" size="sm" onClick={close}>
             확인

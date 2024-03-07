@@ -1,4 +1,4 @@
-import style from './CardPostList.module.scss';
+import styles from './CardPostList.module.scss';
 import Deleted from '../../assets/svg/Deleted';
 import { formatDate } from '../../utils/dateFormatter';
 
@@ -7,18 +7,18 @@ function CardPost({ item, onDelete }) {
     item;
 
   return (
-    <article className={style.cardPost}>
+    <article className={styles.cardPost}>
       {/* 카드프로필 */}
-      <div className={style.cardProfileBox}>
-        <div className={style.cardProfile}>
-          <img className={style.cardImage} src={profileImageURL} />
-          <div className={style.cardInfo}>
-            <div className={style.cardName}>
+      <div className={styles.cardProfileBox}>
+        <div className={styles.cardProfile}>
+          <img className={styles.cardImage} src={profileImageURL} />
+          <div className={styles.cardInfo}>
+            <div className={styles.cardName}>
               <p>
                 From.<span>{sender}</span>
               </p>
             </div>
-            <div className={style.cardBadge}>
+            <div className={styles.cardBadge}>
               <p>{relationship}</p>
             </div>
           </div>
@@ -26,18 +26,18 @@ function CardPost({ item, onDelete }) {
 
         {typeof onDelete === 'function' && (
           // 실제로 삭제 버튼을 누른 CardPost를 알 수 있게 onDelete에 id를 넘겨줌
-          <button className={style.deleteIcon} onClick={() => onDelete(id)}>
+          <button className={styles.deleteIcon} onClick={() => onDelete(id)}>
             <Deleted />
           </button>
         )}
       </div>
 
       {/* 카드내용 */}
-      <div className={style.cardContentBox}>
-        <div className={style.cardContent}>
+      <div className={styles.cardContentBox}>
+        <div className={styles.cardContent}>
           <p>{content}</p>
         </div>
-        <p className={style.cardDate}>{formatDate(createdAt)}</p>
+        <p className={styles.cardDate}>{formatDate(createdAt)}</p>
       </div>
     </article>
   );

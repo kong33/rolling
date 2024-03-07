@@ -51,7 +51,7 @@ function CardPostListPage() {
   useEffect(() => {
     const getInfo = async () => {
       const response = await fetch(
-        `https://rolling-api.vercel.app/2-7/recipients/${recipientId}/`,
+        `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/`,
       );
       const json = await response.json();
       console.log(recipientInfo);
@@ -63,7 +63,7 @@ function CardPostListPage() {
   useEffect(() => {
     const getMessages = async () => {
       const response = await fetch(
-        `https://rolling-api.vercel.app/2-7/recipients/${recipientId}/messages/`,
+        `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/messages/`,
       );
       const json = await response.json();
       setMessages(json.results);

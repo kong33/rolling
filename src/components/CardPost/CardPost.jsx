@@ -4,12 +4,17 @@ import { BadgeRelation } from '../Badge';
 import { formatDate } from '../../utils/dateFormatter';
 import { Button } from '../Button';
 
-function CardPost({ item, onDelete }) {
+function CardPost({ item, onDelete, onClick }) {
   const { id, profileImageURL, sender, relationship, content, createdAt } =
     item;
 
+  const handleDelete = (event) => {
+    event.stopPropagation();
+    onDelete(id);
+  };
+
   return (
-    <article className={styles.cardPost}>
+    <article className={styles.cardPost} onClick={onClick}>
       {/* 카드프로필 */}
       <div className={styles.cardProfileBox}>
         <div className={styles.cardProfile}>
@@ -30,7 +35,7 @@ function CardPost({ item, onDelete }) {
           // 실제로 삭제 버튼을 누른 CardPost를 알 수 있게 onDelete에 id를 넘겨줌
           <Button
             className={styles.deleteIcon}
-            onClick={() => onDelete(id)}
+            onClick={handleDelete}
             styleType="outlined40"
           >
             <Deleted />

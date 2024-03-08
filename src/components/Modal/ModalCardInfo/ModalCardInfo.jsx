@@ -66,7 +66,10 @@ const ModalCardInfo = forwardRef((_, ref) => {
           </div>
           <div className={styles.time}>{formatDate(modalInfo?.createdAt)}</div>
         </header>
-        <div className={styles.body}>{modalInfo?.content}</div>
+        <div
+          className={styles.body}
+          dangerouslySetInnerHTML={{ __html: modalInfo?.content }}
+        ></div>
         <footer className={styles.footer}>
           <Button styleType="primary40" size="sm" onClick={close}>
             확인

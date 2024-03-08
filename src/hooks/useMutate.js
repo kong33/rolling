@@ -3,11 +3,9 @@ import { useState } from 'react';
 export default function useMutate(url, method = 'POST') {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [onError, setOnError] = useState(null);
 
   const mutate = async (body, { onSuccess, onError } = {}) => {
     setIsLoading(true);
-    setOnError(null);
 
     try {
       // 통신 할 데이터 메소드와 헤더 지정
@@ -47,7 +45,7 @@ export default function useMutate(url, method = 'POST') {
     }
   };
 
-  return { data, mutate, isLoading, onError };
+  return { data, mutate, isLoading };
 }
 //data : response 데이터. 필요하면 사용
 //mutate : 사용처에서 특정 함수 안에서 fetch진행하고 싶으면 mutate로 해야함. (useMutate자체는 함수 안에서 사용 불가능 (훅이라서))

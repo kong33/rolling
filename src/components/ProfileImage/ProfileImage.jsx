@@ -24,7 +24,6 @@ export default function ProfileImage() {
 
   const handleClick = (image) => {
     setChoosedImg(image);
-    console.log(choosedImg);
   };
 
   return (

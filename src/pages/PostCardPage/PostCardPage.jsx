@@ -4,22 +4,22 @@ import styles from './PostCardPage.module.scss';
 import { Button, ButtonToggle } from '../../components/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BUTTON_SIZE, LABEL, DESCRIPTION } from '../../constants';
+import { BUTTON_SIZE, LABEL, DESCRIPTION, TEAM } from '../../constants';
 import useMutate from '../../hooks/useMutate';
 import ErrorPage from '../ErrorPage/ErrorPage';
 
 export default function PostCardPage() {
-  const URL = '/4-22/recipients/';
+  const URL = `/${TEAM}/recipients/`;
   const navigate = useNavigate();
   const [type, setType] = useState('color');
   const { mutate } = useMutate(URL);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('handlesubmit');
+
     const formData = {
       name: e.target.name.value || null,
-      team: '4-22',
+      team: TEAM,
       backgroundColor: e.target.backgroundColor.value || 'beige',
       backgroundImageURL: e.target.backgroundImageURL.value || null,
     };
@@ -28,8 +28,8 @@ export default function PostCardPage() {
       onSuccess: (data) => {
         navigate(`/post/${data.id}`);
       },
-      onError: () => {
-        return <ErrorPage />;
+      onError: (error) => {
+        return <ErrorPage errorMessage={error} />;
       },
     });
   };

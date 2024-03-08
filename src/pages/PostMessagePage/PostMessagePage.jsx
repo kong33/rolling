@@ -17,7 +17,7 @@ import {
 export default function PostMessagePage() {
   const { recipientId } = useParams();
   const navigate = useNavigate();
-  const URL = `/4-22/recipients/${recipientId}/messages/`;
+  const URL = `/${TEAM}/recipients/${recipientId}/messages/`;
   const { mutate } = useMutate(URL);
 
   const handleSubmit = async (e) => {

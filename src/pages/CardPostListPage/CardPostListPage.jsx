@@ -176,8 +176,6 @@ function CardPostListPage() {
       } else {
         setMessages((preMessages) => [...preMessages, ...json.results]);
       }
-
-      setOffset(LIMIT + offset);
     } catch (error) {
       console.error(error);
       navigate('/list');
@@ -186,10 +184,10 @@ function CardPostListPage() {
 
   useEffect(() => {
     handleMessagesLoad();
-  }, [recipientId]);
+  }, [recipientId, offset]);
 
   const handleMessagesLoadMore = () => {
-    handleMessagesLoad();
+    setOffset(LIMIT + offset);
   };
 
   return (

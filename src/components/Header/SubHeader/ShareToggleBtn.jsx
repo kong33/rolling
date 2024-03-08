@@ -4,6 +4,7 @@ import Button from '../../Button/Button/Button.jsx';
 import Share24 from '../../../assets/svg/Share24.jsx';
 import { useRef, useState } from 'react';
 import styles from './SubHeader.module.scss';
+import useClickOutside from '../../../hooks/useClickOutside.js';
 
 export default function ShareToggleBtn() {
   // Toast, 토글 Box 상태 관리
@@ -31,6 +32,13 @@ export default function ShareToggleBtn() {
       setShowShare(false);
     }
   };
+
+  const closeShareBox = () => {
+    showShareRef.current.style.display = 'none';
+    setShowShare(false);
+  };
+
+  useClickOutside(showShareRef, closeShareBox);
 
   return (
     <>

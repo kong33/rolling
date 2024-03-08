@@ -26,7 +26,8 @@
 
       & .visitorImage-1,
       .visitorImage-2,
-      .visitorImage-3 {
+      .visitorImage-3,
+      .visitorCount {
         width: 32px;
         height: 32px;
         border-radius: 50px;
@@ -54,7 +55,21 @@
         position: absolute;
         left: 48px;
         z-index: 4;
+        width: 32px;
+        border-radius: 30px;
+        color: $color-gray-500;
+        @include font-12-Regular;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 2px;
       }
+    }
+
+    & .visitorEmptyCase {
+      height: 32px;
+      display: flex;
+      align-items: center;
     }
 
     & .text {
@@ -65,4 +80,23 @@
       }
     }
   }
+
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+  }
+}
+
+.beige {
+  background-color: $color-orange-200;
+}
+.purple {
+  background-color: $color-purple-200;
+}
+.blue {
+  background-color: $color-blue-200;
+}
+.green {
+  background-color: $color-green-200;
 }

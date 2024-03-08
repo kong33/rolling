@@ -10,18 +10,20 @@ export default function CardOverview({ recipient }) {
     topReactions,
     recentMessages: visitors,
   } = recipient;
-  console.log(visitors);
   const bgStyle = {
-    background: backgroundImageURL
-      ? `linear-gradient(180deg, rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.54) 100%), url(${backgroundImageURL})`
-      : backgroundColor,
-    color: backgroundImageURL ? '#FFF' : 'inherit',
+    background:
+      backgroundImageURL &&
+      `linear-gradient(180deg, rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.54) 100%), url(${backgroundImageURL})`,
+    color: backgroundImageURL && '#FFF',
   };
 
   const visitorCount = visitors.length - 3 > 0 ? visitors.length - 3 : null;
 
   return (
-    <article className={styles.content} style={bgStyle}>
+    <article
+      className={`${styles.content} ${styles[backgroundColor || 'null']}`}
+      style={bgStyle}
+    >
       <div className={styles.profile}>
         <h1 className={styles.name}>To. {name}</h1>
         <div className={styles.profileImageContainer}>
@@ -34,11 +36,12 @@ export default function CardOverview({ recipient }) {
               />
             ))
           ) : (
-            <div>저는 친구가 없답니다!</div>
+            <div className={styles.visitorEmptyCase}>
+              첫 메세지의 주인공이 되어보세요!
+            </div>
           )}
-          {/* 누구 여기 아래 수정 가능하신분? */}
-          {visitors.length - 3 > 0 && (
-            <p className={styles.visitorCount}>{visitorCount}</p>
+          {visitorCount && (
+            <p className={styles.visitorCount}>+{visitorCount}</p>
           )}
         </div>
         <p className={styles.text}>

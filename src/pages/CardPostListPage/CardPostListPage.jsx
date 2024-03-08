@@ -47,6 +47,8 @@ import { ModalCardInfo, ModalConfirm } from '../../components/Modal';
 3) handleDelete의 이벤트버블링 방지추가
 4) 카드를 클릭했을때 handleInfoOpen 추가
 5) 카드확인과 삭제확인모달 연결
+6) 더보기 버튼 추가하고 handleMessagesLoad로 fetch 함수 분리한후 스웨거 확인후 ?limit=${LIMIT}&offset=${offset} 추가하고
+    갯수 LIMIT + offset 동작하는 부분도 추가
 */
 
 function CardPostListPage() {
@@ -65,8 +67,11 @@ function CardPostListPage() {
   const modalConfirmRef = useRef(null);
   const modalCardInfoRef = useRef(null);
 
+  const LIMIT = isEdit ? 6 : 5;
+  const [offset, setOffset] = useState(0);
+
   const [recipientInfo, setRecipientInfo] = useState(null);
-  const [messages, setMessages] = useState(null);
+  const [messages, setMessages] = useState([]);
 
   // isEdit(true or false) 여부에 따라서 handleDelete에 function 또는 null을 부여
   // CardPost에서 "typeof onDelete === function"으로 휴지통 버튼을 조건부 렌더링
@@ -138,24 +143,36 @@ function CardPostListPage() {
     getInfo();
   }, [recipientId]);
 
-  useEffect(() => {
-    const getMessages = async () => {
-      try {
-        const response = await fetch(
-          `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/messages/`,
-        );
-        if (!response.ok) {
-          throw new Error('메세지 리스트를 받아오지 못했습니다.');
-        }
-        const json = await response.json();
-        setMessages(json.results);
-      } catch (error) {
-        console.error(error);
-        navigate('/list');
+  const handleMessagesLoad = async () => {
+    try {
+      const response = await fetch(
+        `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/messages/?limit=${LIMIT}&offset=${offset}`,
+      );
+      if (!response.ok) {
+        throw new Error('메세지 리스트를 받아오지 못했습니다.');
       }
-    };
-    getMessages();
+      const json = await response.json();
+
+      if (offset === 0) {
+        setMessages(json.results);
+      } else {
+        setMessages((preMessages) => [...preMessages, ...json.results]);
+      }
+
+      setOffset(LIMIT + offset);
+    } catch (error) {
+      console.error(error);
+      navigate('/list');
+    }
+  };
+
+  useEffect(() => {
+    handleMessagesLoad();
   }, [recipientId]);
+
+  const handleMessagesLoadMore = () => {
+    handleMessagesLoad();
+  };
 
   return (
     <>
@@ -173,6 +190,9 @@ function CardPostListPage() {
           onClick={handleInfoOpen}
         />
       </div>
+      <Button type="button" onClick={handleMessagesLoadMore}>
+        더보기
+      </Button>
       <ModalCardInfo ref={modalCardInfoRef} />
       <ModalConfirm ref={modalConfirmRef} />
     </>

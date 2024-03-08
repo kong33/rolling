@@ -1,13 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
-import {
-  NextButton,
-  PrevButton,
-  usePrevNextButtons,
-} from './EmblaCarouselArrowButtons';
+import { usePrevNextButtons } from './EmblaCarouselArrowButtons';
 import CardOverview from '../CardOverview';
 import styles from './EmblaCarousel.module.scss';
+import { ButtonArrow } from '../../Button';
 
 const EmblaCarousel = (props) => {
   const { slides, options } = props;
@@ -63,7 +60,6 @@ const EmblaCarousel = (props) => {
   return (
     <section className={styles.embla}>
       {' '}
-      {/* Use the module stylesheet */}
       <div className={styles.embla}>
         <div className={styles.embla__viewport} ref={emblaRef}>
           <div className={styles.embla__container}>
@@ -76,20 +72,18 @@ const EmblaCarousel = (props) => {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className={styles.embla__controls}>
-          <div className={styles.embla__buttons}>
-            <PrevButton
-              onClick={() => onButtonAutoplayClick(onPrevButtonClick)}
-              disabled={prevBtnDisabled}
-            />
-            <NextButton
-              onClick={() => onButtonAutoplayClick(onNextButtonClick)}
-              disabled={nextBtnDisabled}
-            />
-          </div>
-
+          <ButtonArrow
+            className={styles.ArrowLeftBtn}
+            direction={'left'}
+            onClick={() => onButtonAutoplayClick(onPrevButtonClick)}
+            disabled={prevBtnDisabled}
+          />
+          <ButtonArrow
+            className={styles.ArrowRightBtn}
+            direction={'right'}
+            onClick={() => onButtonAutoplayClick(onNextButtonClick)}
+            disabled={nextBtnDisabled}
+          />
           <button
             className={styles.embla__play}
             onClick={toggleAutoplay}
@@ -98,6 +92,10 @@ const EmblaCarousel = (props) => {
             {isPlaying ? 'Stop' : 'Start'}
           </button>
         </div>
+        {/* 
+        <div className={styles.embla__controls}>
+          <div className={styles.embla__buttons}></div>
+        </div> */}
       </div>
     </section>
   );

@@ -192,7 +192,10 @@ function CardPostListPage() {
 
   return (
     <>
-      <div className={styles.background}></div>
+      <div
+        className={`${styles.background} ${styles[recipientInfo?.backgroundColor]}`}
+        style={{ backgroundImage: `url(${recipientInfo?.backgroundImageURL})` }}
+      ></div>
       <div>
         {isEdit ? (
           <Button type="button" onClick={handleCardOverviewDelete} size="sm">

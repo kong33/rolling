@@ -179,9 +179,13 @@ function CardPostListPage() {
       <div className={styles.background}></div>
       <div>
         {isEdit ? (
-          <Button onClick={handleRemoveButtonClick}>삭제하기</Button>
+          <Button type="button" onClick={handleRemoveButtonClick}>
+            삭제하기
+          </Button>
         ) : (
-          <Button onClick={handleEditButtonClick}>편집하기</Button>
+          <Button type="button" onClick={handleEditButtonClick}>
+            편집하기
+          </Button>
         )}
         <CardPostList
           items={messages}

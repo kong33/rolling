@@ -46,6 +46,7 @@ import { ModalCardInfo, ModalConfirm } from '../../components/Modal';
 2) 삭제한 메세지를 제외한 다른 id의 메세지들을 리렌더딩
 3) handleDelete의 이벤트버블링 방지추가
 4) 카드를 클릭했을때 handleInfoOpen 추가
+5) 카드확인과 삭제확인모달 연결
 */
 
 function CardPostListPage() {

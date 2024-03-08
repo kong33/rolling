@@ -3,12 +3,20 @@ import Add24 from '../../../assets/svg/Add24';
 import Button from '../../Button/Button/Button';
 import styles from './AddEmoziBtn.module.scss';
 import { useRef, useState } from 'react';
+import useClickOutside from '../../../hooks/useClickOutside';
 
 export default function AddEmoziBtn() {
   const [showAddEmozi, setShowAddEmozi] = useState(false);
   const [selectedEmozi, setSelectedEmozi] = useState('');
 
   const showAddEmoziRef = useRef();
+
+  const closeEmojiPicker = () => {
+    showAddEmoziRef.current.style.display = 'none';
+    setShowAddEmozi(false);
+  };
+
+  useClickOutside(showAddEmoziRef, closeEmojiPicker);
 
   const handleEmoziSelect = (emoji) => {
     setSelectedEmozi(emoji);

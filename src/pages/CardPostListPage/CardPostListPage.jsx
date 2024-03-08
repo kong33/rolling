@@ -45,10 +45,16 @@ import { ModalCardInfo, ModalConfirm } from '../../components/Modal';
 1) edit 페이지일때 카드추가버튼이 안보이게 HandleCardAddButtonClick 리팩토링
 2) 삭제한 메세지를 제외한 다른 id의 메세지들을 리렌더딩
 3) handleDelete의 이벤트버블링 방지추가
-4) 카드를 클릭했을때 handleInfoOpen 추가
-5) 카드확인과 삭제확인모달 연결
-6) 더보기 버튼 추가하고 handleMessagesLoad로 fetch 함수 분리한후 스웨거 확인후 ?limit=${LIMIT}&offset=${offset} 추가하고
+*/
+
+/*
+작업7
+1) 카드를 클릭했을때 handleInfoOpen 추가
+2) 카드확인과 삭제확인모달 연결
+3) 더보기 버튼 추가하고 handleMessagesLoad로 fetch 함수 분리한후 스웨거 확인후 ?limit=${LIMIT}&offset=${offset} 추가하고
     갯수 LIMIT + offset 동작하는 부분도 추가
+4) 편집버튼 기능구현
+5) 삭제하기버튼 클릭하면 id로 카드들 모두 삭제 구현
 */
 
 function CardPostListPage() {
@@ -108,8 +114,20 @@ function CardPostListPage() {
     navigate(`${pathname}/edit`);
   };
 
-  const handleRemoveButtonClick = () => {
-    console.log('삭제하기');
+  const handleCardOverviewDelete = async () => {
+    try {
+      const response = await fetch(
+        `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/`,
+        { method: 'DELETE' },
+      );
+
+      if (!response.ok) {
+        throw new Error('삭제에 실패하였습니다.');
+      }
+      navigate(`/list`);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleCardAddButtonClick = !isEdit
@@ -179,7 +197,7 @@ function CardPostListPage() {
       <div className={styles.background}></div>
       <div>
         {isEdit ? (
-          <Button type="button" onClick={handleRemoveButtonClick} size="sm">
+          <Button type="button" onClick={handleCardOverviewDelete} size="sm">
             삭제하기
           </Button>
         ) : (

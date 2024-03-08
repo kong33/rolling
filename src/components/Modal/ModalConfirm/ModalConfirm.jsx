@@ -3,11 +3,21 @@ import styles from './ModalConfirm.module.scss';
 import Modal from '../Modal';
 import { Button } from '../../Button';
 
-const ModalConfirm = forwardRef(({ message, onClick }, ref) => {
+const ModalConfirm = forwardRef((_, ref) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalInfo, setModalInfo] = useState({});
 
-  const open = () => setIsOpen(true);
-  const close = () => setIsOpen(false);
+  const open = () => {
+    setIsOpen(true);
+  };
+
+  const close = () => {
+    setIsOpen(false);
+  };
+
+  const setInfo = ({ message, onClick }) => {
+    setModalInfo({ message, onClick });
+  };
 
   useImperativeHandle(
     ref,
@@ -15,14 +25,15 @@ const ModalConfirm = forwardRef(({ message, onClick }, ref) => {
       return {
         open,
         close,
+        setInfo,
       };
     },
     [],
   );
 
   const handleClick = async () => {
-    if (typeof onClick === 'function') {
-      await onClick();
+    if (typeof modalInfo?.onClick === 'function') {
+      await modalInfo?.onClick();
     }
     close();
   };
@@ -34,7 +45,7 @@ const ModalConfirm = forwardRef(({ message, onClick }, ref) => {
   return (
     <Modal close={close}>
       <div className={styles.container}>
-        <div className={styles.body}>{message}</div>
+        <div className={styles.body}>{modalInfo?.message}</div>
         <div className={styles.footer}>
           <Button size="sm" onClick={handleClick}>
             확인

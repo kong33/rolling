@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   width: 600px;
   height: 476px;
   flex-shrink: 0;
@@ -71,4 +70,8 @@
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }
+}
+
+.footer {
+  margin: 0 auto;
 }

@@ -1,8 +1,9 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './CardPostListPage.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CardPostList from '../../components/CardPost/CardPostList';
 import { Button } from '../../components/Button';
+import { ModalCardInfo, ModalConfirm } from '../../components/Modal';
 
 /* 
 작업 1
@@ -60,31 +61,40 @@ function CardPostListPage() {
   const { pathname } = useLocation();
   const isEdit = pathname.split('/')[3] === 'edit' ? true : false;
 
+  const modalConfirmRef = useRef(null);
+  const modalCardInfoRef = useRef(null);
+
   const [recipientInfo, setRecipientInfo] = useState(null);
   const [messages, setMessages] = useState(null);
 
   // isEdit(true or false) 여부에 따라서 handleDelete에 function 또는 null을 부여
   // CardPost에서 "typeof onDelete === function"으로 휴지통 버튼을 조건부 렌더링
   const handleDelete = isEdit
-    ? async (id) => {
-        try {
-          const response = await fetch(
-            `https://rolling-api.vercel.app/4-22/messages/${id}/`,
-            { method: 'DELETE' },
-          );
+    ? (id) => {
+        modalConfirmRef.current?.setInfo({
+          message: '정말 삭제하시겠습니까?',
+          onClick: async () => {
+            try {
+              const response = await fetch(
+                `https://rolling-api.vercel.app/4-22/messages/${id}/`,
+                { method: 'DELETE' },
+              );
 
-          if (!response.ok) {
-            throw new Error('삭제에 실패하였습니다.');
-          }
+              if (!response.ok) {
+                throw new Error('삭제에 실패하였습니다.');
+              }
 
-          console.log(`${id}가 삭제되었습니다.`);
+              console.log(`${id}가 삭제되었습니다.`);
 
-          setMessages((preMessages) =>
-            preMessages.filter((message) => message.id !== id),
-          );
-        } catch (error) {
-          console.error(error);
-        }
+              setMessages((preMessages) =>
+                preMessages.filter((message) => message.id !== id),
+              );
+            } catch (error) {
+              console.error(error);
+            }
+          },
+        });
+        modalConfirmRef.current?.open();
       }
     : null;
 
@@ -102,8 +112,9 @@ function CardPostListPage() {
       }
     : null;
 
-  const handleInfoOpen = () => {
-    console.log('open');
+  const handleInfoOpen = (item) => {
+    modalCardInfoRef.current?.setInfo(item);
+    modalCardInfoRef.current?.open();
   };
 
   useEffect(() => {
@@ -161,6 +172,8 @@ function CardPostListPage() {
           onClick={handleInfoOpen}
         />
       </div>
+      <ModalCardInfo ref={modalCardInfoRef} />
+      <ModalConfirm ref={modalConfirmRef} />
     </>
   );
 }

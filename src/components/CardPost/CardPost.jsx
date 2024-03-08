@@ -47,7 +47,7 @@ function CardPost({ item, onDelete, onClick }) {
       {/* 카드내용 */}
       <div className={styles.cardContentBox}>
         <div className={styles.cardContent}>
-          <p>{content}</p>
+          <div dangerouslySetInnerHTML={{ __html: content }}></div>
         </div>
         <p className={styles.cardDate}>{formatDate(createdAt)}</p>
       </div>

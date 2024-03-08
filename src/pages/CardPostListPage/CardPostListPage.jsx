@@ -179,11 +179,11 @@ function CardPostListPage() {
       <div className={styles.background}></div>
       <div>
         {isEdit ? (
-          <Button type="button" onClick={handleRemoveButtonClick}>
+          <Button type="button" onClick={handleRemoveButtonClick} size="sm">
             삭제하기
           </Button>
         ) : (
-          <Button type="button" onClick={handleEditButtonClick}>
+          <Button type="button" onClick={handleEditButtonClick} size="sm">
             편집하기
           </Button>
         )}
@@ -194,7 +194,7 @@ function CardPostListPage() {
           onClick={handleInfoOpen}
         />
       </div>
-      <Button type="button" onClick={handleMessagesLoadMore}>
+      <Button type="button" onClick={handleMessagesLoadMore} size="md">
         더보기
       </Button>
       <ModalCardInfo ref={modalCardInfoRef} />

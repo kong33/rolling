@@ -54,7 +54,6 @@ function CardPostListPage() {
 
   const [recipientInfo, setRecipientInfo] = useState(null);
   const [messages, setMessages] = useState(null);
-  const [isDelete, setIsDelete] = useState(false);
 
   // isEdit(true or false) 여부에 따라서 handleDelete에 function 또는 null을 부여
   // CardPost에서 "typeof onDelete === function"으로 휴지통 버튼을 조건부 렌더링
@@ -72,7 +71,9 @@ function CardPostListPage() {
 
           console.log(`${id}가 삭제되었습니다.`);
 
-          setIsDelete(!isDelete);
+          setMessages((preMessages) =>
+            preMessages.filter((message) => message.id !== id),
+          );
         } catch (error) {
           console.error(error);
         }
@@ -130,7 +131,7 @@ function CardPostListPage() {
       }
     };
     getMessages();
-  }, [recipientId, isDelete]);
+  }, [recipientId]);
 
   return (
     <>

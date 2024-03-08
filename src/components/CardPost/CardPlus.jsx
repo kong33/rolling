@@ -1,12 +1,10 @@
-import style from './CardPostList.module.scss';
-import PlusIcon from '../../assets/svg/Plus';
+import styles from './CardPostList.module.scss';
+import { ButtonPlus } from '../Button';
 
-function CardPlus({ cardPlus }) {
+function CardPlus({ onAdd }) {
   return (
-    <article className={style.cardPost}>
-      <button className={style.plusIcon} onClick={() => cardPlus()}>
-        <PlusIcon />
-      </button>
+    <article className={styles.cardPost}>
+      <ButtonPlus className={styles.plusIcon} onClick={onAdd} />
     </article>
   );
 }

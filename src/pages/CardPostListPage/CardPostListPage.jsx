@@ -99,8 +99,6 @@ function CardPostListPage() {
                 throw new Error('삭제에 실패하였습니다.');
               }
 
-              console.log(`${id}가 삭제되었습니다.`);
-
               setMessages((preMessages) =>
                 preMessages.filter((message) => message.id !== id),
               );
@@ -160,7 +158,6 @@ function CardPostListPage() {
           throw new Error('RecipientInfo를 받아오는데 실패했습니다.');
         }
         const json = await response.json();
-        console.log(recipientInfo);
         setRecipientInfo(json);
       } catch (error) {
         console.error(error);

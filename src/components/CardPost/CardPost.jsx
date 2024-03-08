@@ -14,7 +14,7 @@ function CardPost({ item, onDelete, onClick }) {
   };
 
   return (
-    <article className={styles.cardPost} onClick={onClick}>
+    <article className={styles.cardPost} onClick={() => onClick(item)}>
       {/* 카드프로필 */}
       <div className={styles.cardProfileBox}>
         <div className={styles.cardProfile}>

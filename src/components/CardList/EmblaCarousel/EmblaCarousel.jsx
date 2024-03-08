@@ -7,7 +7,7 @@ import styles from './EmblaCarousel.module.scss';
 import { ButtonArrow } from '../../Button';
 
 const EmblaCarousel = (props) => {
-  const { slides, options } = props;
+  const { slides, options, CarouselName } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
     AutoScroll({ playOnInit: false }),
   ]);
@@ -61,6 +61,7 @@ const EmblaCarousel = (props) => {
     <section className={styles.embla}>
       {' '}
       <div className={styles.embla}>
+        <h1 className={styles.CarouselName}>{CarouselName}</h1>
         <div className={styles.embla__viewport} ref={emblaRef}>
           <div className={styles.embla__container}>
             {Object.keys(slides).map((recipientId) => (

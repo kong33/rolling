@@ -40,7 +40,7 @@ export default function CardOverview({ recipient }) {
               첫 메세지의 주인공이 되어보세요!
             </div>
           )}
-          {visitors.length - 3 > 0 && (
+          {visitorCount && (
             <p className={styles.visitorCount}>+{visitorCount}</p>
           )}
         </div>

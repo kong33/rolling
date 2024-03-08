@@ -8,7 +8,7 @@ import EmblaCarousel from '../../components/CardList/EmblaCarousel/EmblaCarousel
 
 // 안된것들
 // CardList 애니매이션 - carousel ? 라이브러리 사용
-// 버튼 미구현
+// 하단 버튼 기능 미구현
 // 반응형 미구현
 // 무한스크롤? 가능함?
 

@@ -4,7 +4,7 @@ import styles from './SubHeader.module.scss';
 import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../../../hooks/useFetch';
-import Reactions from '../../CardList/Reactions.jsx';
+import { Reactions } from '../../Reactions';
 import { LoadingPage } from '../../../pages/LoadingPage';
 import EmoziToggleBox from './EmoziToggleBox.jsx';
 import AddEmoziBtn from './AddEmoziBtn.jsx';
@@ -18,9 +18,8 @@ export default function SubHeader() {
   // 토글 박스 DOM 참조용 Ref
   const showEmoziRef = useRef();
 
-  const { recipientId } = useParams();
-
   // Recipient 데이터
+  const { recipientId } = useParams();
   const { data: recipientData, isLoading } = useFetch(
     `/${TEAM}/recipients/${recipientId}/`,
   );
@@ -28,11 +27,7 @@ export default function SubHeader() {
   // 데이터 로드 이후에 렌더링
 
   if (isLoading || !recipientData) {
-    return (
-      <div>
-        <LoadingPage />
-      </div>
-    );
+    return <LoadingPage />;
   }
 
   const { name, messageCount, topReactions, recentMessages } = recipientData;

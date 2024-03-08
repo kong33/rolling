@@ -20,10 +20,22 @@
     font-size: 26px;
   }
 
+  .imageCount1 {
+    margin-right: 0px;
+  }
+
+  .imageCount2 {
+    margin-right: 10px;
+  }
+
+  .imageCount3 {
+    margin-right: 40px;
+  }
+
   .profileImageContainer {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     position: relative;
-    width: 80px;
 
     & .visitorImage-1,
     .visitorImage-2,
@@ -58,7 +70,6 @@
       align-items: center;
       position: absolute;
       left: 48px;
-      bottom: 3px;
       z-index: 4;
       border: 1.5px solid $color-gray-300;
       @include font-14-Regular;

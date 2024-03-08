@@ -105,7 +105,7 @@ function CardPostListPage() {
     : null;
 
   const handleEditButtonClick = () => {
-    console.log('편집하기');
+    navigate(`${pathname}/edit`);
   };
 
   const handleRemoveButtonClick = () => {

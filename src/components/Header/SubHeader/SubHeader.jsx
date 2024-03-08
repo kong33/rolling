@@ -1,32 +1,22 @@
 import ArrowDown from '../../../assets/svg/ArrowDown.jsx';
 import ArrowUp from '../../../assets/svg/ArrowUp.jsx';
-import Share24 from '../../../assets/svg/Share24.jsx';
 import styles from './SubHeader.module.scss';
 import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../../../hooks/useFetch';
-import { Toast } from '../../../components/Toast';
-import Button from '../../Button/Button/Button.jsx';
-import handleShareKakao from '../../../utils/handleShareKakao';
 import Reactions from '../../CardList/Reactions.jsx';
 import { LoadingPage } from '../../../pages/LoadingPage';
 import EmoziToggleBox from './EmoziToggleBox.jsx';
 import AddEmoziBtn from './AddEmoziBtn.jsx';
 import { TEAM } from '../../../constants';
+import ShareToggleBtn from './ShareToggleBtn.jsx';
 
 export default function SubHeader() {
-  // Toast 팝업 상태 관리
-  const [toast, setToast] = useState(false);
-
   // Emozi 토글 상태 관리
   const [showEmozi, setShowEmozi] = useState(false);
 
-  // 공유 버튼 토글 상태 관리
-  const [showShare, setShowShare] = useState(false);
-
   // 토글 박스 DOM 참조용 Ref
   const showEmoziRef = useRef();
-  const showShareRef = useRef();
 
   const { recipientId } = useParams();
 
@@ -47,14 +37,6 @@ export default function SubHeader() {
 
   const { name, messageCount, topReactions, recentMessages } = recipientData;
 
-  // URL 공유 핸들러 함수
-  const handleShareURL = () => {
-    // 클립보드에 URL 복사
-    navigator.clipboard.writeText(window.location.href);
-    // Toast 상태 변경
-    setToast(true);
-  };
-
   // Emozi 토글 핸들러 함수
   const openEmoziToggle = () => {
     showEmoziRef.current.style.display = 'block';
@@ -64,17 +46,6 @@ export default function SubHeader() {
   const closeEmoziToggle = () => {
     showEmoziRef.current.style.display = 'none';
     setShowEmozi(false);
-  };
-
-  // 공유 버튼 토글 핸들러 함수
-  const handleToggleShare = () => {
-    if (!showShare) {
-      showShareRef.current.style.display = 'block';
-      setShowShare(true);
-    } else {
-      showShareRef.current.style.display = 'none';
-      setShowShare(false);
-    }
   };
 
   return (
@@ -135,25 +106,8 @@ export default function SubHeader() {
           {/* 이모지 추가 버튼 */}
           <AddEmoziBtn />
           <div className={styles.line}></div>
-          {/* 공유 토글 버튼 */}
-          <div onClick={handleToggleShare}>
-            <Button type="button" styleType="outlined36">
-              <Share24 />
-            </Button>
-          </div>
           {/* 공유 토글 박스 */}
-          <div
-            className={`${styles.showShare} ${styles.toggleBox}`}
-            ref={showShareRef}
-          >
-            <div className={styles.shareBox} onClick={handleShareKakao}>
-              카카오톡 공유
-            </div>
-            <div className={styles.shareBox} onClick={handleShareURL}>
-              URL 공유
-            </div>
-          </div>
-          {toast && <Toast setToast={setToast} />}
+          <ShareToggleBtn />
         </section>
       </nav>
     </header>

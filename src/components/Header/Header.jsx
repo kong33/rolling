@@ -1,8 +1,8 @@
 // import Logo from '../../assets/svg/Logo.jsx';
 import styles from './Header.module.scss';
-// // import { Link, useLocation } from 'react-router-dom';
-// import Button from '../Button/Button/Button.jsx';
-// import SubHeader from './SubHeader/SubHeader';
+import { Link, useLocation } from 'react-router-dom';
+import { Button } from '../Button';
+import SubHeader from './SubHeader/SubHeader';
 
 export default function Header() {
   // const { pathname } = useLocation();

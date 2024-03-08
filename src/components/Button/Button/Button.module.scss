@@ -125,27 +125,27 @@
     cursor: not-allowed;
   }
 
-  &.free {
+  .free {
     width: auto;
   }
 
-  &.sm {
+  .sm {
     width: 92px;
   }
 
-  &.md {
+  .md {
     width: 280px;
   }
 
-  &.lg {
+  .lg {
     width: 320px;
   }
 
-  &.xl {
+  .xl {
     width: 720px;
   }
 
-  &.full {
+  .full {
     width: 100%;
   }
 }

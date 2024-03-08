@@ -94,6 +94,10 @@ function CardPostListPage() {
       }
     : null;
 
+  const handleInfoOpen = () => {
+    console.log('open');
+  };
+
   useEffect(() => {
     const getInfo = async () => {
       try {
@@ -146,6 +150,7 @@ function CardPostListPage() {
           items={messages}
           onDelete={handleDelete}
           onAdd={handleCardAddButtonClick}
+          onClick={handleInfoOpen}
         />
       </div>
     </>

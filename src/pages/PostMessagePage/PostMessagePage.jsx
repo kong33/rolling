@@ -5,6 +5,8 @@ import { Button } from '../../components/Button';
 import { ReactDraft } from '../../components/ReactDraft';
 import { Dropdown } from '../../components/Dropdown';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
+import useMutate from '../../hooks/useMutate';
+import ErrorPage from '../ErrorPage/ErrorPage';
 import {
   RELATIONSHIPS,
   FONTS,
@@ -15,7 +17,8 @@ import {
 export default function PostMessagePage() {
   const { recipientId } = useParams();
   const navigate = useNavigate();
-  const URL = `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/messages/`;
+  const URL = `/${TEAM}/recipients/${recipientId}/messages/`;
+  const { mutate } = useMutate(URL);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,25 +32,14 @@ export default function PostMessagePage() {
       content: e.target.content.value || null,
       font: e.target.font.value || null,
     };
-
-    console.log(formData);
-
-    try {
-      const response = await fetch(URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('실패');
-      }
-      navigate(`/post/${recipientId}`, { replace: true });
-    } catch (error) {
-      alert(error);
-    }
+    mutate(formData, {
+      onSuccess: (data) => {
+        navigate(`/post/${data.id}`);
+      },
+      onError: () => {
+        return <ErrorPage />;
+      },
+    });
   };
 
   return (

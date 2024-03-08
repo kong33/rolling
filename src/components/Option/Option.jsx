@@ -8,7 +8,7 @@ function Option({ type }) {
   //type은 image, color중 하나
   const colorChart = ['beige', 'purple', 'blue', 'green'];
   const { data, isLoading } = useFetch(`/background-images/`);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState('beige');
 
   if (isLoading || !data) return <LoadingPage />;
 

@@ -1,4 +1,5 @@
 import { EditorState } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
 import { useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import { useEffect } from 'react';
@@ -10,8 +11,9 @@ export default function ReactDraft() {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    const currentText = editorState.getCurrentContent().getPlainText();
-    setText(currentText);
+    const currentText = editorState.getCurrentContent();
+    const html = stateToHTML(currentText);
+    setText(html);
   }, [editorState]);
 
   const onEditorStateChange = function (editorState) {

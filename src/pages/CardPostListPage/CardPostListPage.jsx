@@ -51,7 +51,6 @@ function CardPostListPage() {
   // 주소에서 edit을 가져오려고 한다.
   const { pathname } = useLocation();
   const isEdit = pathname.split('/')[3] === 'edit' ? true : false;
-  console.log('isEdit', isEdit);
 
   const [recipientInfo, setRecipientInfo] = useState(null);
   const [messages, setMessages] = useState(null);
@@ -88,9 +87,11 @@ function CardPostListPage() {
     console.log('삭제하기');
   };
 
-  const handleAdd = () => {
-    navigate(`/post/${recipientId}/messages`);
-  };
+  const handleCardAddButtonClick = !isEdit
+    ? () => {
+        navigate(`/post/${recipientId}/messages`);
+      }
+    : null;
 
   useEffect(() => {
     const getInfo = async () => {
@@ -143,7 +144,7 @@ function CardPostListPage() {
         <CardPostList
           items={messages}
           onDelete={handleDelete}
-          onAdd={handleAdd}
+          onAdd={handleCardAddButtonClick}
         />
       </div>
     </>

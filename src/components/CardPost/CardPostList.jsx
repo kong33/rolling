@@ -6,7 +6,7 @@ function CardPostList({ items, onDelete, onAdd }) {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.cardList}>
-        {onDelete || <CardPlus onAdd={onAdd} />}
+        {onAdd && <CardPlus onAdd={onAdd} />}
         {items?.map((item) => (
           <CardPost key={item.id} item={item} onDelete={onDelete} /> //빨간색 에러 해결
         ))}

@@ -34,6 +34,7 @@ function CardPost({ item, onDelete, onClick }) {
         {onDelete && (
           // 실제로 삭제 버튼을 누른 CardPost를 알 수 있게 onDelete에 id를 넘겨줌
           <Button
+            type="button"
             className={styles.deleteIcon}
             onClick={handleDelete}
             styleType="outlined40"

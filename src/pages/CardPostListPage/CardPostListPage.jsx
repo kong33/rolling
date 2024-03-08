@@ -39,6 +39,14 @@ import { Button } from '../../components/Button';
 2) 1)작업을 isDelete 상태로 의존성배열에 첨부해서 계속 messages를 fetch 받아오게 수정
 */
 
+/*
+작업 6
+1) edit 페이지일때 카드추가버튼이 안보이게 HandleCardAddButtonClick 리팩토링
+2) 삭제한 메세지를 제외한 다른 id의 메세지들을 리렌더딩
+3) handleDelete의 이벤트버블링 방지추가
+4) 카드를 클릭했을때 handleInfoOpen 추가
+*/
+
 function CardPostListPage() {
   // 존재하지 않는 recipientId로 들어왔을 때 내보내기 위함.
   // https://rolling-api.vercel.app/2-7/recipients/2298/

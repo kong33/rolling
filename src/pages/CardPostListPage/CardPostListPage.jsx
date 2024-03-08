@@ -57,6 +57,7 @@ import { ModalCardInfo, ModalConfirm } from '../../components/Modal';
 5) 삭제하기버튼 클릭하면 id로 카드들 모두 삭제 구현
 6) 뒷배경 추가
 7) dangerouslySetInnerHTML 구현
+8) 삭제하기 버튼 눌렀을때 모달연결
 */
 
 function CardPostListPage() {
@@ -116,20 +117,26 @@ function CardPostListPage() {
     navigate(`${pathname}/edit`);
   };
 
-  const handleCardOverviewDelete = async () => {
-    try {
-      const response = await fetch(
-        `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/`,
-        { method: 'DELETE' },
-      );
+  const handleCardOverviewDelete = () => {
+    modalConfirmRef.current?.setInfo({
+      message: '정말 삭제하시겠습니다?',
+      onClick: async () => {
+        try {
+          const response = await fetch(
+            `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/`,
+            { method: 'DELETE' },
+          );
 
-      if (!response.ok) {
-        throw new Error('삭제에 실패하였습니다.');
-      }
-      navigate(`/list`);
-    } catch (error) {
-      console.error(error);
-    }
+          if (!response.ok) {
+            throw new Error('삭제에 실패하였습니다.');
+          }
+          navigate(`/list`);
+        } catch (error) {
+          console.error(error);
+        }
+      },
+    });
+    modalConfirmRef.current?.open();
   };
 
   const handleCardAddButtonClick = !isEdit

@@ -75,7 +75,7 @@ function CardPostListPage() {
 
   // isEdit(true or false) 여부에 따라서 handleDelete에 function 또는 null을 부여
   // CardPost에서 "typeof onDelete === function"으로 휴지통 버튼을 조건부 렌더링
-  const handleDelete = isEdit
+  const handleCardPostDelete = isEdit
     ? (id) => {
         modalConfirmRef.current?.setInfo({
           message: '정말 삭제하시겠습니까?',
@@ -189,7 +189,7 @@ function CardPostListPage() {
         )}
         <CardPostList
           items={messages}
-          onDelete={handleDelete}
+          onDelete={handleCardPostDelete}
           onAdd={handleCardAddButtonClick}
           onClick={handleInfoOpen}
         />

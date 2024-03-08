@@ -55,6 +55,8 @@ import { ModalCardInfo, ModalConfirm } from '../../components/Modal';
     갯수 LIMIT + offset 동작하는 부분도 추가
 4) 편집버튼 기능구현
 5) 삭제하기버튼 클릭하면 id로 카드들 모두 삭제 구현
+6) 뒷배경 추가
+7) dangerouslySetInnerHTML 구현
 */
 
 function CardPostListPage() {

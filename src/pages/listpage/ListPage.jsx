@@ -9,10 +9,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // 안된것들
-// 하단 버튼 기능 미구현
-// navigation
 // 반응형 미구현
 // 무한스크롤
+// overview pattern rect 설정
 
 export default function ListPage() {
   const LIMIT = 8;

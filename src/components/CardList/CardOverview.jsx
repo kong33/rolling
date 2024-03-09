@@ -1,6 +1,6 @@
-import Reactions from './Reactions';
 import styles from './CardOverview.module.scss';
 import { Link } from 'react-router-dom';
+import { Reactions } from '../Reactions';
 
 export default function CardOverview({ recipient }) {
   const {
@@ -51,9 +51,7 @@ export default function CardOverview({ recipient }) {
           <span className={styles.count}>{messageCount}명</span>이 작성했어요!
         </p>
       </div>
-      <div>
-        <Reactions reactions={topReactions} />
-      </div>
+      <Reactions reactions={topReactions} />
     </Link>
   );
 }

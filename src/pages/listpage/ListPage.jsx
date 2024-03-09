@@ -5,30 +5,48 @@ import { Button } from '../../components/Button/';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import CardList from '../../components/CardList/CardList';
 import EmblaCarousel from '../../components/CardList/EmblaCarousel/EmblaCarousel';
+import { useState } from 'react';
 
 // 안된것들
-// CardList 애니매이션 - carousel ? 라이브러리 사용
 // 하단 버튼 기능 미구현
+// navigation
 // 반응형 미구현
-// 무한스크롤? 가능함?
+// 무한스크롤
 
 export default function ListPage() {
   const LIMIT = 8;
   const teamOption = `4-22`;
   const query = `?limit=${LIMIT}&offset=0`;
-  const { data, isLoading } = useFetch(`/${teamOption}/recipients/${query}`);
+  const [offset, setOffset] = useState(0);
+  const { data: dataSortedCreateAt, isLoading } = useFetch(
+    `/${teamOption}/recipients/${query}`,
+  );
   const { data: dataSortedLike, isSortedLikeLoading } = useFetch(
     `/${teamOption}/recipients/${query}&sort=like`,
   );
+  const { data: totalData, isTotalDataLoading } = useFetch(
+    `/${teamOption}/recipients/?limit=${LIMIT}&offset=${offset}`,
+  );
 
-  if (isLoading || isSortedLikeLoading || !data || !dataSortedLike) {
+  if (
+    isLoading ||
+    isSortedLikeLoading ||
+    isTotalDataLoading ||
+    !dataSortedCreateAt ||
+    !dataSortedLike ||
+    !totalData
+  ) {
     return <LoadingPage />;
   }
 
   const hotItems = dataSortedLike ? dataSortedLike.results : null;
-  const newItems = data ? data.results : null;
+  const newItems = dataSortedCreateAt ? dataSortedCreateAt.results : null;
   const EmblaCarouselOptions = {
     loop: true,
+  };
+
+  const handleScroll = () => {
+    setOffset((prevOffset) => prevOffset + `${LIMIT}`);
   };
 
   return (
@@ -43,7 +61,11 @@ export default function ListPage() {
         options={EmblaCarouselOptions}
         CarouselName={'최근에 만든 롤링 페이퍼 ⭐️'}
       />
-      <CardList recipients={newItems} CardListName={'전체 롤링 페이퍼 💜'} />
+      <CardList
+        data={totalData}
+        CardListName={'전체 롤링 페이퍼 💜'}
+        onScroll={handleScroll}
+      />
       <div className={styles.ButtonBg}>
         <Button className={styles.myButton} size={'md'}>
           나도 만들어보기

@@ -1,8 +1,10 @@
 import Reactions from './Reactions';
 import styles from './CardOverview.module.scss';
+import { Link } from 'react-router-dom';
 
 export default function CardOverview({ recipient }) {
   const {
+    id,
     backgroundColor,
     backgroundImageURL,
     messageCount,
@@ -20,7 +22,8 @@ export default function CardOverview({ recipient }) {
   const visitorCount = visitors.length - 3 > 0 ? visitors.length - 3 : null;
 
   return (
-    <article
+    <Link
+      to={`/post/${id}`}
       className={`${styles.content} ${styles[backgroundColor || 'null']}`}
       style={bgStyle}
     >
@@ -51,6 +54,6 @@ export default function CardOverview({ recipient }) {
       <div>
         <Reactions reactions={topReactions} />
       </div>
-    </article>
+    </Link>
   );
 }

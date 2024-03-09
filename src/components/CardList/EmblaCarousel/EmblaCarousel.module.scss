@@ -1,14 +1,14 @@
 .embla {
-  max-width: 100%;
-  margin: 0 auto;
   --slide-height: 19rem;
-  --slide-spacing: 1rem;
-  --slide-size: 25%;
+  // __viewport의 padding-left값
+  --slide-spacing: 20px;
+  // 이걸로 overview 전체넓이 조절
+  --slide-size: 300px;
   // 추가
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 0 32px;
+  width: 1200px;
 
   &__viewport {
     overflow: hidden;
@@ -93,6 +93,10 @@
     top: 50%;
     transform: translateY(-50%);
     transition: transform 0.3s ease;
+
+    &:hover {
+      opacity: 0.5;
+    }
   }
 
   .ArrowLeftBtn {

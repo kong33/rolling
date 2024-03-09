@@ -1,11 +1,11 @@
 .container {
-  width: 100%;
+  width: 1232px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 0 64px;
+  padding: 16px;
 
-  overflow: none;
+  overflow: hidden;
 
   & .title {
     color: $color-black;

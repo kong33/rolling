@@ -59,45 +59,42 @@ const EmblaCarousel = (props) => {
 
   return (
     <section className={styles.embla}>
-      {' '}
-      <div className={styles.embla}>
-        <h1 className={styles.CarouselName}>{CarouselName}</h1>
-        <div className={styles.embla__viewport} ref={emblaRef}>
-          <div className={styles.embla__container}>
-            {Object.keys(slides).map((recipientId) => (
-              <div className={styles.embla__slide} key={recipientId}>
-                <CardOverview
-                  recipient={slides[recipientId]}
-                  className={styles.embla__slide}
-                />{' '}
-              </div>
-            ))}
-          </div>
-          <ButtonArrow
-            className={styles.ArrowLeftBtn}
-            direction={'left'}
-            onClick={() => onButtonAutoplayClick(onPrevButtonClick)}
-            disabled={prevBtnDisabled}
-          />
-          <ButtonArrow
-            className={styles.ArrowRightBtn}
-            direction={'right'}
-            onClick={() => onButtonAutoplayClick(onNextButtonClick)}
-            disabled={nextBtnDisabled}
-          />
-          <button
-            className={styles.embla__play}
-            onClick={toggleAutoplay}
-            type="button"
-          >
-            {isPlaying ? 'Stop' : 'Start'}
-          </button>
+      <h1 className={styles.CarouselName}>{CarouselName}</h1>
+      <div className={styles.embla__viewport} ref={emblaRef}>
+        <div className={styles.embla__container}>
+          {Object.keys(slides).map((recipientId) => (
+            <div className={styles.embla__slide} key={recipientId}>
+              <CardOverview
+                recipient={slides[recipientId]}
+                className={styles.embla__slide}
+              />{' '}
+            </div>
+          ))}
         </div>
-        {/* 
+        <ButtonArrow
+          className={styles.ArrowLeftBtn}
+          direction={'left'}
+          onClick={() => onButtonAutoplayClick(onPrevButtonClick)}
+          disabled={prevBtnDisabled}
+        />
+        <ButtonArrow
+          className={styles.ArrowRightBtn}
+          direction={'right'}
+          onClick={() => onButtonAutoplayClick(onNextButtonClick)}
+          disabled={nextBtnDisabled}
+        />
+        <button
+          className={styles.embla__play}
+          onClick={toggleAutoplay}
+          type="button"
+        >
+          {isPlaying ? 'Stop' : 'Start'}
+        </button>
+      </div>
+      {/* 
         <div className={styles.embla__controls}>
           <div className={styles.embla__buttons}></div>
         </div> */}
-      </div>
     </section>
   );
 };

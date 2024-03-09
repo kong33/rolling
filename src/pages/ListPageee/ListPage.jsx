@@ -1,12 +1,12 @@
+// import Carousel from '../../components/CardList/Carousel';
 import styles from './ListPage.module.scss';
 import useFetch from '../../hooks/useFetch';
 import { Button } from '../../components/Button/';
 import LoadingPage from '../LoadingPage/LoadingPage';
-import TotalCardList from '../../components/CardList/TotalCardList/TotalCardList';
+import CardList from '../../components/CardList/TotalCardList';
 import EmblaCarousel from '../../components/CardList/EmblaCarousel/EmblaCarousel';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import Carousel from '../../components/CardList/Carousel'; - 연습용
 
 // 안된것들
 // 반응형 미구현
@@ -66,7 +66,7 @@ export default function ListPage() {
         options={EmblaCarouselOptions}
         CarouselName={'최근에 만든 롤링 페이퍼 ⭐️'}
       />
-      <TotalCardList
+      <CardList
         data={totalData}
         CardListName={'전체 롤링 페이퍼 💜'}
         onScroll={handleScroll}

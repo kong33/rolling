@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import { usePrevNextButtons } from './EmblaCarouselArrowButtons';
-import CardOverview from '../CardOverview';
+import CardOverview from '../CardOverview/CardOverview';
 import styles from './EmblaCarousel.module.scss';
 import { ButtonArrow } from '../../Button';
 

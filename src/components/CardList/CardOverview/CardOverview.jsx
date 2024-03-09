@@ -1,6 +1,6 @@
 import styles from './CardOverview.module.scss';
 import { Link } from 'react-router-dom';
-import { Reactions } from '../Reactions';
+import { Reactions } from '../../Reactions';
 
 export default function CardOverview({ recipient }) {
   const {

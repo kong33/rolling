@@ -1,7 +1,7 @@
-import CardOverview from './CardOverview';
-import styles from './CardList.module.scss';
+import CardOverview from '../CardOverview/CardOverview';
+import styles from './TotalCardList.module.scss';
 
-export default function CardList({ CardListName, data }) {
+export default function TotalCardList({ CardListName, data }) {
   const recipients = data.results;
 
   return (

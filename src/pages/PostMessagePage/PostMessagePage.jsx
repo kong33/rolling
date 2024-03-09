@@ -33,8 +33,8 @@ export default function PostMessagePage() {
       font: e.target.font.value || null,
     };
     mutate(formData, {
-      onSuccess: (data) => {
-        navigate(`/post/${data.id}`);
+      onSuccess: () => {
+        navigate(`/post/${recipientId}`);
       },
       onError: () => {
         return <ErrorPage />;

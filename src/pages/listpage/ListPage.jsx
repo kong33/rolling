@@ -1,7 +1,7 @@
 // import Carousel from '../../components/CardList/Carousel';
 import styles from './ListPage.module.scss';
 import useFetch from '../../hooks/useFetch';
-import { Button } from '../../components/Button/';
+import { Button } from '../../components/Button';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import CardList from '../../components/CardList/CardList';
 import EmblaCarousel from '../../components/CardList/EmblaCarousel/EmblaCarousel';

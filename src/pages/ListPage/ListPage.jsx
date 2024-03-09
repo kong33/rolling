@@ -1,17 +1,17 @@
 import styles from './ListPage.module.scss';
 import useFetch from '../../hooks/useFetch';
-import { Button } from '../../components/Button/';
-import LoadingPage from '../LoadingPage/LoadingPage';
-import TotalCardList from '../../components/CardList/TotalCardList/TotalCardList';
-import EmblaCarousel from '../../components/CardList/EmblaCarousel/EmblaCarousel';
+import { Button } from '../../components/Button';
+import { LoadingPage } from '../LoadingPage/';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { EmblaCarousel, TotalCardList } from '../../components/CardList';
 // import Carousel from '../../components/CardList/Carousel'; - 연습용
 
 // 안된것들
 // 반응형 미구현
 // 무한스크롤
 // overview pattern rect 설정
+// 에러페이지도 추가
 
 export default function ListPage() {
   const LIMIT = 8;

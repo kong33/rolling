@@ -6,7 +6,7 @@ import CardOverview from '../CardOverview/CardOverview';
 import styles from './EmblaCarousel.module.scss';
 import { ButtonArrow } from '../../Button';
 
-const EmblaCarousel = (props) => {
+export default function EmblaCarousel(props) {
   const { slides, options, CarouselName } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
     AutoScroll({ playOnInit: false }),
@@ -97,6 +97,4 @@ const EmblaCarousel = (props) => {
         </div> */}
     </section>
   );
-};
-
-export default EmblaCarousel;
+}

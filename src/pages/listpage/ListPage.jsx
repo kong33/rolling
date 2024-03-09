@@ -6,6 +6,7 @@ import LoadingPage from '../LoadingPage/LoadingPage';
 import CardList from '../../components/CardList/CardList';
 import EmblaCarousel from '../../components/CardList/EmblaCarousel/EmblaCarousel';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // 안된것들
 // 하단 버튼 기능 미구현
@@ -18,6 +19,7 @@ export default function ListPage() {
   const teamOption = `4-22`;
   const query = `?limit=${LIMIT}&offset=0`;
   const [offset, setOffset] = useState(0);
+  const navigatePostPage = useNavigate();
   const { data: dataSortedCreateAt, isLoading } = useFetch(
     `/${teamOption}/recipients/${query}`,
   );
@@ -45,6 +47,10 @@ export default function ListPage() {
     loop: true,
   };
 
+  const handleBottomBtnClick = () => {
+    navigatePostPage(`/post`);
+  };
+
   const handleScroll = () => {
     setOffset((prevOffset) => prevOffset + `${LIMIT}`);
   };
@@ -67,7 +73,11 @@ export default function ListPage() {
         onScroll={handleScroll}
       />
       <div className={styles.ButtonBg}>
-        <Button className={styles.myButton} size={'md'}>
+        <Button
+          className={styles.myButton}
+          size={'md'}
+          onClick={() => handleBottomBtnClick()}
+        >
           나도 만들어보기
         </Button>
       </div>

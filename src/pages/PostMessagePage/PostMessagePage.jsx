@@ -7,6 +7,8 @@ import { Dropdown } from '../../components/Dropdown';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
 import useMutate from '../../hooks/useMutate';
 import ErrorPage from '../ErrorPage/ErrorPage';
+import useManageInput from '../../hooks/useManageInput/useManageInput';
+
 import {
   RELATIONSHIPS,
   FONTS,
@@ -18,7 +20,15 @@ export default function PostMessagePage() {
   const { recipientId } = useParams();
   const navigate = useNavigate();
   const URL = `/${TEAM}/recipients/${recipientId}/messages/`;
-  const { mutate } = useMutate(URL);
+  const { mutate: postMessage } = useMutate(URL);
+  const {
+    handleClick,
+    handleChange,
+    inputRef,
+    inputValue,
+    isError,
+    isValueExist,
+  } = useManageInput();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +42,7 @@ export default function PostMessagePage() {
       content: e.target.content.value || null,
       font: e.target.font.value || null,
     };
-    mutate(formData, {
+    postMessage(formData, {
       onSuccess: () => {
         navigate(`/post/${recipientId}`);
       },
@@ -46,15 +56,24 @@ export default function PostMessagePage() {
     <>
       <form className={styles.container} onSubmit={handleSubmit}>
         <div className={styles.box}>
-          <label htmlFor="sender" className={styles.label}>
-            From.
-          </label>
-          <Input
-            id="sender"
-            placeholder="이름을 입력해 주세요."
-            errorMassage="필수 항목입니다."
-            name="sender"
-          />
+          <div ref={inputRef}>
+            <Input
+              placeholder="이름을 입력해 주세요."
+              name="sender"
+              onClick={handleClick}
+              onChange={handleChange}
+              value={inputValue}
+              label="From."
+              className={
+                isError
+                  ? styles.error
+                  : isValueExist
+                    ? styles.active
+                    : styles.input
+              }
+            />
+            {isError && <p className={styles.errormessage}>필수 항목입니다.</p>}
+          </div>
         </div>
         <div className={styles.box}>
           <label htmlFor="sender" className={styles.label}>

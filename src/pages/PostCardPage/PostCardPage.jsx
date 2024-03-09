@@ -7,12 +7,21 @@ import { useNavigate } from 'react-router-dom';
 import { BUTTON_SIZE, LABEL, DESCRIPTION, TEAM } from '../../constants';
 import useMutate from '../../hooks/useMutate';
 import ErrorPage from '../ErrorPage/ErrorPage';
+import useManageInput from '../../hooks/useManageInput/useManageInput';
 
 export default function PostCardPage() {
   const URL = `/${TEAM}/recipients/`;
   const navigate = useNavigate();
   const [type, setType] = useState('color');
-  const { mutate } = useMutate(URL);
+  const { mutate: postCard } = useMutate(URL);
+  const {
+    handleClick,
+    handleChange,
+    inputRef,
+    inputValue,
+    isError,
+    isValueExist,
+  } = useManageInput();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +33,7 @@ export default function PostCardPage() {
       backgroundImageURL: e.target.backgroundImageURL.value || null,
     };
 
-    mutate(formData, {
+    postCard(formData, {
       onSuccess: (data) => {
         navigate(`/post/${data.id}`);
       },
@@ -34,7 +43,7 @@ export default function PostCardPage() {
     });
   };
 
-  const handleClick = (e) => {
+  const handleButtonClick = (e) => {
     if (e === 'left') setType('color');
     else setType('image');
   };
@@ -42,20 +51,33 @@ export default function PostCardPage() {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.div}>
-        <Input
-          placeholder="받는 사람 이름을 입력해 주세요"
-          errorMassage="필수 항목입니다."
-          label="To."
-          name="name"
-        />
+        <div ref={inputRef}>
+          <Input
+            placeholder="받는 사람 이름을 입력해 주세요"
+            label="To."
+            name="name"
+            onClick={handleClick}
+            onChange={handleChange}
+            value={inputValue}
+            className={
+              isError
+                ? styles.error
+                : isValueExist
+                  ? styles.active
+                  : styles.input
+            }
+          />
+          {isError && <p className={styles.errormessage}>필수 항목입니다.</p>}
+        </div>
         <div className={styles.textWrapper}>
           <h1 className={styles.h1}>{LABEL}</h1>
           <p className={styles.p}>{DESCRIPTION}</p>
-
+        </div>
+        <div className={styles.buttonToggle}>
           <ButtonToggle
             textLeft="컬러"
             textRight="이미지"
-            onClick={handleClick}
+            onClick={handleButtonClick}
             type="button"
           />
         </div>

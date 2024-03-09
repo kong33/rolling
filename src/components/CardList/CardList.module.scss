@@ -2,7 +2,7 @@
   width: 1232px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 32px;
   padding: 16px;
 
   & .title {
@@ -12,7 +12,8 @@
 
   & .content {
     display: flex;
-    gap: 24px;
+    column-gap: 24px;
+    row-gap: 56px;
     position: relative;
     align-items: center;
     flex-wrap: wrap;

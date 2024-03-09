@@ -202,7 +202,7 @@ function CardPostListPage() {
         className={`${styles.background} ${styles[recipientInfo?.backgroundColor]}`}
         style={{ backgroundImage: `url(${recipientInfo?.backgroundImageURL})` }}
       ></div>
-      <div>
+      <div className={styles.container}>
         {isEdit ? (
           <Button type="button" onClick={handleCardOverviewDelete} size="sm">
             삭제하기

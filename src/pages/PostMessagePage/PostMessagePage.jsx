@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './PostMessagePage.module.scss';
-import { Input } from '../../components/Input';
+import { EnterNameInput } from '../../components/EnterNameInput';
 import { Button } from '../../components/Button';
 import { ReactDraft } from '../../components/ReactDraft';
 import { Dropdown } from '../../components/Dropdown';
@@ -57,7 +57,7 @@ export default function PostMessagePage() {
       <form className={styles.container} onSubmit={handleSubmit}>
         <div className={styles.box}>
           <div ref={inputRef}>
-            <Input
+            <EnterNameInput
               placeholder="이름을 입력해 주세요."
               name="sender"
               onClick={handleClick}

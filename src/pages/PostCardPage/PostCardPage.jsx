@@ -1,4 +1,4 @@
-import Input from '../../components/Input/Input';
+import EnterNameInput from '../../components/EnterNameInput/EnterNameInput';
 import Option from '../../components/Option/Option';
 import styles from './PostCardPage.module.scss';
 import { Button, ButtonToggle } from '../../components/Button';
@@ -52,7 +52,7 @@ export default function PostCardPage() {
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.div}>
         <div ref={inputRef}>
-          <Input
+          <EnterNameInput
             placeholder="받는 사람 이름을 입력해 주세요"
             label="To."
             name="name"

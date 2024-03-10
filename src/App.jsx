@@ -3,7 +3,10 @@ import { LandingPage } from './pages/LandingPage';
 import { ListPage } from './pages/ListPage';
 import { PostCardPage } from './pages/PostCardPage';
 import { PostMessagePage } from './pages/PostMessagePage';
-import { CardPostListPage } from './pages/CardPostListPage';
+import {
+  CardPostListEditPage,
+  CardPostListPage,
+} from './pages/CardPostListPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -19,7 +22,10 @@ function App() {
             element={<PostMessagePage />}
           />
           <Route path="post/:recipientId" element={<CardPostListPage />} />
-          <Route path="post/:recipientId/edit" element={<CardPostListPage />} />
+          <Route
+            path="post/:recipientId/edit"
+            element={<CardPostListEditPage />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

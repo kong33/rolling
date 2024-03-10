@@ -67,7 +67,7 @@ export default function EmblaCarousel(props) {
               <CardOverview
                 recipient={slides[recipientId]}
                 className={styles.embla__slide}
-              />{' '}
+              />
             </div>
           ))}
         </div>
@@ -91,10 +91,6 @@ export default function EmblaCarousel(props) {
           {isPlaying ? 'Stop' : 'Start'}
         </button>
       </div>
-      {/* 
-        <div className={styles.embla__controls}>
-          <div className={styles.embla__buttons}></div>
-        </div> */}
     </section>
   );
 }

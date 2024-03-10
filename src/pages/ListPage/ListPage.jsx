@@ -5,6 +5,7 @@ import { LoadingPage } from '../LoadingPage/';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EmblaCarousel, TotalCardList } from '../../components/CardList';
+import { TEAM } from '../../constants';
 // import Carousel from '../../components/CardList/Carousel'; - 연습용
 
 // 안된것들
@@ -15,18 +16,17 @@ import { EmblaCarousel, TotalCardList } from '../../components/CardList';
 
 export default function ListPage() {
   const LIMIT = 8;
-  const teamOption = `4-22`;
   const query = `?limit=${LIMIT}&offset=0`;
   const [offset, setOffset] = useState(0);
   const navigatePostPage = useNavigate();
   const { data: dataSortedCreateAt, isLoading } = useFetch(
-    `/${teamOption}/recipients/${query}`,
+    `/${TEAM}/recipients/${query}`,
   );
   const { data: dataSortedLike, isSortedLikeLoading } = useFetch(
-    `/${teamOption}/recipients/${query}&sort=like`,
+    `/${TEAM}/recipients/${query}&sort=like`,
   );
   const { data: totalData, isTotalDataLoading } = useFetch(
-    `/${teamOption}/recipients/?limit=${LIMIT}&offset=${offset}`,
+    `/${TEAM}/recipients/?limit=${LIMIT}&offset=${offset}`,
   );
 
   if (

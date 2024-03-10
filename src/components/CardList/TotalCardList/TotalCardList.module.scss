@@ -1,11 +1,9 @@
 .container {
-  width: 100%;
+  width: 1232px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 0 64px;
-
-  overflow: none;
+  padding: 16px;
 
   & .title {
     color: $color-black;
@@ -14,9 +12,11 @@
 
   & .content {
     display: flex;
-    gap: 24px;
+    column-gap: 24px;
+    row-gap: 56px;
     position: relative;
     align-items: center;
+    flex-wrap: wrap;
 
     & .leftBtn,
     & .rightBtn {

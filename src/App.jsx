@@ -1,6 +1,6 @@
 import { Layout } from './pages/Layout';
 import { LandingPage } from './pages/LandingPage';
-import { ListPage } from './pages/lisf';
+import { ListPage } from './pages/ListPage';
 import { PostCardPage } from './pages/PostCardPage';
 import { PostMessagePage } from './pages/PostMessagePage';
 import { CardPostListPage } from './pages/CardPostListPage';

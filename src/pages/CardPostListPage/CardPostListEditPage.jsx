@@ -25,6 +25,10 @@ function CardPostListEditPage() {
     'GET',
   );
   const [messages, setMessages] = useState([]);
+  const { mutate: deleteCardOverview } = useMutate(
+    `/${TEAM}/recipients/${recipientId}/`,
+    'DELETE',
+  );
 
   const handleCardPostDelete = isEdit
     ? (id) => {
@@ -60,20 +64,13 @@ function CardPostListEditPage() {
   const handleCardOverviewDelete = () => {
     modalConfirmRef.current?.setInfo({
       message: '정말 삭제하시겠습니다?',
-      onClick: async () => {
-        try {
-          const response = await fetch(
-            `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/`,
-            { method: 'DELETE' },
-          );
-
-          if (!response.ok) {
-            throw new Error('삭제에 실패하였습니다.');
-          }
-          navigate(`/list`);
-        } catch (error) {
-          console.error(error);
-        }
+      onClick: () => {
+        deleteCardOverview(null, {
+          // onSuccess가 동작했을 때 navigate('/list')가 동작해야한다.
+          onError: () => {
+            navigate('/list');
+          },
+        });
       },
     });
     modalConfirmRef.current?.open();

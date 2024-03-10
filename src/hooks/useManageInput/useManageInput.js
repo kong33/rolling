@@ -17,7 +17,10 @@ const useManageInput = () => {
       setIsValueExist(true);
       setIsError(false);
       setInputValue(e.target.value);
-    } else setIsValueExist(false);
+    } else {
+      setIsValueExist(false);
+      setInputValue('');
+    }
   };
   const handleClick = () => {
     setIsError(false);

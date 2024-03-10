@@ -53,7 +53,7 @@ function CardPostListEditPage() {
       }
     : null;
 
-  const handleEditButtonClick = () => {
+  const handleNavigateEditPage = () => {
     navigate(`${pathname}/edit`);
   };
 
@@ -79,7 +79,7 @@ function CardPostListEditPage() {
     modalConfirmRef.current?.open();
   };
 
-  const handleCardAddButtonClick = !isEdit
+  const handleNavigatePostMessagePage = !isEdit
     ? () => {
         navigate(`/post/${recipientId}/messages`);
       }
@@ -139,14 +139,14 @@ function CardPostListEditPage() {
             삭제하기
           </Button>
         ) : (
-          <Button type="button" onClick={handleEditButtonClick} size="sm">
+          <Button type="button" onClick={handleNavigateEditPage} size="sm">
             편집하기
           </Button>
         )}
         <CardPostList
           items={messages}
           onDelete={handleCardPostDelete}
-          onAdd={handleCardAddButtonClick}
+          onAdd={handleNavigatePostMessagePage}
           onClick={handleInfoOpen}
         />
       </div>

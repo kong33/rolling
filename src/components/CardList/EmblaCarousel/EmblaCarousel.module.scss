@@ -74,10 +74,10 @@
 
   @include mobile {
     --slide-spacing: 12px;
-    --slide-size: 292px;
+    --slide-size: 220px;
 
     &__viewport {
-      padding: 12px;
+      padding: 8px;
     }
 
     .CarouselName {

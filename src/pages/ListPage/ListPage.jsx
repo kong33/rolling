@@ -12,7 +12,11 @@ import { TEAM } from '../../constants';
 // 반응형 미구현
 // 무한스크롤
 // overview pattern rect 설정
+// carousel translateX 수정
 // 에러페이지도 추가
+
+// 문제점
+// visitorCount 렌더링 안됨
 
 export default function ListPage() {
   const LIMIT = 8;
@@ -43,6 +47,8 @@ export default function ListPage() {
   const hotItems = dataSortedLike ? dataSortedLike.results : null;
   const newItems = dataSortedCreateAt ? dataSortedCreateAt.results : null;
   const EmblaCarouselOptions = {
+    align: 'start',
+    dragFree: true,
     loop: true,
   };
 
@@ -75,6 +81,7 @@ export default function ListPage() {
         <Button
           className={styles.myButton}
           size={'md'}
+          type={'button'}
           onClick={() => handleBottomBtnClick()}
         >
           나도 만들어보기

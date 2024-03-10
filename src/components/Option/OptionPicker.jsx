@@ -49,7 +49,9 @@ function OptionPicker({
               : styles.check
         }
       >
-        {(isSelected || isHovered) && <Check />}
+        <div onClick={handleClick}>
+          {(isSelected || isHovered) && <Check />}
+        </div>
       </div>
     </div>
   );

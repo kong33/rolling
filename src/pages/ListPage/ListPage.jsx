@@ -1,3 +1,4 @@
+
 import styles from './ListPage.module.scss';
 import useFetch from '../../hooks/useFetch';
 import { Button } from '../../components/Button';
@@ -37,14 +38,18 @@ export default function ListPage() {
     !dataSortedLike ||
     !totalData
   ) {
+
     return <LoadingPage />;
   }
 
   const hotItems = dataSortedLike ? dataSortedLike.results : null;
+
   const newItems = dataSortedCreateAt ? dataSortedCreateAt.results : null;
+
   const EmblaCarouselOptions = {
     loop: true,
   };
+
 
   const handleBottomBtnClick = () => {
     navigatePostPage(`/post`);
@@ -66,6 +71,7 @@ export default function ListPage() {
         options={EmblaCarouselOptions}
         CarouselName={'최근에 만든 롤링 페이퍼 ⭐️'}
       />
+
       <TotalCardList
         data={totalData}
         CardListName={'전체 롤링 페이퍼 💜'}

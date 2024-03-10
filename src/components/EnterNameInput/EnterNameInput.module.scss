@@ -20,6 +20,14 @@
   }
 }
 
+.div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  margin-top: 122px;
+}
+
 .error {
   @include inputDefault();
   border: 1px solid $color-error;
@@ -38,5 +46,4 @@
 .label {
   color: $color-gray-900;
   @include font-24-Bold;
-  margin-bottom: 12px;
 }

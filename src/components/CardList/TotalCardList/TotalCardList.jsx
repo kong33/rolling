@@ -1,7 +1,9 @@
-import CardOverview from './CardOverview';
-import styles from './CardList.module.scss';
+import CardOverview from '../CardOverview/CardOverview';
+import styles from './TotalCardList.module.scss';
 
-export default function CardList({ CardListName, recipients }) {
+export default function TotalCardList({ CardListName, data }) {
+  const recipients = data.results;
+
   return (
     <section className={styles.container}>
       <h1 className={styles.title}>{CardListName}</h1>

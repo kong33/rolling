@@ -1,12 +1,17 @@
 .embla {
-  max-width: 73.75rem;
+  width: 100%;
+  max-width: 75.5rem;
   margin: auto;
-  // --slide-height: 19rem;
-  --slide-spacing: 2rem;
-  --slide-size: 25%;
+  --slide-height: 19rem;
+  --slide-spacing: 20px;
+  --slide-size: 300px;
 
   &__viewport {
     overflow: hidden;
+
+    // 추가
+    position: relative;
+    padding: 16px;
   }
 
   &__container {
@@ -47,29 +52,43 @@
     }
   }
 
-  // 추가
-  position: relative;
-  padding-bottom: 16px;
-  padding-top: 16px;
-  // max-width: 1200px;
-
   .ArrowLeftBtn {
-    left: 20px;
+    left: 0;
   }
-
   .ArrowRightBtn {
-    right: 20px;
+    right: 0;
   }
 
   .CarouselName {
     color: $color-black;
     @include font-24-Bold;
+    padding-left: 16px;
   }
 
   @include tablet {
-    width: 100%;
+    .ArrowLeftBtn,
+    .ArrowRightBtn {
+      display: none;
+    }
+  }
 
-    // overflow: hidden;
-    --slide-size: 300px;
+  @include mobile {
+    --slide-spacing: 12px;
+    --slide-size: 292px;
+
+    &__viewport {
+      padding: 12px;
+    }
+
+    .CarouselName {
+      padding-left: 12px;
+      @include font-20-Regular;
+      font-weight: 600;
+    }
+
+    .ArrowLeftBtn,
+    .ArrowRightBtn {
+      display: none;
+    }
   }
 }

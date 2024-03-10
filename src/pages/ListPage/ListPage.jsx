@@ -12,7 +12,7 @@ import { TEAM } from '../../constants';
 // 반응형 미구현
 // 무한스크롤
 // overview pattern rect 설정
-// carousel translateX 수정
+// carousel translateX 수정 + hr
 // 에러페이지도 추가
 
 // 문제점
@@ -51,6 +51,12 @@ export default function ListPage() {
     dragFree: true,
     loop: true,
   };
+  // const EmblaCarouselReverseOptions = {
+  //   align: 'start',
+  //   dragFree: true,
+  //   direction: 'rtl',
+  //   loop: true,
+  // };
 
   const handleBottomBtnClick = () => {
     navigatePostPage(`/post`);

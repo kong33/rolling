@@ -26,8 +26,21 @@
   }
 
   @include tablet {
-    padding: 0 24px 48px;
-    // align-items: flex-start;
-    // overflow: hidden;
+    padding: 0 24px 48px 8px;
+
+    .ButtonBg {
+      padding: 0;
+    }
+
+    .myButton {
+      width: 100%;
+      margin: 24px;
+    }
+  }
+
+  @include mobile {
+    padding: 0 24px 82px 8px;
+    margin-top: 40px;
+    gap: 72px;
   }
 }

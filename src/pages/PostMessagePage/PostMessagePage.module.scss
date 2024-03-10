@@ -3,17 +3,67 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 336px;
   gap: 50px;
 
   & .box {
     width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
 
     & .label {
       @include font-24-Bold;
       display: inline-block;
       margin-bottom: 12px;
     }
+    & .description {
+      @include font-16-Regular;
+      position: absolute;
+      left: 116px;
+      top: 48px;
+    }
   }
+}
+
+@mixin inputDefault() {
+  display: flex;
+  width: min(720px, 100vw - 48px);
+  padding: 12px 16px;
+  align-items: center;
+  outline: none;
+  background: $color-white;
+  border-radius: 8px;
+}
+
+.input {
+  @include inputDefault();
+  border: 1px solid $color-gray-300;
+  &:hover {
+    border: 1px solid $color-gray-500;
+  }
+
+  &:focus {
+    border: 2px solid $color-gray-700;
+  }
+}
+
+.error {
+  @include inputDefault();
+  border: 1px solid $color-error;
+}
+
+.active {
+  @include inputDefault();
+  border: 2px solid $color-gray-700;
+}
+.errormessage {
+  color: $color-error;
+  @include font-12-Regular;
+  display: inline-block;
+}
+
+.button {
+  margin-top: 24px;
 }

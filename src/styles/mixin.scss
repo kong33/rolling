@@ -17,3 +17,35 @@
     @content;
   }
 }
+
+@mixin top {
+  z-index: 100;
+}
+
+@mixin listPageButton {
+  z-index: 10;
+}
+
+@mixin visitor_1 {
+  z-index: 1;
+}
+
+@mixin visitor_2 {
+  z-index: 2;
+}
+
+@mixin visitor_3 {
+  z-index: 3;
+}
+
+@mixin visitor_4 {
+  z-index: 4;
+}
+
+@mixin modal {
+  z-index: 300;
+}
+
+@mixin modal_bg {
+  z-index: 200;
+}

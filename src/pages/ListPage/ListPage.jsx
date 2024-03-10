@@ -74,7 +74,9 @@ export default function ListPage() {
   }
 
   const hotItems = dataSortedLike ? dataSortedLike.results : null;
+
   const newItems = dataSortedCreateAt ? dataSortedCreateAt.results : null;
+
   const EmblaCarouselOptions = {
     align: 'start',
     dragFree: true,
@@ -93,6 +95,7 @@ export default function ListPage() {
         options={EmblaCarouselOptions}
         CarouselName={'최근에 만든 롤링 페이퍼 ⭐️'}
       />
+
       <TotalCardList
         data={totalData}
         CardListName={'전체 롤링 페이퍼 💜'}

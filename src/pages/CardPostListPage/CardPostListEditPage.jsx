@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import CardPostList from '../../components/CardPost/CardPostList';
 import { Button } from '../../components/Button';
 import { ModalCardInfo, ModalConfirm } from '../../components/Modal';
+import useMutate from '../../hooks/useMutate';
+import { TEAM } from '../../constants';
 
 function CardPostListEditPage() {
   const { recipientId } = useParams();
@@ -18,7 +20,10 @@ function CardPostListEditPage() {
   const LIMIT = isEdit ? 6 : 5;
   const [offset, setOffset] = useState(0);
 
-  const [recipientInfo, setRecipientInfo] = useState(null);
+  const { data: recipientInfo, mutate: getRecipientInfo } = useMutate(
+    `/${TEAM}/recipients/${recipientId}/`,
+    'GET',
+  );
   const [messages, setMessages] = useState([]);
 
   const handleCardPostDelete = isEdit
@@ -111,22 +116,7 @@ function CardPostListEditPage() {
   };
 
   useEffect(() => {
-    const getInfo = async () => {
-      try {
-        const response = await fetch(
-          `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/`,
-        );
-        if (!response.ok) {
-          throw new Error('RecipientInfo를 받아오는데 실패했습니다.');
-        }
-        const json = await response.json();
-        setRecipientInfo(json);
-      } catch (error) {
-        console.error(error);
-        navigate('/list');
-      }
-    };
-    getInfo();
+    getRecipientInfo();
   }, [recipientId]);
 
   useEffect(() => {
@@ -138,7 +128,7 @@ function CardPostListEditPage() {
       <div
         className={`${styles.background} ${styles[recipientInfo?.backgroundColor]}`}
         style={{ backgroundImage: `url(${recipientInfo?.backgroundImageURL})` }}
-      ></div>
+      />
       <div>
         {isEdit ? (
           <Button type="button" onClick={handleCardOverviewDelete} size="sm">

@@ -8,11 +8,21 @@
 
   & .box {
     width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
 
     & .label {
       @include font-24-Bold;
       display: inline-block;
       margin-bottom: 12px;
+    }
+    & .description {
+      @include font-16-Regular;
+      position: absolute;
+      left: 116px;
+      top: 48px;
     }
   }
 }
@@ -54,8 +64,6 @@
   display: inline-block;
 }
 
-.label {
-  color: $color-gray-900;
-  @include font-24-Bold;
-  margin-bottom: 12px;
+.button {
+  margin-top: 24px;
 }

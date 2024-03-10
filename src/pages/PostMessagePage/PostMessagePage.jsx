@@ -79,6 +79,7 @@ export default function PostMessagePage() {
           <label htmlFor="sender" className={styles.label}>
             프로필 이미지
           </label>
+          <p className={styles.description}>프로필 이미지를 선택해주세요!</p>
           <ProfileImage />
         </div>
         <div className={styles.box}>
@@ -99,10 +100,11 @@ export default function PostMessagePage() {
         </div>
         <div className={styles.box}>
           <input type="hidden" name="team" value="4-22" />
-
-          <Button size="xl" type="submit">
-            생성하기
-          </Button>
+          <div className={styles.button}>
+            <Button size="xl" type="submit">
+              생성하기
+            </Button>
+          </div>
         </div>
       </form>
     </>

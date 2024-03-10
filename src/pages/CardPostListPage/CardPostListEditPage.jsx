@@ -116,7 +116,11 @@ function CardPostListEditPage() {
   };
 
   useEffect(() => {
-    getRecipientInfo();
+    getRecipientInfo(null, {
+      onError: () => {
+        navigate('/list');
+      },
+    });
   }, [recipientId]);
 
   useEffect(() => {

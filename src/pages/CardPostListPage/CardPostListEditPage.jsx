@@ -19,6 +19,7 @@ function CardPostListEditPage() {
 
   const LIMIT = isEdit ? 6 : 5;
   const [offset, setOffset] = useState(0);
+  const [hasNext, setHasNext] = useState(false);
 
   const { data: recipientInfo, mutate: getRecipientInfo } = useMutate(
     `/${TEAM}/recipients/${recipientId}/`,
@@ -95,16 +96,17 @@ function CardPostListEditPage() {
       if (!response.ok) {
         throw new Error('메세지 리스트를 받아오지 못했습니다.');
       }
-      const json = await response.json();
+      const { results = [], next = null } = await response.json();
 
       if (offset === 0) {
-        setMessages(json.results);
+        setMessages(results);
       } else {
-        setMessages((preMessages) => [...preMessages, ...json.results]);
+        setMessages((preMessages) => [...preMessages, ...results]);
       }
+
+      setHasNext(next ? true : false);
     } catch (error) {
       console.error(error);
-      navigate('/list');
     }
   };
 
@@ -147,9 +149,11 @@ function CardPostListEditPage() {
           onClick={handleInfoOpen}
         />
       </div>
-      <Button type="button" onClick={handleMessagesLoadMore} size="md">
-        더보기
-      </Button>
+      {hasNext && (
+        <Button type="button" onClick={handleMessagesLoadMore} size="md">
+          더보기
+        </Button>
+      )}
       <ModalCardInfo ref={modalCardInfoRef} />
       <ModalConfirm ref={modalConfirmRef} />
     </>

@@ -8,9 +8,6 @@ export const FONTS = [
 ];
 export const TEAM = '4-22';
 
-export const DEFAULT_PROFILE_URL =
-  'https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_1280.jpg';
-
 export const PROFILEIMAGE = [
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsc0w9ylZfRncS2bUzspRb5PwR46TAYwiAyQ&usqp=CAU',
   'https://i.namu.wiki/i/a4hiKu4dFuzo-Gtb2vXJnpICs2LPNPHIT74yeLTb-WnMZZbIzbCVACLmz1zjwnOH2m6bzOlgzTEeo8zOexvvSbQyf2GfkXxLfLn2UlVc140jfaoMLVjzHLxuU5Efjjq_V_cSKdXYhynkh80Vun-AJA.webp',
@@ -19,6 +16,7 @@ export const PROFILEIMAGE = [
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgFId3Mg3j39GWjbNMcjTvqb_tDSDbq9mpUg&usqp=CAU',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6WSiRMwXhvYpgkF_tEvOY949UhLvg8tzR9A&usqp=CAU',
 ];
+
 //button
 export const SIZE = {
   sm: 'sm', // 56px

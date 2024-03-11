@@ -205,11 +205,13 @@ function CardPostListPage() {
       <div
         className={`${styles.background} ${styles[recipientInfo?.backgroundColor]}`}
         style={{ backgroundImage: `url(${recipientInfo?.backgroundImageURL})` }}
-      ></div>
-      <div className={styles.container}>
-        <div className={styles.button}>
+      />
+
+      <div className={styles.optionsBtnBox}>
+        <div className={styles.optionsBtn}>
           {isEdit ? (
             <Button
+              className={styles.delBtn}
               type="button"
               onClick={handleCardOverviewDelete}
               size={'sm'}
@@ -217,23 +219,36 @@ function CardPostListPage() {
               삭제하기
             </Button>
           ) : (
-            <Button type="button" onClick={handleEditButtonClick} size={'sm'}>
+            <Button
+              className={styles.editBtn}
+              type="button"
+              onClick={handleEditButtonClick}
+              size={'sm'}
+            >
               편집하기
             </Button>
           )}
         </div>
-        <CardPostList
-          items={messages}
-          onDelete={handleCardPostDelete}
-          onAdd={handleCardAddButtonClick}
-          onClick={handleInfoOpen}
-        />
       </div>
-      <div className={styles.showMoreButtonBg}>
-        <Button type="button" onClick={handleMessagesLoadMore} size={'md'}>
+
+      <CardPostList
+        items={messages}
+        onDelete={handleCardPostDelete}
+        onAdd={handleCardAddButtonClick}
+        onClick={handleInfoOpen}
+      />
+
+      <div className={styles.showMoreBtnBg}>
+        <Button
+          type="button"
+          onClick={handleMessagesLoadMore}
+          size={'md'}
+          className={styles.showMoreBtn}
+        >
           더보기
         </Button>
       </div>
+
       <ModalCardInfo ref={modalCardInfoRef} />
       <ModalConfirm ref={modalConfirmRef} />
     </>

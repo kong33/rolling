@@ -9,12 +9,8 @@ import { TEAM } from '../../constants';
 import { Helmet } from 'react-helmet-async';
 
 // 안된것들
-// overview pattern rect 설정
-// background 3D
-// 반응형
-// 파비콘 메타데이터
 // wiki, readme 작성
-// 과제
+// postpage 반응형 수정
 
 export default function ListPage() {
   const LIMIT = 8;

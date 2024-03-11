@@ -131,13 +131,25 @@
 
 .beige {
   background-color: $color-orange-200;
+  background-image: url('../../../assets/svg/BeigeBgPattern.svg');
+  background-repeat: no-repeat;
+  background-position: right bottom;
 }
 .purple {
   background-color: $color-purple-200;
+  background-image: url('../../../assets/svg/PurpleBgPattern.svg');
+  background-repeat: no-repeat;
+  background-position: right bottom;
 }
 .blue {
   background-color: $color-blue-200;
+  background-image: url('../../../assets/svg/BlueBgPattern.svg');
+  background-repeat: no-repeat;
+  background-position: right bottom;
 }
 .green {
   background-color: $color-green-200;
+  background-image: url('../../../assets/svg/GreenBgPattern.svg');
+  background-repeat: no-repeat;
+  background-position: right bottom;
 }

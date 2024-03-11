@@ -7,7 +7,7 @@ const COLORS = {
   친구: 'blue',
 };
 
-function Relationship({ relationship = '지인', className }) {
+function Relationship({ className, relationship = '지인' }) {
   const classNames = `${styles.box} ${styles[COLORS[relationship]]} ${className || ''}`;
 
   return <div className={classNames}>{relationship}</div>;

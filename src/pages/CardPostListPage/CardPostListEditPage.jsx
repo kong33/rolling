@@ -121,7 +121,7 @@ function CardPostListEditPage() {
   const handleObserver = (entries) => {
     const target = entries[0];
     if (target.isIntersecting && !isLoading) {
-      setOffset((offset) => offset + LIMIT);
+      setOffset((preOffset) => preOffset + LIMIT);
     }
   };
 

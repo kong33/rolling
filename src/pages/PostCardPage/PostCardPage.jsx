@@ -37,8 +37,8 @@ export default function PostCardPage() {
       onSuccess: (data) => {
         navigate(`/post/${data.id}`);
       },
-      onError: (error) => {
-        return <ErrorPage errorMessage={error} />;
+      onError: () => {
+        return <ErrorPage />;
       },
     });
   };

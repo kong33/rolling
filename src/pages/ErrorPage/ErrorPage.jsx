@@ -1,8 +1,8 @@
-export default function ErrorPage({ errorMessage }) {
+import errorImage from '../../assets/images/errorPage.png';
+export default function ErrorPage() {
   return (
     <div>
-      <p>errorpage</p>
-      <p>{errorMessage}</p>
+      <img src={errorImage} alt="에러페이지" />
     </div>
   );
 }

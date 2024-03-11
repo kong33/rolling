@@ -18,11 +18,9 @@ export default function Header() {
     <header className={styles.header}>
       {/* 상단 Nav바 */}
       <nav className={styles.topNav}>
-        <div>
-          <Link to="/">
-            <Logo />
-          </Link>
-        </div>
+        <Link to="/">
+          <Logo />
+        </Link>
         <Link to="/post">
           <Button styleType="outlined40" className={styles.btn}>
             롤링 페이퍼 만들기

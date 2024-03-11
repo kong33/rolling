@@ -19,7 +19,7 @@ export default function CardOverview({ recipient }) {
     color: backgroundImageURL && '#FFF',
   };
 
-  const visitorCount = visitors.length - 3 > 0 ? visitors.length - 3 : null;
+  const visitorCount = messageCount - 3 > 0 ? messageCount - 3 : null;
 
   return (
     <Link

@@ -2,25 +2,25 @@ import styles from './ListPage.module.scss';
 import useFetch from '../../hooks/useFetch';
 import { Button } from '../../components/Button';
 import { LoadingPage } from '../LoadingPage/';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EmblaCarousel, TotalCardList } from '../../components/CardList';
 import { TEAM } from '../../constants';
-// import Carousel from '../../components/CardList/Carousel'; - 연습용
 
 // 안된것들
-// 무한스크롤
 // overview pattern rect 설정
-// 에러페이지 추가
+// background 3D
+// 에러페이지 추가 - 가은님
+// wiki, readme 작성
+// 과제
 
 // 문제점
 // visitorCount 렌더링 안됨
-// background 3D
 
 export default function ListPage() {
   const LIMIT = 8;
   const query = `?limit=${LIMIT}&offset=0`;
-  const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState(8);
   const navigatePostPage = useNavigate();
   const { data: dataSortedCreateAt, isLoading } = useFetch(
     `/${TEAM}/recipients/${query}`,
@@ -29,38 +29,20 @@ export default function ListPage() {
     `/${TEAM}/recipients/${query}&sort=like`,
   );
   const { data: totalData, isTotalDataLoading } = useFetch(
-    `/${TEAM}/recipients/?limit=${LIMIT}&offset=${offset}`,
+    `/${TEAM}/recipients/?limit=${offset}&offset=0`,
   );
-  const observer = useRef(null);
-  const marker = useRef(null);
 
   const handleBottomBtnClick = () => {
     navigatePostPage(`/post`);
   };
 
-  const handleScroll = () => {
-    setOffset((prevOffset) => prevOffset + `${LIMIT}`);
-  };
-
-  useEffect(() => {
-    observer.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          handleScroll();
-        }
-      });
-    });
-
-    if (marker.current) {
-      observer.current.observe(marker.current);
+  const handleScroll = (entries) => {
+    const target = entries[0];
+    if (target.isIntersecting && !isTotalDataLoading) {
+      setOffset((prevOffset) => prevOffset + LIMIT);
+      console.log('fdsa');
     }
-
-    return () => {
-      if (marker.current) {
-        observer.current.unobserve(marker.current);
-      }
-    };
-  }, []);
+  };
 
   if (
     isLoading ||
@@ -74,9 +56,7 @@ export default function ListPage() {
   }
 
   const hotItems = dataSortedLike ? dataSortedLike.results : null;
-
   const newItems = dataSortedCreateAt ? dataSortedCreateAt.results : null;
-
   const EmblaCarouselOptions = {
     align: 'start',
     dragFree: true,
@@ -99,7 +79,7 @@ export default function ListPage() {
       <TotalCardList
         data={totalData}
         CardListName={'전체 롤링 페이퍼 💜'}
-        ref={marker}
+        handleScroll={handleScroll}
       />
       <div className={styles.buttonBg}>
         <Button

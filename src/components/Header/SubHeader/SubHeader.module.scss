@@ -18,6 +18,13 @@
     display: inline-block;
     font-weight: 900;
     font-size: 26px;
+    width: 30vw;
+    flex-shrink: 0;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .imageCount1 {
@@ -146,12 +153,22 @@
       display: none;
     }
 
-    :nth-child(1) {
+    .toName {
+      width: 80vw;
     }
 
-    :nth-child(1) {
-      align-items: space-between;
-      justify-content: space-between;
+    .firstSection {
+      width: 100%;
+      text-align: start;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+    }
+
+    .secondSection {
+      width: 70%;
+      align-items: space-around;
+      justify-content: space-around;
+      padding-top: 16px;
     }
   }
 }

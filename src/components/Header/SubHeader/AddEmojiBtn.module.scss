@@ -13,3 +13,14 @@
   left: 270px;
   @include top;
 }
+
+@include mobile {
+  .addEmojiBtn {
+    width: 50px;
+    padding: 0;
+  }
+
+  .text {
+    display: none;
+  }
+}

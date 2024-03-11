@@ -52,10 +52,10 @@ export default function SubHeader() {
   return (
     <nav className={styles.bottomNav}>
       {/* To. 000 */}
-      <section className={styles.section}>
+      <section className={`${styles.section} ${styles.firstSection}`}>
         <div className={styles.toName}>To. {name}</div>
       </section>
-      <section className={styles.section}>
+      <section className={`${styles.section} ${styles.secondSection}`}>
         {/* 작성자 프로필 사진 */}
         <div
           className={`${styles.profileImageContainer} ${styles[`imageCount${recentMessages.length}`]}`}

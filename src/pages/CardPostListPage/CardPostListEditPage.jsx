@@ -91,6 +91,7 @@ function CardPostListEditPage() {
     modalCardInfoRef.current?.open();
   };
 
+  // mutate에서 setData를 내려줘야 추가적인 리팩토링 가능한 상태입니다.
   const handleMessagesLoad = async () => {
     if (!hasNext) return;
 
@@ -118,6 +119,7 @@ function CardPostListEditPage() {
     }
   };
 
+  // useIntersectionObserver를 만들어서 작업했으면 더 좋았을 거 같습니다.
   const handleObserver = (entries) => {
     const target = entries[0];
     if (target.isIntersecting && !isLoading) {

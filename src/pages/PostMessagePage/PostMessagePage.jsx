@@ -6,7 +6,7 @@ import { ReactDraft } from '../../components/ReactDraft';
 import { Dropdown } from '../../components/Dropdown';
 import ProfileImage from '../../components/ProfileImage/ProfileImage';
 import useMutate from '../../hooks/useMutate';
-import ErrorPage404 from '../ErrorPage404';
+import ErrorPage from '../ErrorPage/ErrorPage';
 import useManageInput from '../../hooks/useManageInput/useManageInput';
 
 import {
@@ -47,13 +47,13 @@ export default function PostMessagePage() {
         navigate(`/post/${recipientId}`);
       },
       onError: () => {
-        return <ErrorPage404 />;
+        return <ErrorPage />;
       },
     });
   };
 
   return (
-    <div className={styles.div}>
+    <>
       <form className={styles.container} onSubmit={handleSubmit}>
         <div className={styles.box}>
           <div ref={inputRef}>
@@ -101,12 +101,12 @@ export default function PostMessagePage() {
         <div className={styles.box}>
           <input type="hidden" name="team" value="4-22" />
           <div className={styles.button}>
-            <Button size="full" type="submit">
+            <Button size="xl" type="submit">
               생성하기
             </Button>
           </div>
         </div>
       </form>
-    </div>
+    </>
   );
 }

@@ -203,15 +203,21 @@ function CardPostListPage() {
         style={{ backgroundImage: `url(${recipientInfo?.backgroundImageURL})` }}
       ></div>
       <div className={styles.container}>
-        {isEdit ? (
-          <Button type="button" onClick={handleCardOverviewDelete} size="sm">
-            삭제하기
-          </Button>
-        ) : (
-          <Button type="button" onClick={handleEditButtonClick} size="sm">
-            편집하기
-          </Button>
-        )}
+        <div className={styles.button}>
+          {isEdit ? (
+            <Button
+              type="button"
+              onClick={handleCardOverviewDelete}
+              size={'sm'}
+            >
+              삭제하기
+            </Button>
+          ) : (
+            <Button type="button" onClick={handleEditButtonClick} size={'sm'}>
+              편집하기
+            </Button>
+          )}
+        </div>
         <CardPostList
           items={messages}
           onDelete={handleCardPostDelete}
@@ -219,9 +225,11 @@ function CardPostListPage() {
           onClick={handleInfoOpen}
         />
       </div>
-      <Button type="button" onClick={handleMessagesLoadMore} size="md">
-        더보기
-      </Button>
+      <div className={styles.showMoreButtonBg}>
+        <Button type="button" onClick={handleMessagesLoadMore} size={'md'}>
+          더보기
+        </Button>
+      </div>
       <ModalCardInfo ref={modalCardInfoRef} />
       <ModalConfirm ref={modalConfirmRef} />
     </>

@@ -8,8 +8,6 @@ import { EmblaCarousel, TotalCardList } from '../../components/CardList';
 import { TEAM } from '../../constants';
 
 // 안된것들
-// background 3D
-// 반응형
 // wiki, readme 작성
 // postpage 반응형 수정
 

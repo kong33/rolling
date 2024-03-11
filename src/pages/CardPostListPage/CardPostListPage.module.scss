@@ -28,32 +28,55 @@
   height: 10px;
 }
 
-.container {
-  position: relative;
-  width: 78rem;
-  min-height: 100vh;
-  margin: 0 auto;
+.optionsBtnBox {
+  width: 100%;
+  position: fixed;
+  top: 172px;
+  padding: 0 24px;
 
-  @include desktop {
-    width: 75rem;
+  .optionsBtn {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1198px;
+    margin: 0 auto;
+
+    .delBtn,
+    .editBtn {
+      @include font-16-Regular;
+      height: 40px;
+      z-index: 10;
+    }
+
+    @media screen and (max-width: 1247px) {
+      max-width: 792px;
+    }
+
+    @media screen and (max-width: 703px) {
+      max-width: 320px;
+    }
   }
 
   @include tablet {
-    width: 48rem;
+    top: 168px;
+
+    .optionsBtn {
+      max-width: 720px;
+    }
   }
 
   @include mobile {
-    width: 25rem;
-  }
+    top: 168px;
 
-  .button {
-    position: absolute;
-    right: 1.5rem;
-    @include font-16-Regular;
+    .optionsBtn {
+      .editBtn,
+      .delBtn {
+        width: 100%;
+      }
+    }
   }
 }
 
-.showMoreButtonBg {
+.showMoreBtnBg {
   width: 100%;
   background: linear-gradient(
     to bottom,
@@ -65,8 +88,27 @@
   );
   position: fixed;
   bottom: 0;
-  padding: 3.5rem 0 2rem;
+  padding: 3.5rem 0;
   display: flex;
   justify-content: center;
   z-index: 10;
+}
+
+@include tablet {
+  .showMoreBtnBg {
+    padding: 24px;
+
+    .showMoreBtn {
+      width: 100%;
+      max-width: 720px;
+    }
+  }
+}
+@include mobile {
+  .showMoreBtnBg {
+    padding: 24px 20px;
+    .showMoreBtn {
+      width: 320px;
+    }
+  }
 }

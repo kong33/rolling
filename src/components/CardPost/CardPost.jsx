@@ -21,7 +21,7 @@ function CardPost({ item, onDelete, onClick }) {
           <img className={styles.cardImage} src={profileImageURL} />
           <div className={styles.cardInfo}>
             <div className={styles.cardName}>
-              <p>
+              <p className={styles.senderNameBox}>
                 From.<span className={styles.senderName}>{sender}</span>
               </p>
             </div>
@@ -43,11 +43,14 @@ function CardPost({ item, onDelete, onClick }) {
           </Button>
         )}
       </div>
-
+      <hr className={styles.sectionLine} />
       {/* 카드내용 */}
       <div className={styles.cardContentBox}>
         <div className={styles.cardContent}>
-          <div dangerouslySetInnerHTML={{ __html: content }}></div>
+          <div
+            className={styles.cardContentDes}
+            dangerouslySetInnerHTML={{ __html: content }}
+          ></div>
         </div>
         <p className={styles.cardDate}>{formatDate(createdAt)}</p>
       </div>

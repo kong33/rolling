@@ -8,13 +8,11 @@ export default function TotalCardList({ CardListName, data, handleScroll }) {
 
   useEffect(() => {
     if (!observerRef.current) return;
-
     const observer = new IntersectionObserver(handleScroll, {
       threshold: 1.0,
     });
 
     observer.observe(observerRef.current);
-
     return () => observer.disconnect();
   }, [observerRef]);
 

@@ -11,6 +11,7 @@ import { TEAM } from '../../constants';
 // overview pattern rect 설정
 // background 3D
 // 반응형
+// 파비콘 메타데이터
 // wiki, readme 작성
 // 과제
 
@@ -37,7 +38,6 @@ export default function ListPage() {
     const target = entries[0];
     if (target.isIntersecting && !isTotalDataLoading) {
       setOffset((prevOffset) => prevOffset + LIMIT);
-      console.log('fdsa');
     }
   };
 

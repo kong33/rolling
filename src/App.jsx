@@ -3,7 +3,11 @@ import { LandingPage } from './pages/LandingPage';
 import { ListPage } from './pages/ListPage';
 import { PostCardPage } from './pages/PostCardPage';
 import { PostMessagePage } from './pages/PostMessagePage';
-import { CardPostListEditPage, CardPostListPage } from './pages/CardPostListPage';
+import { ErrorPage } from './pages/ErrorPage';
+import {
+  CardPostListEditPage,
+  CardPostListPage,
+} from './pages/CardPostListPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -24,6 +28,7 @@ function App() {
             element={<CardPostListEditPage />}
           />
         </Route>
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );

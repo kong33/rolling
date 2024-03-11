@@ -158,15 +158,17 @@ function CardPostListEditPage() {
         style={{ backgroundImage: `url(${recipientInfo?.backgroundImageURL})` }}
       />
       <div className={styles.container}>
-        {isEdit ? (
-          <Button type="button" onClick={handleCardOverviewDelete} size="sm">
-            삭제하기
-          </Button>
-        ) : (
-          <Button type="button" onClick={handleNavigateEditPage} size="sm">
-            편집하기
-          </Button>
-        )}
+        <div className={styles.button}>
+          {isEdit ? (
+            <Button type="button" onClick={handleCardOverviewDelete} size="sm">
+              삭제하기
+            </Button>
+          ) : (
+            <Button type="button" onClick={handleNavigateEditPage} size="sm">
+              편집하기
+            </Button>
+          )}
+        </div>
         <CardPostList
           items={messages}
           onDelete={handleCardPostDelete}

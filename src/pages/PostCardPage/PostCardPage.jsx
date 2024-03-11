@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BUTTON_SIZE, LABEL, DESCRIPTION, TEAM } from '../../constants';
 import useMutate from '../../hooks/useMutate';
-import ErrorPage from '../ErrorPage/ErrorPage';
+import { ErrorPage } from '../ErrorPage';
 import useManageInput from '../../hooks/useManageInput/useManageInput';
 import { Helmet } from 'react-helmet-async';
 
@@ -38,8 +38,8 @@ export default function PostCardPage() {
       onSuccess: (data) => {
         navigate(`/post/${data.id}`);
       },
-      onError: (error) => {
-        return <ErrorPage errorMessage={error} />;
+      onError: () => {
+        return <ErrorPage />;
       },
     });
   };

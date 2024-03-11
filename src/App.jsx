@@ -3,6 +3,7 @@ import { LandingPage } from './pages/LandingPage';
 import { ListPage } from './pages/ListPage';
 import { PostCardPage } from './pages/PostCardPage';
 import { PostMessagePage } from './pages/PostMessagePage';
+import { ErrorPage } from './pages/ErrorPage';
 import {
   CardPostListEditPage,
   CardPostListPage,
@@ -29,6 +30,7 @@ function App() {
             element={<CardPostListEditPage />}
           />
         </Route>
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );

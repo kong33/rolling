@@ -112,7 +112,8 @@ export default function PostCardPage() {
             생성하기
           </Button>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
+    </>
   );
 }

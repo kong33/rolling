@@ -21,7 +21,7 @@ export default function AddEmojiBox({ isOpen, setIsOpen, setIsSelected }) {
     mutate(formData, {
       onSuccess: () => {
         console.log('Success!');
-        setIsSelected((prev) => !prev);
+        setIsSelected((preIsSelected) => !preIsSelected);
         setIsOpen(false);
       },
       onError: () => {

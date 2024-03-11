@@ -93,7 +93,7 @@ export default function SubHeader() {
             </div>
           )
         ) : (
-          <div></div>
+          <></>
         )}
         {/* 이모지 토글 박스 */}
         <ShowEmojiBox

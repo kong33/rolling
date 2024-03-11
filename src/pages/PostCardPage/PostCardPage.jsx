@@ -4,7 +4,7 @@ import styles from './PostCardPage.module.scss';
 import { Button, ButtonToggle } from '../../components/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BUTTON_SIZE, LABEL, DESCRIPTION, TEAM } from '../../constants';
+import { LABEL, DESCRIPTION, TEAM } from '../../constants';
 import useMutate from '../../hooks/useMutate';
 import { ErrorPage } from '../ErrorPage';
 import useManageInput from '../../hooks/useManageInput/useManageInput';
@@ -83,9 +83,11 @@ export default function PostCardPage() {
         </div>
         <Option type={type} />
         <input type="hidden" name="team" value="4-22" />
-        <Button type="submit" size={BUTTON_SIZE.xl}>
-          생성하기
-        </Button>
+        <div className={styles.button}>
+          <Button type="submit" size="full">
+            생성하기
+          </Button>
+        </div>
       </div>
     </form>
   );

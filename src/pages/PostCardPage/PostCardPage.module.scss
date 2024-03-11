@@ -31,10 +31,19 @@
   flex-direction: column;
   justify-content: flex-start;
   margin-top: 56px;
-  width: 720px;
+  width: min(720px, 100vw - 48px);
   gap: 4px;
 }
+.button {
+  width: min(720px, 100vw - 48px);
+  padding: 0;
+}
 
+.option {
+  @include mobile {
+    height: 402px;
+  }
+}
 .form {
   display: flex;
   flex-direction: column;
@@ -92,4 +101,8 @@
   color: $color-gray-900;
   @include font-24-Bold;
   margin-bottom: 12px;
+}
+
+.button {
+  width: min(100vw - 48px, 720px);
 }

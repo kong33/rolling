@@ -7,6 +7,10 @@
   flex-shrink: 0;
   padding: 40px;
   gap: 16px;
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .header {

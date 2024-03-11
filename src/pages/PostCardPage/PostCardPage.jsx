@@ -81,11 +81,15 @@ export default function PostCardPage() {
             type="button"
           />
         </div>
-        <Option type={type} />
+        <div className={styles.option}>
+          <Option type={type} />
+        </div>
         <input type="hidden" name="team" value="4-22" />
-        <Button type="submit" size={BUTTON_SIZE.xl}>
-          생성하기
-        </Button>
+        <div className={styles.button}>
+          <Button type="submit" size={BUTTON_SIZE.full}>
+            생성하기
+          </Button>
+        </div>
       </div>
     </form>
   );

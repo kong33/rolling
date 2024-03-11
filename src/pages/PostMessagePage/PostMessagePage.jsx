@@ -15,6 +15,7 @@ import {
   TEAM,
   DEFAULT_PROFILE_URL,
 } from '../../constants';
+import { Helmet } from 'react-helmet-async';
 
 export default function PostMessagePage() {
   const { recipientId } = useParams();
@@ -54,6 +55,9 @@ export default function PostMessagePage() {
 
   return (
     <>
+      <Helmet>
+        <title>작성하기</title>
+      </Helmet>
       <form className={styles.container} onSubmit={handleSubmit}>
         <div className={styles.box}>
           <div ref={inputRef}>

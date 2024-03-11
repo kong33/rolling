@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import CardPostList from '../../components/CardPost/CardPostList';
 import { Button } from '../../components/Button';
 import { ModalCardInfo, ModalConfirm } from '../../components/Modal';
+import { Helmet } from 'react-helmet-async';
 
 /* 
 작업 1
@@ -198,6 +199,9 @@ function CardPostListPage() {
 
   return (
     <>
+      <Helmet>
+        <title>구경하기</title>
+      </Helmet>
       <div
         className={`${styles.background} ${styles[recipientInfo?.backgroundColor]}`}
         style={{ backgroundImage: `url(${recipientInfo?.backgroundImageURL})` }}

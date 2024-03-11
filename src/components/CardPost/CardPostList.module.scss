@@ -80,7 +80,7 @@
       display: flex;
       column-gap: 0.38rem;
 
-      span {
+      .senderName {
         @include font-20-Bold;
         overflow: hidden;
         white-space: normal;
@@ -110,10 +110,6 @@
     align-items: start;
     border-top: 0.1rem solid $color-gray-200;
 
-    // @include mobile {
-    //   width: 25rem;
-    // }
-
     .cardContent {
       height: 6.6rem;
       flex-shrink: 0;
@@ -127,6 +123,7 @@
       display: -webkit-box;
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
+      text-align: left;
     }
 
     .cardDate {
@@ -135,11 +132,6 @@
       color: $color-gray-400;
     }
   }
-
-  // Button{
-  //   margin-right: 1.5rem;
-  // }
-  /* CardEdit 휴지통 이미지 */
 
   .deleteIcon {
     width: 2.4rem;

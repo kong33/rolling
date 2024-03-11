@@ -4,8 +4,14 @@ export const FONTS = [
   'Noto Sans',
   'Pretendard',
   '나눔명조',
-  '나눔손글씨 손편체',
+  '나눔손글씨 손편지체',
 ];
+export const FONT_TYPE = {
+  'Noto Sans': 'Noto-Sans',
+  Pretendard: 'Pretendard',
+  나눔명조: 'Nanum-Myeongjo',
+  '나눔손글씨 손편지체': 'Nanum-Pen-Script',
+};
 export const TEAM = '4-22';
 export const DEFAULT_PROFILE_URL =
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZUlrYxhEi8tm-Gdaf7yk-HC1C0Lqdu-xUtuZAIMhY8jtg4LT2KW0OxsnonwZoSlJ_YfI&usqp=CAU';

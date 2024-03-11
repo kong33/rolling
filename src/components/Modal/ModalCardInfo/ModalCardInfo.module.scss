@@ -58,7 +58,6 @@
 
 .body {
   height: 240px;
-  @include font-18-Regular;
   overflow-y: auto;
   padding-right: 16px;
   word-break: break-all;
@@ -73,6 +72,23 @@
 
   &::-webkit-scrollbar-track {
     background-color: transparent;
+  }
+
+  &.Noto-Sans * {
+    font-family: 'Noto Sans', 'Noto Sans KR';
+  }
+
+  &.Pretendard * {
+    font-family: 'Pretendard';
+  }
+
+  &.Nanum-Myeongjo * {
+    font-family: 'Nanum Myeongjo';
+  }
+
+  &.Nanum-Pen-Script * {
+    font-family: 'Nanum Pen Script';
+    font-size: 20px;
   }
 }
 

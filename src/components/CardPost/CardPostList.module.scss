@@ -167,11 +167,11 @@
 /* 카드리스트 */
 .cardContainer {
   width: 75rem;
-  margin: 15.4rem auto;
+  margin: 10rem auto;
   padding-top: 5rem;
 
   @include desktop {
-    width: 72rem;
+    width: 70rem;
   }
 
   @include tablet {
@@ -185,11 +185,11 @@
   .cardList {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
 
     @include desktop {
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      gap: 1.7rem;
     }
 
     @include tablet {

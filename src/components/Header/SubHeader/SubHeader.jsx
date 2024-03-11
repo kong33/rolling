@@ -1,61 +1,44 @@
 import ArrowDown from '../../../assets/svg/ArrowDown.jsx';
 import ArrowUp from '../../../assets/svg/ArrowUp.jsx';
 import styles from './SubHeader.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import useFetch from '../../../hooks/useFetch';
 import { Reactions } from '../../Reactions';
-import { LoadingPage } from '../../../pages/LoadingPage';
+import LoadingHeader from '../../LoadingComponent/LoadingHeader.jsx';
 import ShowEmojiBox from './ShowEmojiBox.jsx';
 import AddEmojiBtn from './AddEmojiBtn.jsx';
 import { TEAM } from '../../../constants';
 import ShareBtn from './ShareBtn.jsx';
 import AddEmojiBox from './AddEmojiBox.jsx';
+import useMutate from '../../../hooks/useMutate.js';
 
 export default function SubHeader() {
   // 이모지 상태 관리
   const [emojiIsSelected, setEmojiIsSelected] = useState(false);
 
-  console.log(emojiIsSelected);
-
   // 토글 박스 상태 관리
   const [emojiBoxIsOpen, setEmojiBoxIsOpen] = useState(false);
   const [emojiPickerIsOpen, setEmojiPickerIsOpen] = useState(false);
 
-  // const [recipient, setRecipient] = useState(null);
-
   // Recipient 데이터
   const { recipientId } = useParams();
-  const { data: recipientData, isLoading } = useFetch(
-    `/${TEAM}/recipients/${recipientId}/`,
-  );
 
-  // useEffect(() => {
-  //   const getRecipient = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `https://rolling-api.vercel.app/${TEAM}/recipients/${recipientId}/`,
-  //       );
-  //       if (!response.ok) {
-  //         throw new Error('Recipient Data를 받아오는데 실패했습니다.');
-  //       }
-  //       const json = await response.json();
-  //       setRecipient(json);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   getRecipient();
-  // }, [emojiIsSelected]);
+  const {
+    mutate,
+    data: recipientData,
+    isLoading,
+  } = useMutate(`/${TEAM}/recipients/${recipientId}/`, 'GET');
+
+  useEffect(() => {
+    mutate();
+  }, [emojiIsSelected]);
 
   // 데이터 로드 이후에 렌더링
   if (isLoading || !recipientData) {
-    // setRecipient(recipientData);
-    return <LoadingPage />;
+    return <LoadingHeader />;
   }
 
   const { name, messageCount, topReactions, recentMessages } = recipientData;
-  // const { name, messageCount, topReactions, recentMessages } = recipient;
 
   // Emoji 토글 핸들러 함수
   const openEmojiToggle = () => {

@@ -53,9 +53,9 @@ export default function PostCardPage() {
     <>
       <Helmet>
         <title>작성하기</title>
-      </Helmet>
+      </Helmet> 
+      <div className={styles.div}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.div}>
           <div ref={inputRef}>
             <EnterNameInput
               placeholder="받는 사람 이름을 입력해 주세요"

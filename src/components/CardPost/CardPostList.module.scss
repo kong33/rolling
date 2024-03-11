@@ -124,6 +124,23 @@
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       text-align: left;
+
+      & .Noto-Sans * {
+        font-family: 'Noto Sans', 'Noto Sans KR';
+      }
+
+      & .Pretendard * {
+        font-family: 'Pretendard';
+      }
+
+      & .Nanum-Myeongjo * {
+        font-family: 'Nanum Myeongjo';
+      }
+
+      & .Nanum-Pen-Script * {
+        font-family: 'Nanum Pen Script';
+        font-size: 20px;
+      }
     }
 
     .cardDate {

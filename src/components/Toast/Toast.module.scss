@@ -55,4 +55,8 @@
       opacity: 0;
     }
   }
+
+  @include mobile {
+    width: 80vw;
+  }
 }

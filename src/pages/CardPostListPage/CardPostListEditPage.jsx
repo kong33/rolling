@@ -189,7 +189,7 @@ function CardPostListEditPage() {
         onClick={handleInfoOpen}
       />
 
-      <div ref={observerRef} style={{ height: '10px;' }} />
+      <div ref={observerRef} className={styles.observer} />
       <ModalCardInfo ref={modalCardInfoRef} />
       <ModalConfirm ref={modalConfirmRef} />
     </>

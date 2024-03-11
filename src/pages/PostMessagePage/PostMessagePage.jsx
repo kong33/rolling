@@ -53,11 +53,11 @@ export default function PostMessagePage() {
     });
   };
 
-  return (
-    <>
-      <Helmet>
-        <title>작성하기</title>
+  return (<>
+   <Helmet>
+      <title>작성하기</title>
       </Helmet>
+    <div className={styles.div}>
       <form className={styles.container} onSubmit={handleSubmit}>
         <div className={styles.box}>
           <div ref={inputRef}>
@@ -105,12 +105,13 @@ export default function PostMessagePage() {
         <div className={styles.box}>
           <input type="hidden" name="team" value="4-22" />
           <div className={styles.button}>
-            <Button size="xl" type="submit">
+            <Button size="full" type="submit">
               생성하기
             </Button>
           </div>
         </div>
       </form>
-    </>
+    </div>
+</>
   );
 }

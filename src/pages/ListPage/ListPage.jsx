@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EmblaCarousel, TotalCardList } from '../../components/CardList';
 import { TEAM } from '../../constants';
+import { Helmet } from 'react-helmet-async';
 
 // 안된것들
 // overview pattern rect 설정
@@ -61,33 +62,38 @@ export default function ListPage() {
   };
 
   return (
-    <main className={styles.container}>
-      <EmblaCarousel
-        slides={hotItems}
-        options={EmblaCarouselOptions}
-        CarouselName={'인기 롤링 페이퍼 🔥'}
-      />
-      <EmblaCarousel
-        slides={newItems}
-        options={EmblaCarouselOptions}
-        CarouselName={'최근에 만든 롤링 페이퍼 ⭐️'}
-      />
+    <>
+      <Helmet>
+        <title>구경하기</title>
+      </Helmet>
+      <main className={styles.container}>
+        <EmblaCarousel
+          slides={hotItems}
+          options={EmblaCarouselOptions}
+          CarouselName={'인기 롤링 페이퍼 🔥'}
+        />
+        <EmblaCarousel
+          slides={newItems}
+          options={EmblaCarouselOptions}
+          CarouselName={'최근에 만든 롤링 페이퍼 ⭐️'}
+        />
 
-      <TotalCardList
-        data={totalData}
-        CardListName={'전체 롤링 페이퍼 💜'}
-        handleScroll={handleScroll}
-      />
-      <div className={styles.buttonBg}>
-        <Button
-          className={styles.myButton}
-          size={'md'}
-          type={'button'}
-          onClick={() => handleBottomBtnClick()}
-        >
-          나도 만들어보기
-        </Button>
-      </div>
-    </main>
+        <TotalCardList
+          data={totalData}
+          CardListName={'전체 롤링 페이퍼 💜'}
+          handleScroll={handleScroll}
+        />
+        <div className={styles.buttonBg}>
+          <Button
+            className={styles.myButton}
+            size={'md'}
+            type={'button'}
+            onClick={() => handleBottomBtnClick()}
+          >
+            나도 만들어보기
+          </Button>
+        </div>
+      </main>
+    </>
   );
 }

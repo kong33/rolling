@@ -17,9 +17,12 @@ function CardPostListEditPage() {
   const modalConfirmRef = useRef(null);
   const modalCardInfoRef = useRef(null);
 
-  const LIMIT = isEdit ? 6 : 5;
+  const LIMIT = 9;
   const [offset, setOffset] = useState(0);
-  const [hasNext, setHasNext] = useState(false);
+  const [hasNext, setHasNext] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const observerRef = useRef(null);
 
   const { data: recipientInfo, mutate: getRecipientInfo } = useMutate(
     `/${TEAM}/recipients/${recipientId}/`,
@@ -89,7 +92,10 @@ function CardPostListEditPage() {
   };
 
   const handleMessagesLoad = async () => {
+    if (!hasNext) return;
+
     try {
+      setIsLoading(true);
       const response = await fetch(
         `https://rolling-api.vercel.app/4-22/recipients/${recipientId}/messages/?limit=${LIMIT}&offset=${offset}`,
       );
@@ -107,12 +113,29 @@ function CardPostListEditPage() {
       setHasNext(next ? true : false);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleMessagesLoadMore = () => {
-    setOffset(LIMIT + offset);
+  const handleObserver = (entries) => {
+    const target = entries[0];
+    if (target.isIntersecting && !isLoading) {
+      setOffset((offset) => offset + LIMIT);
+    }
   };
+
+  useEffect(() => {
+    if (!observerRef.current) return;
+
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: 1.0,
+    });
+
+    observer.observe(observerRef.current);
+
+    return () => observer.disconnect();
+  }, [observerRef]);
 
   useEffect(() => {
     getRecipientInfo(null, {
@@ -132,7 +155,7 @@ function CardPostListEditPage() {
         className={`${styles.background} ${styles[recipientInfo?.backgroundColor]}`}
         style={{ backgroundImage: `url(${recipientInfo?.backgroundImageURL})` }}
       />
-      <div>
+      <div className={styles.container}>
         {isEdit ? (
           <Button type="button" onClick={handleCardOverviewDelete} size="sm">
             삭제하기
@@ -149,11 +172,7 @@ function CardPostListEditPage() {
           onClick={handleInfoOpen}
         />
       </div>
-      {hasNext && (
-        <Button type="button" onClick={handleMessagesLoadMore} size="md">
-          더보기
-        </Button>
-      )}
+      <div ref={observerRef} style={{ height: '10px;' }} />
       <ModalCardInfo ref={modalCardInfoRef} />
       <ModalConfirm ref={modalConfirmRef} />
     </>

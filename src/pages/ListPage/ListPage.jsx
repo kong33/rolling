@@ -10,12 +10,9 @@ import { TEAM } from '../../constants';
 // 안된것들
 // overview pattern rect 설정
 // background 3D
-// 에러페이지 추가 - 가은님
+// 반응형
 // wiki, readme 작성
 // 과제
-
-// 문제점
-// visitorCount 렌더링 안됨
 
 export default function ListPage() {
   const LIMIT = 8;

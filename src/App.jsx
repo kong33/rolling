@@ -4,7 +4,6 @@ import { ListPage } from './pages/ListPage';
 import { PostCardPage } from './pages/PostCardPage';
 import { PostMessagePage } from './pages/PostMessagePage';
 import { CardPostListPage } from './pages/CardPostListPage';
-import { ErrorPage } from './pages/ErrorPage404';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
           <Route path="post/:recipientId" element={<CardPostListPage />} />
           <Route path="post/:recipientId/edit" element={<CardPostListPage />} />
         </Route>
-        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );

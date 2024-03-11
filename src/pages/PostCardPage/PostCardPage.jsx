@@ -54,45 +54,26 @@ export default function PostCardPage() {
       <Helmet>
         <title>작성하기</title>
       </Helmet> 
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.div}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-          <div ref={inputRef}>
-            <EnterNameInput
-              placeholder="받는 사람 이름을 입력해 주세요"
-              label="To."
-              name="name"
-              onClick={handleClick}
-              onChange={handleChange}
-              value={inputValue}
-              className={
-                isError
-                  ? styles.error
-                  : isValueExist
-                    ? styles.active
-                    : styles.input
-              }
-            />
-            {isError && <p className={styles.errormessage}>필수 항목입니다.</p>}
-          </div>
-          <div className={styles.textWrapper}>
-            <h1 className={styles.h1}>{LABEL}</h1>
-            <p className={styles.p}>{DESCRIPTION}</p>
-          </div>
-          <div className={styles.buttonToggle}>
-            <ButtonToggle
-              textLeft="컬러"
-              textRight="이미지"
-              onClick={handleButtonClick}
-              type="button"
-            />
-          </div>
-          <Option type={type} />
-          <input type="hidden" name="team" value="4-22" />
-          <Button type="submit" size={BUTTON_SIZE.xl}>
-            생성하기
-          </Button>
+        <div ref={inputRef}>
+          <EnterNameInput
+            placeholder="받는 사람 이름을 입력해 주세요"
+            label="To."
+            name="name"
+            onClick={handleClick}
+            onChange={handleChange}
+            value={inputValue}
+            className={
+              isError
+                ? styles.error
+                : isValueExist
+                  ? styles.active
+                  : styles.input
+            }
+          />
+          {isError && <p className={styles.errormessage}>필수 항목입니다.</p>}
         </div>
-
         <div className={styles.textWrapper}>
           <h1 className={styles.h1}>{LABEL}</h1>
           <p className={styles.p}>{DESCRIPTION}</p>
@@ -112,8 +93,8 @@ export default function PostCardPage() {
             생성하기
           </Button>
         </div>
-      </form>
-    </div>
-    </>
+      </div>
+    </form>
+   </>
   );
 }

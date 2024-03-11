@@ -24,15 +24,18 @@
   }
 }
 
+.observer {
+  height: 10px;
+}
+
 .container {
   position: relative;
-  width: 75rem;
+  width: 78rem;
   min-height: 100vh;
   margin: 0 auto;
-  // padding: 5.6rem 0;
 
   @include desktop {
-    width: 73rem;
+    width: 75rem;
   }
 
   @include tablet {

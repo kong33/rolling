@@ -9,10 +9,12 @@ import {
   CardPostListPage,
 } from './pages/CardPostListPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MetaTag from './utils/MetaTag';
 
 function App() {
   return (
     <BrowserRouter>
+      <MetaTag />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />

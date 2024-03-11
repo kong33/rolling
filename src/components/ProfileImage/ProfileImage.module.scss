@@ -1,5 +1,6 @@
 .div {
   display: flex;
+  width: min(720px, 100vw - 48px);
 }
 
 .avatars {
@@ -7,6 +8,7 @@
   gap: 8px;
   margin-left: 32px;
   margin-top: 28px;
+  flex-wrap: wrap;
 }
 
 .filesUpload {

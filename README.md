@@ -1,6 +1,5 @@
-Rolling 
-=======
-from team 22
+<img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Rolling" style="width:100%;">
+<h1>from team 22</h1>
 
 
 
@@ -81,11 +80,11 @@ Pagination 기법을 통해 단일 페이지 내에 자칫 무거워질 수 있�
  <img src="https://img.shields.io/badge/netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white"> <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
 
   ## Others
-  <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white"><img src="https://img.shields.io/badge/prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white">
+  <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white"> <img src="https://img.shields.io/badge/prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white">  <img src="https://img.shields.io/badge/husky-43565?style=for-the-badge&logo=husky&logoColor=white"> <img src="https://img.shields.io/badge/lintStaged-9d3676?style=for-the-badge&logo=lintStaged&logoColor=white">
         
       
 * * *
-[**bokeeey**](https://github.com/bokeeeey)
+[**bokeeey**](https://github.com/bokeeeey) - 김보경
 
 ### Carousel 제작
   + 000 라이브러리를 커스터마이징 해 프로젝트에 적합한 모션 구현
@@ -95,7 +94,7 @@ Pagination 기법을 통해 단일 페이지 내에 자칫 무거워질 수 있�
 ### CardList
 ### CardOverview
 * * *
-[**ChaeMin**](https://github.com/Chaemin-153)
+[**ChaeMin**](https://github.com/Chaemin-153) - 임채민
 
 ### Header 및 SubHeader
 + header와 subHeader를 제작
@@ -105,7 +104,7 @@ Pagination 기법을 통해 단일 페이지 내에 자칫 무거워질 수 있�
 + 카카오톡 공유하기 기능 구현
 ### Emoji Picker
 * * *
-[**devwqc**](https://github.com/devwqc)
+[**devwqc**](https://github.com/devwqc) - 정봉찬
 
 ### common Button
 + button 공통 컴포넌트 제작
@@ -114,21 +113,21 @@ Pagination 기법을 통해 단일 페이지 내에 자칫 무거워질 수 있�
 ### Modal 개발
 * * *
 
-[**jinah-dev**](https://github.com/jinah-dev)
+[**jinah-dev**](https://github.com/jinah-dev) - 김진아
 
 ### CardPost 컴포넌트
 + 페어 프로그래밍으로 card 컴포넌트 및 다양한 컴포넌트 개발 
 ### CardPostListPage
 
 * * *
-[**kong33**](https://github.com/kong33)
+[**kong33**](https://github.com/kong33) - 김가은
 
 ### useMutate 제작
 + useMutate 커스텀 훅으로 Post, delete 등의 fetch 로직 분리
 ### TextEditor 제작
-+ 라이브러리의 코드를 커스터마이징해 프로젝트에 어울리게 구현
++ 라이브러리의 코드를 커스터마이징 해 프로젝트에 어울리게 구현
 ### Post 페이지 제작
-common Input, Dropdown, Option 등 컴포넌트를 제작하고 페이지 구현
++ common Input, Dropdown, Option 등 컴포넌트를 제작하고 페이지 구현
 
 
 

@@ -3,10 +3,18 @@ import Deleted from '../../assets/svg/Deleted';
 import { BadgeRelation } from '../Badge';
 import { formatDate } from '../../utils/dateFormatter';
 import { Button } from '../Button';
+import { FONT_TYPE } from '../../constants';
 
 function CardPost({ item, onDelete, onClick }) {
-  const { id, profileImageURL, sender, relationship, content, createdAt } =
-    item;
+  const {
+    id,
+    profileImageURL,
+    sender,
+    relationship,
+    content,
+    createdAt,
+    font,
+  } = item;
 
   const handleDelete = (event) => {
     event.stopPropagation();
@@ -21,7 +29,7 @@ function CardPost({ item, onDelete, onClick }) {
           <img className={styles.cardImage} src={profileImageURL} />
           <div className={styles.cardInfo}>
             <div className={styles.cardName}>
-              <p>
+              <p className={styles.senderNameBox}>
                 From.<span className={styles.senderName}>{sender}</span>
               </p>
             </div>
@@ -43,11 +51,14 @@ function CardPost({ item, onDelete, onClick }) {
           </Button>
         )}
       </div>
-
+      <hr className={styles.sectionLine} />
       {/* 카드내용 */}
       <div className={styles.cardContentBox}>
         <div className={styles.cardContent}>
-          <div dangerouslySetInnerHTML={{ __html: content }}></div>
+          <div
+            className={styles[FONT_TYPE[font]]}
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </div>
         <p className={styles.cardDate}>{formatDate(createdAt)}</p>
       </div>

@@ -8,6 +8,7 @@ import { LABEL, DESCRIPTION, TEAM } from '../../constants';
 import useMutate from '../../hooks/useMutate';
 import { ErrorPage } from '../ErrorPage';
 import useManageInput from '../../hooks/useManageInput/useManageInput';
+import { Helmet } from 'react-helmet-async';
 
 export default function PostCardPage() {
   const URL = `/${TEAM}/recipients/`;
@@ -49,6 +50,10 @@ export default function PostCardPage() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>작성하기</title>
+      </Helmet> 
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.div}>
         <div ref={inputRef}>
@@ -90,5 +95,6 @@ export default function PostCardPage() {
         </div>
       </div>
     </form>
+   </>
   );
 }

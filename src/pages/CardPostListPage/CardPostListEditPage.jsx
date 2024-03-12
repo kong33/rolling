@@ -157,26 +157,39 @@ function CardPostListEditPage() {
         className={`${styles.background} ${styles[recipientInfo?.backgroundColor]}`}
         style={{ backgroundImage: `url(${recipientInfo?.backgroundImageURL})` }}
       />
-      <div className={styles.container}>
-        <div className={styles.button}>
+
+      <div className={styles.optionsBtnBox}>
+        <div className={styles.optionsBtn}>
           {isEdit ? (
-            <Button type="button" onClick={handleCardOverviewDelete} size="sm">
+            <Button
+              className={styles.delBtn}
+              type="button"
+              onClick={handleCardOverviewDelete}
+              size="sm"
+            >
               삭제하기
             </Button>
           ) : (
-            <Button type="button" onClick={handleNavigateEditPage} size="sm">
+            <Button
+              className={styles.editBtn}
+              type="button"
+              onClick={handleNavigateEditPage}
+              size="sm"
+            >
               편집하기
             </Button>
           )}
         </div>
-        <CardPostList
-          items={messages}
-          onDelete={handleCardPostDelete}
-          onAdd={handleNavigatePostMessagePage}
-          onClick={handleInfoOpen}
-        />
       </div>
-      <div ref={observerRef} style={{ height: '10px;' }} />
+
+      <CardPostList
+        items={messages}
+        onDelete={handleCardPostDelete}
+        onAdd={handleNavigatePostMessagePage}
+        onClick={handleInfoOpen}
+      />
+
+      <div ref={observerRef} className={styles.observer} />
       <ModalCardInfo ref={modalCardInfoRef} />
       <ModalConfirm ref={modalConfirmRef} />
     </>

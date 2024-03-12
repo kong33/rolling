@@ -1,4 +1,4 @@
-main {
+.main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,6 +8,17 @@ main {
   margin-top: 120px;
   gap: 30px;
 
+  .topBox {
+    display: flex;
+    padding: 60px 0px 60px 60px;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
+  .bottomBox {
+    padding: 60px 192px 60px 0px;
+  }
+
   .pointBox {
     display: flex;
     width: 1140px;
@@ -15,18 +26,10 @@ main {
     background: $color-surface;
     border-radius: 16px;
 
-    &:nth-child(1) {
-      display: flex;
-      padding: 60px 0px 60px 60px;
-      justify-content: flex-end;
-      align-items: flex-start;
-    }
-
-    &:nth-child(2) {
-      padding: 60px 192px 60px 0px;
-    }
-
     .textBox {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
       width: 320px;
 
       .pointBtn {
@@ -56,5 +59,82 @@ main {
   .btn {
     outline: none;
     margin-top: 20px;
+    margin-bottom: 100px;
+  }
+
+  @include tablet {
+    width: 100vw;
+
+    .pointBox {
+      flex-direction: column;
+      padding: 40px;
+      width: 80vw;
+
+      .br {
+        display: none;
+      }
+
+      .textBox {
+        width: 100%;
+
+        .boldText {
+          @include font-20-Bold;
+        }
+      }
+
+      .imgBox {
+        width: 100%;
+        padding-top: 40px;
+      }
+    }
+
+    .bottomBox {
+      flex-direction: column-reverse;
+    }
+
+    .btn {
+      width: 80vw;
+    }
+  }
+
+  @include mobile {
+    width: 100vw;
+
+    .pointBox {
+      flex-direction: column;
+      padding: 28px;
+      width: 80vw;
+
+      .br {
+        display: none;
+      }
+
+      .textBox {
+        width: 100%;
+
+        .boldText {
+          @include font-18-Bold;
+        }
+
+        .smText {
+          @include font-14-Regular;
+        }
+      }
+
+      .imgBox {
+        width: 110%;
+        padding-top: 40px;
+        margin-left: -36px;
+      }
+    }
+
+    .bottomBox {
+      flex-direction: column-reverse;
+    }
+
+    .btn {
+      width: 80vw;
+      margin-bottom: 24px;
+    }
   }
 }

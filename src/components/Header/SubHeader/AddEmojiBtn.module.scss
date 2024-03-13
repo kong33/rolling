@@ -1,0 +1,30 @@
+.addEmojiBtn {
+  display: flex;
+  padding: 6px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 105px;
+}
+
+.toggleBox {
+  position: absolute;
+  top: 50px;
+  left: 270px;
+  @include top;
+}
+
+@include mobile {
+  .addEmojiBtn {
+    width: 50px;
+    padding: 0;
+  }
+
+  .text {
+    display: none;
+  }
+
+  .toggleBox {
+    left: 0px;
+  }
+}

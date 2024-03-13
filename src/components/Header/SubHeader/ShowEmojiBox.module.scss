@@ -1,0 +1,25 @@
+.emojiToggleBox {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+  position: absolute;
+  top: 50px;
+  left: 200px;
+  border-radius: 8px;
+  border: 1px solid #b6b6b6;
+  background: $color-white;
+  padding: 24px;
+  @include top;
+}
+
+.emojiBtn {
+  display: flex;
+  padding: 8px 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 32px;
+  background: rgba(0, 0, 0, 0.54);
+  color: $color-white;
+}

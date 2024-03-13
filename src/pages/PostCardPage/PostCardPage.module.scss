@@ -1,0 +1,108 @@
+.label {
+  color: $color-gray-900;
+  @include font-24-Bold;
+  margin-bottom: 4px;
+}
+
+.description {
+  color: $color-gray-500;
+  @include font-16-Regular;
+}
+
+.h1 {
+  color: $color-gray-900;
+  @include font-24-Bold;
+  display: block;
+}
+
+.p {
+  color: $color-gray-500;
+  @include font-16-Regular;
+  display: block;
+}
+
+.buttonToggle {
+  width: min(720px, 100vw - 48px);
+  margin-top: 24px;
+  margin-bottom: 44px;
+}
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 56px;
+  width: min(720px, 100vw - 48px);
+  gap: 4px;
+}
+.button {
+  width: min(720px, 100vw - 48px);
+  padding: 0;
+}
+
+.option {
+  @include mobile {
+    height: 402px;
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 336px;
+}
+
+.div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+///
+@mixin inputDefault() {
+  display: flex;
+  width: min(720px, 100vw - 48px);
+  padding: 12px 16px;
+  align-items: center;
+  outline: none;
+  background: $color-white;
+  border-radius: 8px;
+}
+
+.input {
+  @include inputDefault();
+  border: 1px solid $color-gray-300;
+  &:hover {
+    border: 1px solid $color-gray-500;
+  }
+
+  &:focus {
+    border: 2px solid $color-gray-700;
+  }
+}
+
+.error {
+  @include inputDefault();
+  border: 1px solid $color-error;
+}
+
+.active {
+  @include inputDefault();
+  border: 2px solid $color-gray-700;
+}
+.errormessage {
+  color: $color-error;
+  @include font-12-Regular;
+  display: inline-block;
+}
+
+.label {
+  color: $color-gray-900;
+  @include font-24-Bold;
+  margin-bottom: 12px;
+}
+
+.button {
+  width: min(100vw - 48px, 720px);
+}

@@ -1,0 +1,134 @@
+import { useState, useEffect } from 'react';
+
+// 3. /{team}/messages/{id}/, /{team}/recipients/{id}/, /{team}/recipients/{recipient_id}/reactions/
+// 4. url 가공 필요
+
+export default function useFetch(url, method = 'GET', body = null) {
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // 데이터 로딩중에는 true로 설정
+      setIsLoading(true);
+
+      try {
+        // 통신 할 데이터 메소드와 헤더 지정
+        const requestOptions = {
+          method: method,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        };
+        // body 유무 확인 조건부 추가
+        if (body) {
+          requestOptions.body = JSON.stringify(body);
+        }
+
+        // fetch 호출
+        const response = await fetch(
+          `https://rolling-api.vercel.app${url}`,
+          requestOptions,
+        );
+
+        if (!response.ok) {
+          throw new Error('서버 응답 실패');
+        }
+
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error(error);
+        console.log(
+          `서버와의 통신 과정에서 문제가 발생하였습니다. (fetch 확인)`,
+        );
+      } finally {
+        // 데이터 로딩 완료 후에는 다시 false로 설정
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url, method, body]);
+  // url, method, body가 변경될 때마다 호출
+
+  return { data, isLoading };
+}
+
+// const API = {
+//   // GET: 리소스 조회
+//   get: async (url) => {
+//     return await useFetch(url, 'GET');
+//   },
+//   // POST: 요청 데이터 처리, 주로 등록에 사용
+//   post: async (url, body) => {
+//     return await useFetch(url, 'POST', body);
+//   },
+//   // PATCH: 리소스 부분 변경
+//   patch: async (url, body) => {
+//     return await useFetch(url, 'PATCH', body);
+//   },
+//   // PUT: 리소스 덮어쓰기 혹은 생성
+//   put: async (url, body) => {
+//     return await ussFetch(url, 'PUT', body);
+//   },
+//   // DELETE: 리소스 삭제
+//   delete: async (url) => {
+//     return await useFetch(url, 'DELETE');
+//   },
+// };
+
+// 3. /{team}/messages/{id}/, /{team}/recipients/{id}/, /{team}/recipients/{recipient_id}/reactions/
+// 4. url 가공 필요
+
+// export default function useFetch(url, method = 'GET', body = null) {
+//   const [data, setData] = useState(null);
+//   const [isLoading, setIsLoading] = useState(false);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       // 데이터 로딩중에는 true로 설정
+//       setIsLoading(true);
+
+//       try {
+//         // 통신 할 데이터 메소드와 헤더 지정
+//         const requestOptions = {
+//           method: method,
+//           headers: {
+//             'Content-Type': 'application/json',
+//           },
+//         };
+//         // body 유무 확인 조건부 추가
+//         if (body) {
+//           requestOptions.body = JSON.stringify(body);
+//         }
+
+//         // fetch 호출
+//         const response = await fetch(
+//           https://rolling-api.vercel.app${url},
+//           requestOptions,
+//         );
+
+//         if (!response.ok) {
+//           throw new Error('서버 응답 실패');
+//         }
+
+//         const result = await response.json();
+//         setData(result);
+//       } catch (error) {
+//         console.error(error);
+//         console.log(
+//           "서버와의 통신 과정에서 문제가 발생하였습니다. (fetch 확인)"
+//         );
+//       } finally {
+//         // 데이터 로딩 완료 후에는 다시 false로 설정
+//         setIsLoading(false);
+//       }
+//     };
+
+//     fetchData();
+//   }, [url, method, body]);
+//   // url, method, body가 변경될 때마다 호출
+
+//   return { data, isLoading };
+// }

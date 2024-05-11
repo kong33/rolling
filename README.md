@@ -100,7 +100,7 @@
 ## 김보경_[**@bokeeey**](https://github.com/bokeeeey)
 
 > ### Carousel 제작
-> + 000 라이브러리를 커스터마이징 해 프로젝트에 적합한 모션 구현
+> + embla carousel 라이브러리를 커스터마이징 해 프로젝트에 적합한 모션 구현
 > ### useFetch 제작
 > + useFetch를 제작해 get, delete, fetch, post를 하나의 훅으로 해결
 > ### ListPage
